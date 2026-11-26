@@ -53,7 +53,7 @@ button:active{transform:scale(.99)}
 .notice{margin-top:20px;padding:12px;border-radius:13px;background:#ffffff08;border:1px solid #ffffff14;color:#aaa3b2;font-size:.82rem}
 a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-</style>
+.live-preview{display:block;width:100%;height:118px;border:1px solid #a47b35;border-radius:9px;background:radial-gradient(ellipse at center,#2a2114,#080808 75%);pointer-events:none}.live-preview.preview-break{height:145px}</style>
 </head>
 <body>
 <main class="panel">
@@ -70,14 +70,14 @@ a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
   </form>
   <section id="unlocked" aria-live="polite">
     <strong>ACESSO LIBERADO · CENTRAL PREMIUM</strong>
-    <p>Escolha um modelo e copie o link exclusivo para adicionar como fonte de navegador no LiveX.</p>
+    <p>Veja cada overlay em funcionamento na prévia abaixo. Quando escolher, copie o link individual para adicionar como fonte de navegador no LiveX.</p>
     <div class="catalog" id="catalog">
-      <article class="item"><div class="sample ticker-sample">CAIPORAH <span>ÚLTIMAS NOTÍCIAS • AO VIVO •</span></div><b>Faixa de notícias</b><small>Barra horizontal inferior para avisos e notícias.</small><button type="button" data-link="ticker">COPIAR LINK INDIVIDUAL</button></article>
-      <article class="item"><div class="sample lower-sample"><i>CAIPORAH</i><strong>SEU NOME AQUI</strong><small>AO VIVO AGORA</small></div><b>Identificação / Lower third</b><small>Nome e status do streamer.</small><button type="button" data-link="lower">COPIAR LINK INDIVIDUAL</button></article>
-      <article class="item"><div class="sample social-sample">▶ <b>@CAIPORAH</b><small>ACOMPANHE NAS REDES</small></div><b>Redes sociais</b><small>Chamada para seguir o canal.</small><button type="button" data-link="social">COPIAR LINK INDIVIDUAL</button></article>
-      <article class="item"><div class="sample live-sample"><span>●</span> CAIPORAH <b>AO VIVO</b></div><b>Selo AO VIVO</b><small>Identificação compacta para o canto da tela.</small><button type="button" data-link="live">COPIAR LINK INDIVIDUAL</button></article>
-      <article class="item"><div class="sample break-sample"><small>JÁ VOLTAMOS</small><b>CAIPORAH</b><span>AGUARDE UM INSTANTE</span></div><b>Intervalo / pausa</b><small>Tela de pausa centralizada.</small><button type="button" data-link="break">COPIAR LINK INDIVIDUAL</button></article>
-      <article class="item"><div class="sample pix-sample">✦ <b>PIX RECEBIDO!</b><small>VALEU PELO APOIO!</small></div><b>Alerta de Pix visual</b><small>Alerta demonstrativo; não conectado automaticamente ao LivePix.</small><button type="button" data-link="pix">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da faixa de notícias" src="overlay.html?tipo=ticker&preview=1"></iframe><b>Faixa de notícias</b><small>Barra horizontal inferior para avisos e notícias.</small><button type="button" data-link="ticker">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da identificação do streamer" src="overlay.html?tipo=lower&preview=1"></iframe><b>Identificação / Lower third</b><small>Nome e status do streamer.</small><button type="button" data-link="lower">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia das redes sociais" src="overlay.html?tipo=social&preview=1"></iframe><b>Redes sociais</b><small>Chamada para seguir o canal.</small><button type="button" data-link="social">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do selo ao vivo" src="overlay.html?tipo=live&preview=1"></iframe><b>Selo AO VIVO</b><small>Identificação compacta para o canto da tela.</small><button type="button" data-link="live">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview preview-break" title="Prévia da tela de intervalo" src="overlay.html?tipo=break&preview=1"></iframe><b>Intervalo / pausa</b><small>Tela de pausa centralizada.</small><button type="button" data-link="break">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do alerta Pix demonstrativo" src="overlay.html?tipo=pix&nome=APOIADOR&texto=VALEU%20PELO%20APOIO!&preview=1"></iframe><b>Alerta de Pix visual</b><small>Alerta demonstrativo; não conectado automaticamente ao LivePix.</small><button type="button" data-link="pix">COPIAR LINK INDIVIDUAL</button></article>
     </div>
     <div class="custom">
       <strong>PERSONALIZAR TEXTO DO LINK</strong>
