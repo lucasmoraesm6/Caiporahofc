@@ -104,11 +104,14 @@ h1{margin:5px 0;font-size:clamp(1.15rem,3vw,1.65rem)}
     <strong>ACESSO LIBERADO · CENTRAL PREMIUM</strong>
     <p>Veja cada overlay em funcionamento na prévia abaixo. Quando escolher, copie o link individual para adicionar como fonte de navegador no LiveX.</p>
     <div class="catalog" id="catalog">
-      <article class="item"><iframe class="live-preview" title="Prévia somente da faixa inferior" src="overlay.html?tipo=ticker&preview=1&v=5490"></iframe><b>1. FAIXA INFERIOR</b><small>Somente a barra inferior. Sem nome, selo AO VIVO ou câmera.</small><button type="button" data-link="ticker">COPIAR LINK DA FAIXA</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia somente do selo ao vivo" src="overlay.html?tipo=live&preview=1"></iframe><b>2. AO VIVO</b><small>Somente o indicador AO VIVO.</small><button type="button" data-link="live">COPIAR LINK AO VIVO</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia somente da moldura da câmera" src="overlay.html?tipo=camera&preview=1"></iframe><b>3. CÂMERAS</b><small>Somente a moldura independente para a câmera.</small><button type="button" data-link="camera">COPIAR LINK CÂMERAS</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia somente da moldura da transmissão" src="overlay.html?tipo=frame&preview=1"></iframe><b>4. MOLDURA</b><small>Somente a moldura externa da transmissão.</small><button type="button" data-link="frame">COPIAR LINK MOLDURA</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da faixa inferior" src="overlay.html?tipo=ticker&preview=1&v=6500"></iframe><b>1. FAIXA INFERIOR</b><small>Somente a faixa CAIPORAH com texto rolando.</small><button type="button" data-link="ticker">COPIAR LINK DA FAIXA</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do nome do streamer" src="overlay.html?tipo=lower&preview=1&v=6500"></iframe><b>2. NOME DO STREAMER</b><small>Somente nome e identificação do streamer.</small><button type="button" data-link="lower">COPIAR LINK DO NOME</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do indicador ao vivo" src="overlay.html?tipo=live&preview=1&v=6500"></iframe><b>3. AO VIVO</b><small>Somente o selo AO VIVO.</small><button type="button" data-link="live">COPIAR LINK AO VIVO</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia das redes sociais" src="overlay.html?tipo=social&preview=1&v=6500"></iframe><b>4. REDES SOCIAIS</b><small>Somente a chamada para acompanhar as redes.</small><button type="button" data-link="social">COPIAR LINK DAS REDES</button></article>
+      <article class="item"><iframe class="live-preview preview-break" title="Prévia da tela de intervalo" src="overlay.html?tipo=break&preview=1&v=6500"></iframe><b>5. TELA DE INTERVALO</b><small>Somente a tela de pausa / já voltamos.</small><button type="button" data-link="break">COPIAR LINK DO INTERVALO</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da moldura da câmera" src="overlay.html?tipo=camera&preview=1&v=6500"></iframe><b>6. MOLDURA DA CÂMERA</b><small>Somente a moldura para posicionar a câmera.</small><button type="button" data-link="camera">COPIAR LINK DA CÂMERA</button></article>
     </div>
+    <p id="copyStatus" role="status" style="margin:10px 0 0;color:#f6df9e;overflow-wrap:anywhere"></p>
   </section>
   <div class="notice">Não compartilhe sua senha. O acesso permanece liberado nesta aba enquanto ela estiver aberta.</div>
   <a href="../">← Voltar ao site CAIPORAH</a>
@@ -129,7 +132,7 @@ const overlayBase=new URL('overlay.html',location.href);
 async function copyOverlay(type,name='',tag=''){
   const url=new URL(overlayBase);
   url.searchParams.set('tipo',type);
-  url.searchParams.set('v','5490');
+  url.searchParams.set('v','6500');
   if(name)url.searchParams.set('nome',name);
   if(tag)url.searchParams.set('texto',tag);
   const value=url.href;
