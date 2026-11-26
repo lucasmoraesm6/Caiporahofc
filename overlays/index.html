@@ -124,11 +124,6 @@ function showAccess(){
   unlocked.style.display='block';
   document.querySelector('.notice').textContent='Acesso liberado nesta aba. Feche a aba para encerrar a sessão.';
   document.querySelectorAll('[data-link]').forEach(button=>button.addEventListener('click',()=>copyOverlay(button.dataset.link)));
-  document.getElementById('copyCustom').addEventListener('click',()=>{
-    const name=document.getElementById('customName').value.trim();
-    const tag=document.getElementById('customTag').value.trim();
-    copyOverlay('lower',name,tag);
-  });
 }
 const overlayBase=new URL('overlay.html',location.href);
 async function copyOverlay(type,name='',tag=''){
