@@ -29,6 +29,27 @@ button:active{transform:scale(.99)}
 #unlocked{display:none;margin-top:22px;padding:18px;border:1px solid #e8bd6355;border-radius:16px;background:#e8bd6310;text-align:left}
 #unlocked strong{display:block;color:var(--gold2);font-family:Unbounded;font-size:.9rem}
 #unlocked p{margin:8px 0 0;font-size:.92rem}
+.catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:20px}
+.item{padding:12px;border:1px solid #e8bd6340;border-radius:15px;background:#09080b;text-align:left}
+.item b{display:block;margin:10px 0 3px;color:#f6df9e;font-size:.88rem}
+.item small{display:block;min-height:34px;color:#aaa3b2;font-size:.78rem;line-height:1.35}
+.item button,.custom button{padding:11px 8px;font-size:.72rem}
+.sample{height:76px;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;border:1px solid #a47b35;border-radius:9px;background:linear-gradient(110deg,#080808,#282016);color:#f6df9e;font-size:11px;font-weight:700}
+.ticker-sample{justify-content:flex-start;padding:9px;background:linear-gradient(90deg,#090909,#3a2a12);white-space:nowrap}
+.ticker-sample span{color:white;font-weight:500}
+.lower-sample{align-items:flex-start;flex-direction:column;padding:9px;gap:1px}
+.lower-sample i{font-style:normal;color:#f6df9e;font-size:9px}
+.lower-sample strong{font-size:14px}
+.lower-sample small{min-height:0;color:#ddd}
+.social-sample{flex-wrap:wrap}
+.social-sample small{min-height:0;color:#ddd}
+.live-sample span{color:#ff5555}.live-sample b{display:inline;color:#fff}
+.break-sample{flex-direction:column;gap:0}.break-sample b{font:900 16px Unbounded;margin:2px}.break-sample small,.break-sample span{min-height:0;color:#ddd;font-size:8px}
+.pix-sample{flex-direction:column;gap:0}.pix-sample b{margin:0;color:#fff}.pix-sample small{min-height:0;color:#ddd}
+.custom{margin-top:20px;padding:15px;border:1px solid #e8bd6355;border-radius:15px;text-align:left}
+.custom strong{display:block;color:#f6df9e;font-size:.85rem;margin-bottom:12px}
+.custom input{margin-bottom:10px}
+.custom button{width:100%}
 .notice{margin-top:20px;padding:12px;border-radius:13px;background:#ffffff08;border:1px solid #ffffff14;color:#aaa3b2;font-size:.82rem}
 a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
@@ -48,8 +69,23 @@ a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
     <div id="error" role="alert" aria-live="polite"></div>
   </form>
   <section id="unlocked" aria-live="polite">
-    <strong>ACESSO LIBERADO</strong>
-    <p>A autenticação desta etapa foi concluída. A central de modelos e os links individuais dos overlays serão adicionados nesta mesma página.</p>
+    <strong>ACESSO LIBERADO · CENTRAL PREMIUM</strong>
+    <p>Escolha um modelo e copie o link exclusivo para adicionar como fonte de navegador no LiveX.</p>
+    <div class="catalog" id="catalog">
+      <article class="item"><div class="sample ticker-sample">CAIPORAH <span>ÚLTIMAS NOTÍCIAS • AO VIVO •</span></div><b>Faixa de notícias</b><small>Barra horizontal inferior para avisos e notícias.</small><button type="button" data-link="ticker">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><div class="sample lower-sample"><i>CAIPORAH</i><strong>SEU NOME AQUI</strong><small>AO VIVO AGORA</small></div><b>Identificação / Lower third</b><small>Nome e status do streamer.</small><button type="button" data-link="lower">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><div class="sample social-sample">▶ <b>@CAIPORAH</b><small>ACOMPANHE NAS REDES</small></div><b>Redes sociais</b><small>Chamada para seguir o canal.</small><button type="button" data-link="social">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><div class="sample live-sample"><span>●</span> CAIPORAH <b>AO VIVO</b></div><b>Selo AO VIVO</b><small>Identificação compacta para o canto da tela.</small><button type="button" data-link="live">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><div class="sample break-sample"><small>JÁ VOLTAMOS</small><b>CAIPORAH</b><span>AGUARDE UM INSTANTE</span></div><b>Intervalo / pausa</b><small>Tela de pausa centralizada.</small><button type="button" data-link="break">COPIAR LINK INDIVIDUAL</button></article>
+      <article class="item"><div class="sample pix-sample">✦ <b>PIX RECEBIDO!</b><small>VALEU PELO APOIO!</small></div><b>Alerta de Pix visual</b><small>Alerta demonstrativo; não conectado automaticamente ao LivePix.</small><button type="button" data-link="pix">COPIAR LINK INDIVIDUAL</button></article>
+    </div>
+    <div class="custom">
+      <strong>PERSONALIZAR TEXTO DO LINK</strong>
+      <label for="customName">Nome / mensagem</label><input id="customName" maxlength="45" placeholder="Ex.: Lucas Moraes">
+      <label for="customTag">Linha complementar</label><input id="customTag" maxlength="60" placeholder="Ex.: AO VIVO AGORA">
+      <button type="button" id="copyCustom">COPIAR LINK PERSONALIZADO · LOWER THIRD</button>
+    </div>
+    <p id="copyStatus" role="status" style="margin:14px 0 0;color:#f6df9e"></p>
   </section>
   <div class="notice">Não compartilhe sua senha. O acesso permanece liberado nesta aba enquanto ela estiver aberta.</div>
   <a href="../">← Voltar ao site CAIPORAH</a>
@@ -64,6 +100,22 @@ function showAccess(){
   form.style.display='none';
   unlocked.style.display='block';
   document.querySelector('.notice').textContent='Acesso liberado nesta aba. Feche a aba para encerrar a sessão.';
+  document.querySelectorAll('[data-link]').forEach(button=>button.addEventListener('click',()=>copyOverlay(button.dataset.link)));
+  document.getElementById('copyCustom').addEventListener('click',()=>{
+    const name=document.getElementById('customName').value.trim();
+    const tag=document.getElementById('customTag').value.trim();
+    copyOverlay('lower',name,tag);
+  });
+}
+const overlayBase=new URL('overlay.html',location.href);
+async function copyOverlay(type,name='',tag=''){
+  const url=new URL(overlayBase);
+  url.searchParams.set('tipo',type);
+  if(name)url.searchParams.set('nome',name);
+  if(tag)url.searchParams.set('texto',tag);
+  const value=url.href;
+  try{await navigator.clipboard.writeText(value);document.getElementById('copyStatus').textContent='Link copiado: '+value;}
+  catch(e){document.getElementById('copyStatus').textContent=value;}
 }
 if(sessionStorage.getItem('caiporahOverlayAccess')==='ok') showAccess();
 form.addEventListener('submit',async event=>{
