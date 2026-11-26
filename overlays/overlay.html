@@ -49,10 +49,10 @@ body{font-family:Outfit,Arial,sans-serif;color:#fff}
 <body><main id="stage">
 <div id="ticker" class="overlay-source"><div class="brand">CAIPORAH</div><div class="track"><div class="moving" id="tickerText">SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE</div></div></div>
 <div id="camera" class="overlay-source" aria-label="Moldura independente para câmera"></div>
-<div id="lower" class="overlay-source"><div class="brand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
-<div id="social" class="overlay-source"><div class="play">▶</div><div><b id="socialName">@CAIPORAH</b><small>ACOMPANHE NAS REDES</small></div></div>
-<div id="live" class="overlay-source"><span class="dot"></span> <span class="gold">CAIPORAH</span> AO VIVO</div>
-<div id="break" class="overlay-source"><div class="eyebrow">JÁ VOLTAMOS</div><div class="logo">CAIPORAH</div><div class="sub">AGUARDE UM INSTANTE</div></div>
+<div id="lower" class="overlay-source"><div class="brand" id="lowerBrand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
+<div id="social" class="overlay-source"><div class="play">▶</div><div><b id="socialName">@CAIPORAH</b><small id="socialText">ACOMPANHE NAS REDES</small></div></div>
+<div id="live" class="overlay-source"><span class="dot"></span> <span class="gold" id="liveBrand">CAIPORAH</span> <span id="liveText">AO VIVO</span></div>
+<div id="break" class="overlay-source"><div class="eyebrow" id="breakTitle">JÁ VOLTAMOS</div><div class="logo" id="breakBrand">CAIPORAH</div><div class="sub" id="breakSub">AGUARDE UM INSTANTE</div></div>
 <div id="pix" class="overlay-source"><div class="star">✦ ✦ ✦</div><b>PIX RECEBIDO!</b><div class="who" id="pixName">APOIADOR</div><div class="amount" id="pixAmount">MUITO OBRIGADO!</div></div>
 </main>
 <script>
@@ -64,10 +64,19 @@ const el=document.getElementById(show);
 if(el)el.classList.add('is-active');
 const safe=(v,fallback)=>v&&v.trim()?v.trim():fallback;
 document.getElementById('lowerName').textContent=safe(p.get('nome'),'SEU NOME AQUI');
+document.getElementById('lowerBrand').textContent=safe(p.get('marca'),'CAIPORAH · TRANSMISSÃO');
 document.getElementById('lowerTag').textContent=safe(p.get('texto'),'AO VIVO AGORA');
 document.getElementById('socialName').textContent=safe(p.get('nome'),'@CAIPORAH');
+document.getElementById('socialText').textContent=safe(p.get('texto'),'ACOMPANHE NAS REDES');
 document.getElementById('pixName').textContent=safe(p.get('nome'),'APOIADOR');
 document.getElementById('pixAmount').textContent=safe(p.get('texto'),'MUITO OBRIGADO!');
+document.getElementById('liveBrand').textContent=safe(p.get('marca'),'CAIPORAH');
+document.getElementById('liveText').textContent=safe(p.get('texto'),'AO VIVO');
+document.getElementById('breakTitle').textContent=safe(p.get('titulo'),'JÁ VOLTAMOS');
+document.getElementById('breakBrand').textContent=safe(p.get('marca'),'CAIPORAH');
+document.getElementById('breakSub').textContent=safe(p.get('texto'),'AGUARDE UM INSTANTE');
+const cameraColor=p.get('cor');
+if(cameraColor&&/^#[0-9a-fA-F]{6}$/.test(cameraColor))document.getElementById('camera').style.borderColor=cameraColor;
 const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
 document.getElementById('tickerText').textContent=tickerText+'　✦　'+tickerText+'　✦　';
 </script></body></html>
