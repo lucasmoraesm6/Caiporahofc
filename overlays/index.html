@@ -53,7 +53,39 @@ button:active{transform:scale(.99)}
 .notice{margin-top:20px;padding:12px;border-radius:13px;background:#ffffff08;border:1px solid #ffffff14;color:#aaa3b2;font-size:.82rem}
 a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-.live-preview{display:block;width:100%;height:118px;border:1px solid #a47b35;border-radius:9px;background:radial-gradient(ellipse at center,#2a2114,#080808 75%);pointer-events:none}.live-preview.preview-break{height:145px}</style>
+.live-preview{display:block;width:100%;height:118px;border:1px solid #a47b35;border-radius:9px;background:radial-gradient(ellipse at center,#2a2114,#080808 75%);pointer-events:none}.live-preview.preview-break{height:145px}
+/* Organização compacta: menos rolagem e catálogo mais fácil de comparar */
+body{display:block;min-height:100vh;padding:clamp(8px,2vw,20px);line-height:1.4}
+.panel{width:min(1120px,100%);margin:0 auto;padding:clamp(14px,2.2vw,26px);border-radius:20px;text-align:center}
+.mark{width:48px;height:48px;margin:0 auto 9px;border-radius:14px;font-size:18px}
+h1{margin:5px 0;font-size:clamp(1.15rem,3vw,1.65rem)}
+.panel>p{margin:7px 0 12px;font-size:.9rem}
+.premium{font-size:.8rem}
+#access-form{width:min(420px,100%);margin:0 auto}
+#access-form input{padding:12px 14px}
+#access-form button{padding:12px;margin-top:9px}
+#error{margin:6px 0 0}
+#unlocked{margin-top:12px;padding:12px}
+#unlocked>strong{font-size:.82rem}
+#unlocked>p{margin:5px 0 10px;font-size:.82rem}
+.catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.item{padding:9px;border-radius:12px;min-width:0}
+.live-preview{height:82px;border-radius:7px}
+.live-preview.preview-break{height:82px}
+.item b{margin:6px 0 2px;font-size:.8rem;line-height:1.2}
+.item small{min-height:0;font-size:.7rem;line-height:1.25}
+.item button,.custom button{margin-top:8px;padding:9px 6px;font-size:.66rem;line-height:1.2}
+.custom{margin-top:10px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;align-items:end}
+.custom strong{grid-column:1/-1;margin:0;text-align:left}
+.custom label{margin:0 0 3px;font-size:.75rem}
+.custom input{padding:10px 11px;margin:0;font-size:14px}
+.custom button{grid-column:1/-1;width:100%;margin-top:0}
+#copyStatus{overflow-wrap:anywhere;font-size:.76rem!important}
+.notice{margin-top:10px;padding:8px;font-size:.72rem}
+.panel>a{margin-top:10px;font-size:.82rem}
+@media(max-width:720px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.panel{padding:12px}.live-preview{height:76px}.live-preview.preview-break{height:76px}}
+@media(max-width:360px){.catalog{grid-template-columns:1fr}.live-preview{height:90px}.custom{grid-template-columns:1fr}.custom strong,.custom button{grid-column:1}}
+</style>
 </head>
 <body>
 <main class="panel">
