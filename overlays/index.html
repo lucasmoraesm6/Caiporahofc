@@ -75,6 +75,9 @@ h1{margin:5px 0;font-size:clamp(1.15rem,3vw,1.65rem)}
 .item b{margin:6px 0 2px;font-size:.8rem;line-height:1.2}
 .item small{min-height:0;font-size:.7rem;line-height:1.25}
 .item button,.custom button{margin-top:8px;padding:9px 6px;font-size:.66rem;line-height:1.2}
+.edit-label{display:block;margin-top:7px;color:#d9c99f;font-size:.68rem}
+.edit-field{display:block;width:100%;margin-top:3px;padding:7px 8px;border:1px solid #8d754d88;border-radius:7px;background:#111;color:#fff;font:500 12px Outfit}
+.edit-field.color-field{height:34px;padding:3px;cursor:pointer}
 .custom{margin-top:10px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;align-items:end}
 .custom strong{grid-column:1/-1;margin:0;text-align:left}
 .custom label{margin:0 0 3px;font-size:.75rem}
@@ -104,12 +107,12 @@ h1{margin:5px 0;font-size:clamp(1.15rem,3vw,1.65rem)}
     <strong>ACESSO LIBERADO · CENTRAL PREMIUM</strong>
     <p>Veja cada overlay em funcionamento na prévia abaixo. Quando escolher, copie o link individual para adicionar como fonte de navegador no LiveX.</p>
     <div class="catalog" id="catalog">
-      <article class="item"><iframe class="live-preview" title="Prévia da faixa inferior" src="overlay.html?tipo=ticker&preview=1&v=6500"></iframe><b>1. FAIXA INFERIOR</b><small>Somente a faixa CAIPORAH com texto rolando.</small><button type="button" data-link="ticker">COPIAR LINK DA FAIXA</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia do nome do streamer" src="overlay.html?tipo=lower&preview=1&v=6500"></iframe><b>2. NOME DO STREAMER</b><small>Somente nome e identificação do streamer.</small><button type="button" data-link="lower">COPIAR LINK DO NOME</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia do indicador ao vivo" src="overlay.html?tipo=live&preview=1&v=6500"></iframe><b>3. AO VIVO</b><small>Somente o selo AO VIVO.</small><button type="button" data-link="live">COPIAR LINK AO VIVO</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia das redes sociais" src="overlay.html?tipo=social&preview=1&v=6500"></iframe><b>4. REDES SOCIAIS</b><small>Somente a chamada para acompanhar as redes.</small><button type="button" data-link="social">COPIAR LINK DAS REDES</button></article>
-      <article class="item"><iframe class="live-preview preview-break" title="Prévia da tela de intervalo" src="overlay.html?tipo=break&preview=1&v=6500"></iframe><b>5. TELA DE INTERVALO</b><small>Somente a tela de pausa / já voltamos.</small><button type="button" data-link="break">COPIAR LINK DO INTERVALO</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia da moldura da câmera" src="overlay.html?tipo=camera&preview=1&v=6500"></iframe><b>6. MOLDURA DA CÂMERA</b><small>Somente a moldura para posicionar a câmera.</small><button type="button" data-link="camera">COPIAR LINK DA CÂMERA</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da faixa inferior" src="overlay.html?tipo=ticker&preview=1&v=6500"></iframe><b>1. FAIXA INFERIOR</b><small>Somente a faixa CAIPORAH com texto rolando.</small><label class="edit-label">Texto da faixa<input class="edit-field" data-param="texto" value="SEJA BEM-VINDO À TRANSMISSÃO ✦ INSCREVA-SE NO CANAL ✦ COMPARTILHE A LIVE"></label><button type="button" data-link="ticker">COPIAR LINK DA FAIXA</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do nome do streamer" src="overlay.html?tipo=lower&preview=1&v=6500"></iframe><b>2. NOME DO STREAMER</b><small>Somente nome e identificação do streamer.</small><label class="edit-label">Nome do streamer<input class="edit-field" data-param="nome" placeholder="Ex.: Lucas Moraes"></label><label class="edit-label">Identificação<input class="edit-field" data-param="texto" value="AO VIVO AGORA"></label><label class="edit-label">Nome do canal / marca<input class="edit-field" data-param="marca" value="CAIPORAH · TRANSMISSÃO"></label><button type="button" data-link="lower">COPIAR LINK DO NOME</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia do indicador ao vivo" src="overlay.html?tipo=live&preview=1&v=6500"></iframe><b>3. AO VIVO</b><small>Somente o selo AO VIVO.</small><label class="edit-label">Nome do canal<input class="edit-field" data-param="marca" value="CAIPORAH"></label><label class="edit-label">Texto do selo<input class="edit-field" data-param="texto" value="AO VIVO"></label><button type="button" data-link="live">COPIAR LINK AO VIVO</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia das redes sociais" src="overlay.html?tipo=social&preview=1&v=6500"></iframe><b>4. REDES SOCIAIS</b><small>Somente a chamada para acompanhar as redes.</small><label class="edit-label">Usuário / rede<input class="edit-field" data-param="nome" value="@CAIPORAH"></label><label class="edit-label">Mensagem<input class="edit-field" data-param="texto" value="ACOMPANHE NAS REDES"></label><button type="button" data-link="social">COPIAR LINK DAS REDES</button></article>
+      <article class="item"><iframe class="live-preview preview-break" title="Prévia da tela de intervalo" src="overlay.html?tipo=break&preview=1&v=6500"></iframe><b>5. TELA DE INTERVALO</b><small>Somente a tela de pausa / já voltamos.</small><label class="edit-label">Título<input class="edit-field" data-param="titulo" value="JÁ VOLTAMOS"></label><label class="edit-label">Nome / marca<input class="edit-field" data-param="marca" value="CAIPORAH"></label><label class="edit-label">Mensagem<input class="edit-field" data-param="texto" value="AGUARDE UM INSTANTE"></label><button type="button" data-link="break">COPIAR LINK DO INTERVALO</button></article>
+      <article class="item"><iframe class="live-preview" title="Prévia da moldura da câmera" src="overlay.html?tipo=camera&preview=1&v=6500"></iframe><b>6. MOLDURA DA CÂMERA</b><small>Somente a moldura para posicionar a câmera.</small><label class="edit-label">Cor da moldura<input class="edit-field color-field" data-param="cor" type="color" value="#e8bd63"></label><button type="button" data-link="camera">COPIAR LINK DA CÂMERA</button></article>
     </div>
     <p id="copyStatus" role="status" style="margin:10px 0 0;color:#f6df9e;overflow-wrap:anywhere"></p>
   </section>
@@ -126,15 +129,14 @@ function showAccess(){
   form.style.display='none';
   unlocked.style.display='block';
   document.querySelector('.notice').textContent='Acesso liberado nesta aba. Feche a aba para encerrar a sessão.';
-  document.querySelectorAll('[data-link]').forEach(button=>button.addEventListener('click',()=>copyOverlay(button.dataset.link)));
+  document.querySelectorAll('[data-link]').forEach(button=>button.addEventListener('click',()=>copyOverlay(button.dataset.link,button.closest('.item'))));
 }
 const overlayBase=new URL('overlay.html',location.href);
-async function copyOverlay(type,name='',tag=''){
+async function copyOverlay(type,card){
   const url=new URL(overlayBase);
   url.searchParams.set('tipo',type);
   url.searchParams.set('v','6500');
-  if(name)url.searchParams.set('nome',name);
-  if(tag)url.searchParams.set('texto',tag);
+  if(card)card.querySelectorAll('[data-param]').forEach(field=>{if(field.value.trim())url.searchParams.set(field.dataset.param,field.value.trim());});
   const value=url.href;
   try{await navigator.clipboard.writeText(value);document.getElementById('copyStatus').textContent='Link copiado: '+value;}
   catch(e){document.getElementById('copyStatus').textContent=value;}
