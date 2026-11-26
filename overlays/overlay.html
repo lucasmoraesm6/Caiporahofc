@@ -11,11 +11,14 @@
 body{font-family:Outfit,Arial,sans-serif;color:#fff}
 :root{--gold:#e8bd63;--gold2:#f7dfa0;--black:#090909}
 #stage{position:relative;width:100vw;height:100vh;overflow:hidden}
-/* Cada URL é uma fonte independente: todos os elementos começam ocultos. */
-#ticker,#lower,#social,#live,#break,#pix{display:none}
-#ticker{position:absolute;left:0;right:0;bottom:0;min-height:58px;padding:0 3%;overflow:hidden;background:linear-gradient(90deg,#090909f5,#20180bf2 50%,#090909f5);border-top:2px solid var(--gold);box-shadow:0 -5px 22px #0007;align-items:center}
-#ticker .track{width:100%;overflow:hidden;white-space:nowrap;text-align:center}
-#ticker .moving{display:inline-block;font-size:22px;font-weight:700;letter-spacing:.04em;color:#fff}
+/* Isolamento rígido: somente o elemento escolhido pela URL pode aparecer. */
+.overlay-source{display:none!important}
+.overlay-source.is-active{display:flex!important}
+#lower.is-active,#pix.is-active,#camera.is-active,#frame.is-active{display:block!important}
+#ticker{position:absolute;left:0;right:0;bottom:0;height:62px;padding:0;overflow:hidden;background:linear-gradient(90deg,#090909f5,#20180bf2 50%,#090909f5);border-top:2px solid var(--gold);box-shadow:0 -5px 22px #0007;align-items:center}
+#ticker .brand{height:100%;min-width:150px;padding:0 22px;display:flex;align-items:center;justify-content:center;background:linear-gradient(110deg,#9c702b,#f1d48a);color:#110d07;font:900 17px Unbounded;white-space:nowrap}
+#ticker .track{overflow:hidden;white-space:nowrap;flex:1}
+#ticker .moving{display:inline-block;padding-left:100%;font-size:22px;font-weight:700;letter-spacing:.04em;color:#fff;animation:marquee 22s linear infinite}
 #camera{position:absolute;right:4%;bottom:5%;width:32%;height:30%;border:4px solid var(--gold);border-radius:16px;box-shadow:0 0 0 2px #090909,0 8px 28px #0008}
 #frame{position:absolute;inset:2%;border:5px solid var(--gold);border-radius:20px;box-shadow:inset 0 0 0 2px #090909,0 0 0 2px #090909;pointer-events:none}
 @media(max-width:600px){#camera{width:42%;height:25%;right:3%;bottom:4%}#frame{inset:2%;border-width:3px}}
@@ -41,30 +44,31 @@ body{font-family:Outfit,Arial,sans-serif;color:#fff}
 #pix b{display:block;margin:3px 0;font:800 23px Unbounded;color:var(--gold2)}
 #pix .who{font-size:19px;font-weight:800}
 #pix .amount{font-size:25px;font-weight:900;color:#fff}
-@media(max-width:600px){#ticker{height:48px;left:1%;right:1%;bottom:3%}#ticker .brand{font-size:12px;padding:0 10px}#ticker .moving{font-size:16px}#lower{left:2%;bottom:5%;min-width:0;max-width:94%;padding:10px 14px}#lower .name{font-size:23px}#lower .tag{font-size:12px}#social{right:2%;top:3%;padding:9px 12px}#social b{font-size:15px}#pix{min-width:0;width:90%;top:8%}}
+@media(max-width:600px){#ticker{height:48px;left:0;right:0;bottom:0}#ticker .brand{min-width:100px;font-size:12px;padding:0 10px}#ticker .moving{font-size:16px}#lower{left:2%;bottom:5%;min-width:0;max-width:94%;padding:10px 14px}#lower .name{font-size:23px}#lower .tag{font-size:12px}#social{right:2%;top:3%;padding:9px 12px}#social b{font-size:15px}#pix{min-width:0;width:90%;top:8%}}
 </style></head>
 <body><main id="stage">
-<div id="ticker"><div class="track"><div class="moving" id="tickerText">INFORMAÇÕES DA TRANSMISSÃO</div></div></div>
-<div id="camera" aria-label="Moldura independente para câmera"></div>
-<div id="frame" aria-label="Moldura independente da transmissão"></div>
-<div id="lower"><div class="brand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
-<div id="social"><div class="play">▶</div><div><b id="socialName">@CAIPORAH</b><small>ACOMPANHE NAS REDES</small></div></div>
-<div id="live"><span class="dot"></span> <span class="gold">CAIPORAH</span> AO VIVO</div>
-<div id="break"><div class="eyebrow">JÁ VOLTAMOS</div><div class="logo">CAIPORAH</div><div class="sub">AGUARDE UM INSTANTE</div></div>
-<div id="pix"><div class="star">✦ ✦ ✦</div><b>PIX RECEBIDO!</b><div class="who" id="pixName">APOIADOR</div><div class="amount" id="pixAmount">MUITO OBRIGADO!</div></div>
+<div id="ticker" class="overlay-source"><div class="brand">CAIPORAH</div><div class="track"><div class="moving" id="tickerText">SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE</div></div></div>
+<div id="camera" class="overlay-source" aria-label="Moldura independente para câmera"></div>
+<div id="frame" class="overlay-source" aria-label="Moldura independente da transmissão"></div>
+<div id="lower" class="overlay-source"><div class="brand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
+<div id="social" class="overlay-source"><div class="play">▶</div><div><b id="socialName">@CAIPORAH</b><small>ACOMPANHE NAS REDES</small></div></div>
+<div id="live" class="overlay-source"><span class="dot"></span> <span class="gold">CAIPORAH</span> AO VIVO</div>
+<div id="break" class="overlay-source"><div class="eyebrow">JÁ VOLTAMOS</div><div class="logo">CAIPORAH</div><div class="sub">AGUARDE UM INSTANTE</div></div>
+<div id="pix" class="overlay-source"><div class="star">✦ ✦ ✦</div><b>PIX RECEBIDO!</b><div class="who" id="pixName">APOIADOR</div><div class="amount" id="pixAmount">MUITO OBRIGADO!</div></div>
 </main>
 <script>
 const p=new URLSearchParams(location.search);
 const type=(p.get('tipo')||'ticker').toLowerCase();
 const show={ticker:'ticker',lower:'lower',social:'social',live:'live',break:'break',pix:'pix',camera:'camera',frame:'frame'}[type]||'ticker';
+document.querySelectorAll('.overlay-source').forEach(node=>node.classList.remove('is-active'));
 const el=document.getElementById(show);
-el.style.display=show==='live'||show==='break'||show==='ticker'?'flex':'block';
+if(el)el.classList.add('is-active');
 const safe=(v,fallback)=>v&&v.trim()?v.trim():fallback;
 document.getElementById('lowerName').textContent=safe(p.get('nome'),'SEU NOME AQUI');
 document.getElementById('lowerTag').textContent=safe(p.get('texto'),'AO VIVO AGORA');
 document.getElementById('socialName').textContent=safe(p.get('nome'),'@CAIPORAH');
 document.getElementById('pixName').textContent=safe(p.get('nome'),'APOIADOR');
 document.getElementById('pixAmount').textContent=safe(p.get('texto'),'MUITO OBRIGADO!');
-const tickerText=safe(p.get('texto'),'INFORMAÇÕES DA TRANSMISSÃO');
-document.getElementById('tickerText').textContent=tickerText;
+const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
+document.getElementById('tickerText').textContent=tickerText+'　✦　'+tickerText+'　✦　';
 </script></body></html>
