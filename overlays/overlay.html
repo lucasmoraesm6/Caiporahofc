@@ -45,6 +45,31 @@ body{font-family:Outfit,Arial,sans-serif;color:#fff}
 #pix .who{font-size:19px;font-weight:800}
 #pix .amount{font-size:25px;font-weight:900;color:#fff}
 @media(max-width:600px){#ticker{height:48px;left:0;right:0;bottom:0}#ticker .brand{min-width:100px;font-size:12px;padding:0 10px}#ticker .moving{font-size:16px}#lower{left:2%;bottom:5%;min-width:0;max-width:94%;padding:10px 14px}#lower .name{font-size:23px}#lower .tag{font-size:12px}#social{right:2%;top:3%;padding:9px 12px}#social b{font-size:15px}#pix{min-width:0;width:90%;top:8%}}
+
+/* Paletas e modelos selecionáveis pelo editor */
+#stage{--accent:#e8bd63;--accent2:#f7dfa0;--accentDark:#9c702b;--accentGlow:#e8bd6366}
+#ticker{border-top-color:var(--accent)}
+#ticker .brand{background:linear-gradient(110deg,var(--accentDark),var(--accent2))}
+#lower{border-left-color:var(--accent)}
+#lower .brand,#social small,#live .gold,#break .eyebrow,#pix .star,#pix b{color:var(--accent2)}
+#social{border-color:var(--accent)}
+#social .play{background:linear-gradient(135deg,var(--accentDark),var(--accent2))}
+#live{border-color:var(--accent)}
+#camera{border-color:var(--accent)}
+#pix{border-color:var(--accent)}
+#stage[data-model="neon"] #ticker,#stage[data-model="neon"] #lower,#stage[data-model="neon"] #social,#stage[data-model="neon"] #live,#stage[data-model="neon"] #pix{box-shadow:0 0 18px var(--accentGlow),0 0 38px #0009}
+#stage[data-model="minimal"] #ticker{background:#080808eF;box-shadow:none;border-top-width:1px}
+#stage[data-model="minimal"] #lower,#stage[data-model="minimal"] #social,#stage[data-model="minimal"] #live,#stage[data-model="minimal"] #pix{background:#090909eF;box-shadow:none;border-radius:3px}
+#stage[data-model="glass"] #ticker,#stage[data-model="glass"] #lower,#stage[data-model="glass"] #social,#stage[data-model="glass"] #live,#stage[data-model="glass"] #pix{background:#17171799;backdrop-filter:blur(14px);border-radius:16px}
+#stage[data-model="esports"] #ticker,#stage[data-model="esports"] #lower,#stage[data-model="esports"] #social,#stage[data-model="esports"] #live,#stage[data-model="esports"] #pix{border-radius:3px;border-width:2px}
+#stage[data-model="luxury"] #ticker,#stage[data-model="luxury"] #lower,#stage[data-model="luxury"] #social,#stage[data-model="luxury"] #live,#stage[data-model="luxury"] #pix{background:linear-gradient(120deg,#080808f5,#292015f0);box-shadow:0 10px 35px #000b,0 0 0 1px var(--accentGlow)}
+#stage[data-model="retro"] #ticker,#stage[data-model="retro"] #lower,#stage[data-model="retro"] #social,#stage[data-model="retro"] #live,#stage[data-model="retro"] #pix{border-radius:0;border-style:double}
+#stage[data-model="tech"] #ticker,#stage[data-model="tech"] #lower,#stage[data-model="tech"] #social,#stage[data-model="tech"] #live,#stage[data-model="tech"] #pix{border-radius:7px;background:linear-gradient(110deg,#07111bF2,#101a25F2);box-shadow:0 0 16px var(--accentGlow)}
+#stage[data-model="neon"] #camera{box-shadow:0 0 18px var(--accentGlow)}
+#stage[data-model="glass"] #camera{backdrop-filter:blur(8px);border-radius:24px}
+#stage[data-model="esports"] #camera{border-radius:2px}
+#stage[data-model="retro"] #camera{border-style:double;border-radius:0}
+#stage[data-model="tech"] #camera{border-radius:6px;box-shadow:0 0 18px var(--accentGlow)}
 </style></head>
 <body><main id="stage">
 <div id="ticker" class="overlay-source"><div class="brand">CAIPORAH</div><div class="track"><div class="moving" id="tickerText">SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE</div></div></div>
@@ -62,6 +87,24 @@ const show={ticker:'ticker',lower:'lower',social:'social',live:'live',break:'bre
 document.querySelectorAll('.overlay-source').forEach(node=>node.classList.remove('is-active'));
 const el=document.getElementById(show);
 if(el)el.classList.add('is-active');
+
+const palettes={
+gold:['#e8bd63','#f7dfa0','#9c702b'],red:['#ff4242','#ffaaaa','#a81424'],
+blue:['#398bff','#a9d0ff','#174caa'],cyan:['#00d9e8','#a6f8ff','#087f91'],
+purple:['#a66bff','#d9b8ff','#6232a8'],pink:['#ff65b4','#ffc1df','#a82d70'],
+green:['#22df83','#a6ffd0','#087b49'],lime:['#b7ed32','#e8ff9b','#668c12'],
+orange:['#ff8a26','#ffd0a0','#b94d0a'],ice:['#b9d8e8','#f3fbff','#64889d'],
+white:['#eeeeee','#ffffff','#777777'],bronze:['#b87945','#edc29c','#75401f'],
+rainbow:['#ff5b9b','#7deaff','#6d42b5']
+};
+const palette=palettes[p.get('paleta')]||palettes.gold;
+const stage=document.getElementById('stage');
+stage.style.setProperty('--accent',palette[0]);
+stage.style.setProperty('--accent2',palette[1]);
+stage.style.setProperty('--accentDark',palette[2]);
+stage.style.setProperty('--accentGlow',palette[0]+'88');
+stage.dataset.model=['classic','neon','minimal','glass','esports','luxury','retro','tech'].includes(p.get('modelo'))?p.get('modelo'):'classic';
+
 const safe=(v,fallback)=>v&&v.trim()?v.trim():fallback;
 document.getElementById('lowerName').textContent=safe(p.get('nome'),'SEU NOME AQUI');
 document.getElementById('lowerBrand').textContent=safe(p.get('marca'),'CAIPORAH · TRANSMISSÃO');
@@ -76,7 +119,7 @@ document.getElementById('breakTitle').textContent=safe(p.get('titulo'),'JÁ VOLT
 document.getElementById('breakBrand').textContent=safe(p.get('marca'),'CAIPORAH');
 document.getElementById('breakSub').textContent=safe(p.get('texto'),'AGUARDE UM INSTANTE');
 const cameraColor=p.get('cor');
-if(cameraColor&&/^#[0-9a-fA-F]{6}$/.test(cameraColor))document.getElementById('camera').style.borderColor=cameraColor;
+if(cameraColor&&/^#[0-9a-fA-F]{6}$/.test(cameraColor)){document.getElementById('camera').style.borderColor=cameraColor;stage.style.setProperty('--accent',cameraColor);}
 const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
 document.getElementById('tickerText').textContent=tickerText+'　✦　'+tickerText+'　✦　';
 </script></body></html>
