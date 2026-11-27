@@ -31,6 +31,23 @@ body{font-family:Outfit,Arial,sans-serif;color:#fff}
 #social .play{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#a7772b,#f4d98e);color:#100c06;font-size:19px}
 #social b{display:block;font-size:19px;letter-spacing:.05em}
 #social small{display:block;color:var(--gold2);font-size:11px;letter-spacing:.16em;font-weight:800}
+/* Redes sociais: cartão gamer minimalista, transparente e com troca temporizada */
+#social{position:absolute;right:4%;top:7%;width:min(430px,92vw);display:flex;flex-direction:column;gap:8px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#social .social-heading{align-self:flex-end;padding:5px 10px;border-right:3px solid var(--accent);background:#080808d9;color:var(--accent2);font-size:10px;font-weight:900;letter-spacing:.2em}
+#social .social-card{display:flex;align-items:center;gap:13px;min-height:76px;padding:12px 16px;border:1px solid var(--accent);border-left:4px solid var(--accent);border-radius:8px;background:linear-gradient(105deg,#080808ed,#17130def);box-shadow:0 6px 22px #0008;opacity:0;transform:translateY(9px);transition:opacity .35s ease,transform .35s ease}
+#social .social-card.visible{opacity:1;transform:translateY(0)}
+#social .social-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:8px;background:#e8bd6318;color:var(--accent2)}
+#social .social-icon svg{width:25px;height:25px;display:block;fill:currentColor}
+#social .social-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
+#social .social-copy span{color:var(--accent2);font-size:10px;font-weight:900;letter-spacing:.17em}
+#social .social-copy b{color:#fff;font-size:20px;line-height:1.15;font-weight:800;overflow-wrap:anywhere}
+#social .social-brand{margin-left:auto;align-self:flex-end;color:#d8c18c;font:800 9px Unbounded,Outfit,sans-serif;letter-spacing:.12em;white-space:nowrap}
+#social .social-progress{height:2px;width:100%;overflow:hidden;background:#ffffff20}
+#social .social-progress span{display:block;width:0;height:100%;background:var(--accent2);box-shadow:0 0 8px var(--accent)}
+#social .social-progress span.run{animation:socialTimer linear forwards}
+@keyframes socialTimer{from{width:0}to{width:100%}}
+@media(max-width:600px){#social{right:2%;top:3%;width:min(340px,96vw);gap:6px}#social .social-card{min-height:62px;padding:9px 11px;gap:10px}#social .social-icon{width:35px;height:35px;flex-basis:35px}#social .social-copy b{font-size:16px}#social .social-brand{font-size:8px}}
+@media(prefers-reduced-motion:reduce){#social .social-card{transition:none}#social .social-progress span.run{animation:none;width:100%}}
 #live{position:absolute;right:4%;top:5%;align-items:center;gap:10px;padding:10px 16px;border-radius:9px;background:#090909eF;border:1px solid #e8bd63;box-shadow:0 5px 20px #0007;font-weight:900;letter-spacing:.12em}
 #live .dot{width:11px;height:11px;border-radius:50%;background:#ff4545;box-shadow:0 0 12px #ff4545;animation:pulse 1.3s infinite}
 #live .gold{color:var(--gold2)}
@@ -75,7 +92,15 @@ body{font-family:Outfit,Arial,sans-serif;color:#fff}
 <div id="ticker" class="overlay-source"><div class="brand">CAIPORAH</div><div class="track"><div class="moving" id="tickerText">SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE</div></div></div>
 <div id="camera" class="overlay-source" aria-label="Moldura independente para câmera"></div>
 <div id="lower" class="overlay-source"><div class="brand" id="lowerBrand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
-<div id="social" class="overlay-source"><div class="play">▶</div><div><b id="socialName">@CAIPORAH</b><small id="socialText">ACOMPANHE NAS REDES</small></div></div>
+<div id="social" class="overlay-source" aria-live="polite">
+  <div class="social-heading">SIGA O CAIPORAH</div>
+  <div class="social-card" id="socialCard">
+    <div class="social-icon" id="socialIcon" aria-hidden="true"></div>
+    <div class="social-copy"><span id="socialPlatform">INSTAGRAM</span><b id="socialName">@CAIPORAH</b></div>
+    <div class="social-brand">CAIPORAH</div>
+  </div>
+  <div class="social-progress"><span id="socialProgress"></span></div>
+</div>
 <div id="live" class="overlay-source"><span class="dot"></span> <span class="gold" id="liveBrand">CAIPORAH</span> <span id="liveText">AO VIVO</span></div>
 <div id="break" class="overlay-source"><div class="eyebrow" id="breakTitle">JÁ VOLTAMOS</div><div class="logo" id="breakBrand">CAIPORAH</div><div class="sub" id="breakSub">AGUARDE UM INSTANTE</div></div>
 <div id="pix" class="overlay-source"><div class="star">✦ ✦ ✦</div><b>PIX RECEBIDO!</b><div class="who" id="pixName">APOIADOR</div><div class="amount" id="pixAmount">MUITO OBRIGADO!</div></div>
@@ -118,6 +143,51 @@ document.getElementById('liveText').textContent=safe(p.get('texto'),'AO VIVO');
 document.getElementById('breakTitle').textContent=safe(p.get('titulo'),'JÁ VOLTAMOS');
 document.getElementById('breakBrand').textContent=safe(p.get('marca'),'CAIPORAH');
 document.getElementById('breakSub').textContent=safe(p.get('texto'),'AGUARDE UM INSTANTE');
+// Rotação automática das redes: cada perfil aparece pelo tempo configurado.
+const socialDefinitions=[
+  {key:'instagram',label:'INSTAGRAM',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7zm5 2.1a5.7 5.7 0 1 1 0 11.4 5.7 5.7 0 0 1 0-11.4zm0 2.2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.9-3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>'},
+  {key:'youtube',label:'YOUTUBE',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>'},
+  {key:'tiktok',label:'TIKTOK',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.8 5.8 0 0 1-3.5-1.2V15a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.4a2.8 2.8 0 1 0 2 2.7V0h3.1c.3 2.5 1.8 4.1 4.3 4.4v3.2a8.6 8.6 0 0 1-.9-.1z"/></svg>'},
+  {key:'twitch',label:'TWITCH',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4zm16 12-3.5 3.5h-5L8 21v-3H4V4h16v10zM9 7h2v6H9V7zm5 0h2v6h-2V7z"/></svg>'}
+];
+const socialItems=socialDefinitions.map(item=>({...item,handle:safe(p.get(item.key),''),enabled:p.get(item.key+'_on')!=='0'})).filter(item=>item.enabled&&item.handle);
+const socialDuration=Math.max(2,Math.min(30,Number.parseInt(p.get('duracao')||'5',10)||5))*1000;
+const socialInterval=Math.max(0,Math.min(30,Number.parseInt(p.get('intervalo')||'2',10)||0))*1000;
+const socialCard=document.getElementById('socialCard');
+const socialIcon=document.getElementById('socialIcon');
+const socialPlatform=document.getElementById('socialPlatform');
+const socialName=document.getElementById('socialName');
+const socialProgress=document.getElementById('socialProgress');
+if(socialItems.length){
+  let socialIndex=0;
+  const showSocial=()=>{
+    const item=socialItems[socialIndex%socialItems.length];
+    socialCard.classList.remove('visible');
+    socialProgress.classList.remove('run');
+    socialProgress.style.animationDuration=socialDuration+'ms';
+    window.setTimeout(()=>{
+      socialIcon.innerHTML=item.icon;
+      socialPlatform.textContent=item.label;
+      socialName.textContent=item.handle;
+      socialCard.classList.add('visible');
+      socialProgress.classList.remove('run');
+      void socialProgress.offsetWidth;
+      socialProgress.classList.add('run');
+    },180);
+    window.setTimeout(()=>{
+      socialCard.classList.remove('visible');
+      socialProgress.classList.remove('run');
+      socialIndex=(socialIndex+1)%socialItems.length;
+      window.setTimeout(showSocial,socialInterval);
+    },socialDuration+180);
+  };
+  showSocial();
+}else{
+  socialPlatform.textContent='CONFIGURE SUAS REDES';
+  socialName.textContent='@CAIPORAH';
+  socialIcon.textContent='✦';
+  socialCard.classList.add('visible');
+}
 const cameraColor=p.get('cor');
 if(cameraColor&&/^#[0-9a-fA-F]{6}$/.test(cameraColor)){document.getElementById('camera').style.borderColor=cameraColor;stage.style.setProperty('--accent',cameraColor);}
 const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
