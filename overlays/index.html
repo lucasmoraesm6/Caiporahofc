@@ -1,196 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#08060b">
-<meta name="robots" content="noindex,nofollow">
-<meta name="referrer" content="no-referrer">
-<title>CAIPORAH Overlays | Gamer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090711"><meta name="robots" content="noindex,nofollow">
+<title>CAIPORAH OVERLAYS — Central Gamer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--gold:#9b72d6;--gold2:#d7d2df;--bg:#08060b;--muted:#aaa3b2}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 15% 8%,#4b3518 0,transparent 36%),radial-gradient(ellipse at 90% 90%,#292018 0,transparent 40%),var(--bg);color:#f8f4eb;font:400 17px/1.6 Outfit,Arial,sans-serif}
-.panel{width:min(510px,100%);padding:clamp(26px,7vw,46px);border:1px solid #9b72d655;border-radius:28px;background:linear-gradient(145deg,#17130fee,#0d0b10f2);box-shadow:0 25px 90px #000b;text-align:center}
-.mark{width:76px;height:76px;margin:0 auto 22px;display:grid;place-items:center;overflow:hidden;border:1px solid #9b72d688;border-radius:18px;background:#080808;box-shadow:0 10px 34px #d4a94b35}.mark img{display:block;width:100%;height:100%;object-fit:cover}
-.eyebrow{color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-h1{margin:11px 0;font:700 clamp(1.5rem,6vw,2rem) Unbounded,sans-serif;line-height:1.25}
-p{color:var(--muted);margin:12px 0 24px}
-.premium{color:var(--gold2);font-size:.92rem;font-weight:600}
-label{display:block;text-align:left;margin:0 0 8px;color:#e9dfcc;font-size:.9rem}
-input{width:100%;padding:16px 17px;border:1px solid #76658e88;border-radius:14px;background:#08070a;color:#fff;font:500 16px Outfit;outline:none}
-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #9b72d622}
-button{width:100%;margin-top:14px;padding:15px;border:0;border-radius:14px;background:linear-gradient(100deg,#b88635,#f0d58e);color:#1a1309;font:700 15px Outfit;cursor:pointer}
-button:active{transform:scale(.99)}
-#error{min-height:24px;margin:12px 0 0;color:#ff9b9b;font-size:.9rem}
-#unlocked{display:none;margin-top:22px;padding:18px;border:1px solid #9b72d655;border-radius:16px;background:#9b72d610;text-align:left}
-#unlocked strong{display:block;color:var(--gold2);font-family:Unbounded;font-size:.9rem}
-#unlocked p{margin:8px 0 0;font-size:.92rem}
-.catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:20px}
-.item{padding:12px;border:1px solid #9b72d640;border-radius:15px;background:#09080b;text-align:left}
-.item b{display:block;margin:10px 0 3px;color:#d7d2df;font-size:.88rem}
-.item small{display:block;min-height:34px;color:#aaa3b2;font-size:.78rem;line-height:1.35}
-.item button,.custom button{padding:11px 8px;font-size:.72rem}
-.sample{height:76px;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;border:1px solid #a47b35;border-radius:9px;background:linear-gradient(110deg,#080808,#282016);color:#d7d2df;font-size:11px;font-weight:700}
-.ticker-sample{justify-content:flex-start;padding:9px;background:linear-gradient(90deg,#090909,#3a2a12);white-space:nowrap}
-.ticker-sample span{color:white;font-weight:500}
-.lower-sample{align-items:flex-start;flex-direction:column;padding:9px;gap:1px}
-.lower-sample i{font-style:normal;color:#d7d2df;font-size:9px}
-.lower-sample strong{font-size:14px}
-.lower-sample small{min-height:0;color:#ddd}
-.social-sample{flex-wrap:wrap}
-.social-sample small{min-height:0;color:#ddd}
-.live-sample span{color:#ff5555}.live-sample b{display:inline;color:#fff}
-.break-sample{flex-direction:column;gap:0}.break-sample b{font:900 16px Unbounded;margin:2px}.break-sample small,.break-sample span{min-height:0;color:#ddd;font-size:8px}
-.pix-sample{flex-direction:column;gap:0}.pix-sample b{margin:0;color:#fff}.pix-sample small{min-height:0;color:#ddd}
-.custom{margin-top:20px;padding:15px;border:1px solid #9b72d655;border-radius:15px;text-align:left}
-.custom strong{display:block;color:#d7d2df;font-size:.85rem;margin-bottom:12px}
-.custom input{margin-bottom:10px}
-.custom button{width:100%}
-.notice{margin-top:20px;padding:12px;border-radius:13px;background:#ffffff08;border:1px solid #ffffff14;color:#aaa3b2;font-size:.82rem}
-a{display:inline-block;margin-top:24px;color:var(--gold2);text-decoration:none}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-.live-preview{display:block;width:100%;height:150px;border:1px solid #a47b35;border-radius:9px;background:radial-gradient(ellipse at center,#2a2114,#080808 75%);pointer-events:none}.live-preview.preview-break{height:145px}
-/* Organização compacta: menos rolagem e catálogo mais fácil de comparar */
-body{display:block;min-height:100vh;padding:clamp(8px,2vw,20px);line-height:1.4}
-.panel{width:min(1120px,100%);margin:0 auto;padding:clamp(14px,2.2vw,26px);border-radius:20px;text-align:center}
-.mark{width:54px;height:54px;margin:0 auto 9px;border-radius:14px}.mark img{width:100%;height:100%;object-fit:cover}
-h1{margin:5px 0;font-size:clamp(1.15rem,3vw,1.65rem)}
-.panel>p{margin:7px 0 12px;font-size:.9rem}
-.premium{font-size:.8rem}
-#access-form{width:min(420px,100%);margin:0 auto}
-#access-form input{padding:12px 14px}
-#access-form button{padding:12px;margin-top:9px}
-#error{margin:6px 0 0}
-#unlocked{margin-top:12px;padding:12px}
-#unlocked>strong{font-size:.82rem}
-#unlocked>p{margin:5px 0 10px;font-size:.82rem}
-.catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-.item{padding:9px;border-radius:12px;min-width:0}
-.live-preview{height:132px;border-radius:7px}
-.live-preview.preview-break{height:82px}
-.item b{margin:6px 0 2px;font-size:.8rem;line-height:1.2}
-.item small{min-height:0;font-size:.7rem;line-height:1.25}
-.item button,.custom button{margin-top:8px;padding:9px 6px;font-size:.66rem;line-height:1.2}
-.edit-label{display:block;margin-top:7px;color:#c9b9e4;font-size:.68rem}
-.edit-field{display:block;width:100%;margin-top:3px;padding:7px 8px;border:1px solid #76658e88;border-radius:7px;background:#111;color:#fff;font:500 12px Outfit}
-.edit-field.color-field{height:34px;padding:3px;cursor:pointer}
-.edit-field{min-height:34px}
-.edit-field option{background:#17130f;color:#fff}
-.custom{margin-top:10px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;align-items:end}
-.custom strong{grid-column:1/-1;margin:0;text-align:left}
-.custom label{margin:0 0 3px;font-size:.75rem}
-.custom input{padding:10px 11px;margin:0;font-size:14px}
-.custom button{grid-column:1/-1;width:100%;margin-top:0}
-#copyStatus{overflow-wrap:anywhere;font-size:.76rem!important}
-.notice{margin-top:10px;padding:8px;font-size:.72rem}
-.panel>a{margin-top:10px;font-size:.82rem}
-@media(max-width:720px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.panel{padding:12px}.live-preview{height:118px}.live-preview.preview-break{height:76px}}
-@media(max-width:360px){.catalog{grid-template-columns:1fr}.live-preview{height:90px}.custom{grid-template-columns:1fr}.custom strong,.custom button{grid-column:1}}
-</style>
-</head>
-<body>
-<main class="panel">
-  <div class="mark"><img src="../assets/caiporah-logo.webp" alt="CAIPORAH" width="48" height="48"></div>
-  <div class="eyebrow">CENTRAL GAMER</div>
-  <h1>Overlay CAIPORAH</h1>
-  <div class="premium">PREMIUM · OVERLAYS GAMER</div>
-  <p>Digite a senha de acesso para entrar na central de overlays do CAIPORAH.</p>
-  <form id="access-form">
-    <label for="password">Senha de acesso</label>
-    <input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
-    <button type="submit">ACESSAR ÁREA PREMIUM</button>
-    <div id="error" role="alert" aria-live="polite"></div>
-  </form>
-  <section id="unlocked" aria-live="polite">
-    <strong>ACESSO LIBERADO · CENTRAL PREMIUM</strong>
-    <p>Veja cada overlay em funcionamento na prévia abaixo. Quando escolher, copie o link individual para adicionar como fonte de navegador no LiveX.</p>
-    <div class="catalog" id="catalog">
-      <article class="item"><iframe class="live-preview" title="Prévia da faixa inferior" src="overlay.html?tipo=ticker&preview=1&v=8200"></iframe><b>1. FAIXA INFERIOR</b><small>Somente a faixa CAIPORAH com texto rolando.</small><label class="edit-label">Cor oficial CAIPORAH<select class="edit-field" data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="red">Vermelho fogo</option><option value="blue">Azul elétrico</option><option value="cyan">Ciano</option><option value="pink">Rosa</option><option value="green">Verde neon</option><option value="lime">Verde-limão</option><option value="orange">Laranja</option><option value="white">Branco</option><option value="bronze">Bronze</option><option value="rainbow">Arco-íris</option></select></label><label class="edit-label">Estilo<select class="edit-field" data-param="modelo"><option value="classic">Clássico</option><option value="neon">Neon</option><option value="minimal">Minimalista</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="luxury">Luxo</option><option value="retro">Retrô</option><option value="tech">Tecnológico</option></select></label><label class="edit-label">Texto da faixa<input class="edit-field" data-param="texto" value="SEJA BEM-VINDO À TRANSMISSÃO ✦ INSCREVA-SE NO CANAL ✦ COMPARTILHE A LIVE"></label><button type="button" data-link="ticker">COPIAR LINK DA FAIXA</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia do nome do streamer" src="overlay.html?tipo=lower&preview=1&v=8200"></iframe><b>2. NOME DO STREAMER</b><small>Somente nome e identificação do streamer.</small><label class="edit-label">Cor oficial CAIPORAH<select class="edit-field" data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="red">Vermelho fogo</option><option value="blue">Azul elétrico</option><option value="cyan">Ciano</option><option value="pink">Rosa</option><option value="green">Verde neon</option><option value="lime">Verde-limão</option><option value="orange">Laranja</option><option value="white">Branco</option><option value="bronze">Bronze</option><option value="rainbow">Arco-íris</option></select></label><label class="edit-label">Estilo<select class="edit-field" data-param="modelo"><option value="classic">Clássico</option><option value="neon">Neon</option><option value="minimal">Minimalista</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="luxury">Luxo</option><option value="retro">Retrô</option><option value="tech">Tecnológico</option></select></label><label class="edit-label">Nome do streamer<input class="edit-field" data-param="nome" placeholder="Ex.: Lucas Moraes"></label><label class="edit-label">Identificação<input class="edit-field" data-param="texto" value="AO VIVO AGORA"></label><label class="edit-label">Nome do canal / marca<input class="edit-field" data-param="marca" value="CAIPORAH · TRANSMISSÃO"></label><button type="button" data-link="lower">COPIAR LINK DO NOME</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia do indicador ao vivo" src="overlay.html?tipo=live&preview=1&v=6500"></iframe><b>3. AO VIVO</b><small>Somente o selo AO VIVO.</small><label class="edit-label">Cor oficial CAIPORAH<select class="edit-field" data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="red">Vermelho fogo</option><option value="blue">Azul elétrico</option><option value="cyan">Ciano</option><option value="pink">Rosa</option><option value="green">Verde neon</option><option value="lime">Verde-limão</option><option value="orange">Laranja</option><option value="white">Branco</option><option value="bronze">Bronze</option><option value="rainbow">Arco-íris</option></select></label><label class="edit-label">Estilo<select class="edit-field" data-param="modelo"><option value="classic">Clássico</option><option value="neon">Neon</option><option value="minimal">Minimalista</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="luxury">Luxo</option><option value="retro">Retrô</option><option value="tech">Tecnológico</option></select></label><label class="edit-label">Nome do canal<input class="edit-field" data-param="marca" value="CAIPORAH"></label><label class="edit-label">Texto do selo<input class="edit-field" data-param="texto" value="AO VIVO"></label><button type="button" data-link="live">COPIAR LINK AO VIVO</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia animada das redes sociais" src="overlay.html?tipo=social&preview=1&v=9001"></iframe><b>4. REDES SOCIAIS</b><small>Ícones oficiais, exibição automática e animação discreta nas cores CAIPORAH.</small>
-        <label class="edit-label">Instagram<input class="edit-field" data-param="instagram" value="@CAIPORAH" placeholder="@seuusuario"></label>
-        <label class="edit-label"><input type="checkbox" data-param="instagram_on" value="1" checked> Exibir Instagram</label>
-        <label class="edit-label">YouTube<input class="edit-field" data-param="youtube" value="@CAIPORAH" placeholder="@seucanal"></label>
-        <label class="edit-label"><input type="checkbox" data-param="youtube_on" value="1" checked> Exibir YouTube</label>
-        <label class="edit-label">TikTok<input class="edit-field" data-param="tiktok" value="@CAIPORAH" placeholder="@seuusuario"></label>
-        <label class="edit-label"><input type="checkbox" data-param="tiktok_on" value="1" checked> Exibir TikTok</label>
-        <label class="edit-label">Twitch<input class="edit-field" data-param="twitch" value="@CAIPORAH" placeholder="@seucanal"></label>
-        <label class="edit-label"><input type="checkbox" data-param="twitch_on" value="1" checked> Exibir Twitch</label>
-        <label class="edit-label">Tempo de exibição (segundos)<input class="edit-field" data-param="duracao" type="number" min="2" max="60" value="7"></label>
-        <label class="edit-label">Intervalo entre redes (segundos)<input class="edit-field" data-param="intervalo" type="number" min="0" max="60" value="2"></label>
-        <button type="button" data-link="social">COPIAR LINK DAS REDES</button></article>
-      <article class="item"><iframe class="live-preview preview-break" title="Prévia da tela de intervalo" src="overlay.html?tipo=break&preview=1&v=6500"></iframe><b>5. TELA DE INTERVALO</b><small>Somente a tela de pausa / já voltamos.</small><label class="edit-label">Cor oficial CAIPORAH<select class="edit-field" data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="red">Vermelho fogo</option><option value="blue">Azul elétrico</option><option value="cyan">Ciano</option><option value="pink">Rosa</option><option value="green">Verde neon</option><option value="lime">Verde-limão</option><option value="orange">Laranja</option><option value="white">Branco</option><option value="bronze">Bronze</option><option value="rainbow">Arco-íris</option></select></label><label class="edit-label">Estilo<select class="edit-field" data-param="modelo"><option value="classic">Clássico</option><option value="neon">Neon</option><option value="minimal">Minimalista</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="luxury">Luxo</option><option value="retro">Retrô</option><option value="tech">Tecnológico</option></select></label><label class="edit-label">Título<input class="edit-field" data-param="titulo" value="JÁ VOLTAMOS"></label><label class="edit-label">Nome / marca<input class="edit-field" data-param="marca" value="CAIPORAH"></label><label class="edit-label">Mensagem<input class="edit-field" data-param="texto" value="AGUARDE UM INSTANTE"></label><button type="button" data-link="break">COPIAR LINK DO INTERVALO</button></article>
-      <article class="item"><iframe class="live-preview" title="Prévia da moldura da câmera" src="overlay.html?tipo=camera&preview=1&v=6500"></iframe><b>6. MOLDURA DA CÂMERA</b><small>Somente a moldura para posicionar a câmera.</small><label class="edit-label">Cor oficial CAIPORAH<select class="edit-field" data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="red">Vermelho fogo</option><option value="blue">Azul elétrico</option><option value="cyan">Ciano</option><option value="pink">Rosa</option><option value="green">Verde neon</option><option value="lime">Verde-limão</option><option value="orange">Laranja</option><option value="white">Branco</option><option value="bronze">Bronze</option><option value="rainbow">Arco-íris</option></select></label><label class="edit-label">Estilo<select class="edit-field" data-param="modelo"><option value="classic">Clássico</option><option value="neon">Neon</option><option value="minimal">Minimalista</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="luxury">Luxo</option><option value="retro">Retrô</option><option value="tech">Tecnológico</option></select></label><label class="edit-label">Cor da moldura<input class="edit-field" data-param="cor" type="text" placeholder="Opcional: #RRGGBB"></label><button type="button" data-link="camera">COPIAR LINK DA CÂMERA</button></article>
-    </div>
-    <p id="copyStatus" role="status" style="margin:10px 0 0;color:#d7d2df;overflow-wrap:anywhere"></p>
-  </section>
-  <div class="notice">Não compartilhe sua senha. O acesso permanece liberado nesta aba enquanto ela estiver aberta.</div>
-  <a href="../">← Voltar ao site CAIPORAH</a>
-</main>
+:root{--bg:#090711;--panel:#14111e;--panel2:#1b1727;--purple:#8954cf;--purple2:#b58aff;--silver:#d1cfda;--muted:#9691a4;--line:#ffffff17}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#38205266,transparent 36%),radial-gradient(ellipse at 90% 45%,#25203b55,transparent 40%),var(--bg);color:#f7f5fb;font:400 15px/1.5 Outfit,Arial,sans-serif;overflow-x:hidden}
+#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}.wrap{position:relative;z-index:1;width:min(1180px,94%);margin:auto;padding:30px 0 55px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0 25px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px}.brand img{width:52px;height:52px;border-radius:14px;object-fit:cover;border:1px solid #b58aff55;box-shadow:0 0 24px #8954cf33}.brand small{display:block;color:var(--purple2);font-weight:800;letter-spacing:.2em;font-size:10px}.brand b{font:800 16px Unbounded,sans-serif;letter-spacing:.02em}.status{border:1px solid #b58aff44;background:#8954cf18;color:#d9c8f4;border-radius:30px;padding:8px 13px;font-size:11px;font-weight:700;letter-spacing:.08em}
+.hero{text-align:center;padding:45px 12px 30px}.eyebrow{color:var(--purple2);font-weight:800;letter-spacing:.25em;font-size:11px}.hero h1{font:800 clamp(25px,5vw,42px)/1.2 Unbounded,sans-serif;margin:12px 0;background:linear-gradient(100deg,#fff 20%,#c6b5e5 55%,#8f62d0);background-clip:text;color:transparent}.hero p{max-width:620px;margin:0 auto;color:var(--muted);font-size:15px}.hero-line{height:2px;width:90px;margin:22px auto 0;background:linear-gradient(90deg,transparent,var(--purple2),transparent);box-shadow:0 0 18px #a879ee}
+.access{width:min(420px,100%);margin:10px auto 28px;padding:22px;border:1px solid #a77be044;border-radius:18px;background:#15111feF;box-shadow:0 18px 55px #0008;text-align:left}.access label{display:block;color:#d8d2e4;font-size:13px;margin-bottom:7px}.access input{width:100%;padding:13px 14px;border:1px solid #ffffff22;border-radius:10px;background:#090711;color:white;font:inherit;outline:none}.access input:focus,.field input:focus,.field select:focus{border-color:var(--purple2);box-shadow:0 0 0 3px #8954cf22}.btn{border:0;border-radius:10px;padding:12px 16px;background:linear-gradient(110deg,#7442b5,#a77be0);color:#fff;font:800 12px Outfit;letter-spacing:.06em;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:0 8px 25px #8954cf44}.access .btn{width:100%;margin-top:11px}.error{min-height:20px;color:#ff9eae;font-size:12px;margin-top:8px}
+#unlocked{display:none}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 18px}.toolbar h2{font:700 16px Unbounded;margin:0}.toolbar span{color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#1a1626f5,#100e18f5);box-shadow:0 12px 35px #0005;transition:transform .25s,border-color .25s,box-shadow .25s;animation:rise .65s both;animation-delay:var(--delay,0s)}.card:hover{transform:translateY(-4px);border-color:#a77be066;box-shadow:0 18px 45px #0008,0 0 22px #8954cf13}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.card-head{display:flex;align-items:center;gap:12px;padding:15px 16px 12px}.num{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;border-radius:10px;background:#8954cf24;border:1px solid #b58aff44;color:#d8c5f5;font-weight:800}.card-head h3{font:700 13px Unbounded;margin:0 0 4px}.card-head p{margin:0;color:var(--muted);font-size:11px}.preview{display:block;width:calc(100% - 28px);height:145px;margin:0 14px;border:1px solid #ffffff18;border-radius:10px;background:radial-gradient(ellipse at center,#2b203c,#090711 75%);pointer-events:none}.preview.short{height:105px}.config{padding:13px 15px 15px}.config summary{cursor:pointer;list-style:none;color:#cdb8ed;font-size:11px;font-weight:800;letter-spacing:.1em;padding:9px 0;border-bottom:1px solid var(--line)}.config summary::-webkit-details-marker{display:none}.config summary:after{content:'＋';float:right;color:var(--purple2)}.config[open] summary:after{content:'−'}.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;color:#aaa4b8;font-size:10px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;min-width:0;padding:9px 10px;border:1px solid #ffffff20;border-radius:8px;background:#0c0a12;color:#f6f2fb;font:12px Outfit;outline:none}.field input[type=checkbox]{width:16px;height:16px;accent-color:#9b68dd;vertical-align:middle}.check{display:flex!important;align-items:center;gap:7px;padding-top:8px;color:#d9d3e3!important}.card-actions{display:flex;gap:9px;padding:0 15px 15px}.card-actions .btn{flex:1}.copy-status{min-height:18px;text-align:center;color:#cdb8ed;font-size:11px;margin:15px 0}
+.note{margin-top:25px;padding:14px 16px;border:1px solid #ffffff12;border-radius:12px;background:#ffffff06;color:var(--muted);font-size:12px;text-align:center}
+.back{display:block;width:max-content;margin:22px auto 0;color:#cbb7e9;text-decoration:none;font-size:12px}.back:hover{color:#fff}
+@media(max-width:700px){.wrap{width:min(100% - 24px,560px);padding-top:16px}.grid{grid-template-columns:1fr;gap:12px}.hero{padding:35px 5px 22px}.hero p{font-size:13px}.status{font-size:9px;padding:7px 9px}.brand img{width:44px;height:44px}.brand b{font-size:13px}.preview{height:132px}.toolbar{align-items:flex-start;flex-direction:column;gap:4px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body><canvas id="particles"></canvas><div class="wrap">
+<header><div class="brand"><img src="../assets/caiporah-logo.webp" alt="CAIPORAH"><div><small>UNIVERSO GAMER</small><b>CAIPORAH</b></div></div><div class="status">● OVERLAYS PREMIUM</div></header>
+<section class="hero"><div class="eyebrow">CENTRAL DE TRANSMISSÃO</div><h1>CAIPORAH OVERLAYS</h1><p>Monte sua identidade visual, personalize cada elemento e copie o link individual para usar como fonte de navegador no LiveX ou OBS.</p><div class="hero-line"></div></section>
+<form class="access" id="access-form"><label for="password">Senha de acesso premium</label><input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required><button class="btn" type="submit">ENTRAR NA CENTRAL　↗</button><div class="error" id="error" role="alert"></div></form>
+<section id="unlocked"><div class="toolbar"><h2>SEUS ELEMENTOS</h2><span>Prévia ao vivo · ajustes individuais · links independentes</span></div>
+<div class="grid" id="catalog">
+<article class="card" style="--delay:.03s" data-type="ticker"><div class="card-head"><span class="num">01</span><div><h3>FAIXA INFERIOR</h3><p>Faixa horizontal com mensagem rolando.</p></div></div><iframe class="preview" title="Prévia faixa inferior" src="overlay.html?tipo=ticker&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field full"><label>Texto da faixa</label><input data-param="texto" value="SEJA BEM-VINDO À TRANSMISSÃO ✦ INSCREVA-SE NO CANAL ✦ COMPARTILHE A LIVE"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option><option value="blue">Azul</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="tech">Tech</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+<article class="card" style="--delay:.08s" data-type="lower"><div class="card-head"><span class="num">02</span><div><h3>NOME DO STREAMER</h3><p>Identificação e nome do canal.</p></div></div><iframe class="preview" title="Prévia nome streamer" src="overlay.html?tipo=lower&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field full"><label>Nome do streamer</label><input data-param="nome" placeholder="Seu nome"></div><div class="field"><label>Identificação</label><input data-param="texto" value="AO VIVO AGORA"></div><div class="field"><label>Nome do canal</label><input data-param="marca" value="CAIPORAH · TRANSMISSÃO"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option><option value="blue">Azul</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="tech">Tech</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+<article class="card" style="--delay:.13s" data-type="live"><div class="card-head"><span class="num">03</span><div><h3>SELO AO VIVO</h3><p>Indicador compacto de transmissão.</p></div></div><iframe class="preview short" title="Prévia selo ao vivo" src="overlay.html?tipo=live&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Nome do canal</label><input data-param="marca" value="CAIPORAH"></div><div class="field"><label>Texto</label><input data-param="texto" value="AO VIVO"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+<article class="card" style="--delay:.18s" data-type="social"><div class="card-head"><span class="num">04</span><div><h3>REDES SOCIAIS</h3><p>Ícones oficiais, animação e rotação automática.</p></div></div><iframe class="preview" title="Prévia redes sociais" src="overlay.html?tipo=social&preview=1"></iframe><details class="config"><summary>CONFIGURAR REDES E TEMPO</summary><div class="fields">
+<div class="field"><label>Instagram</label><input data-param="instagram" value="@CAIPORAH"></div><div class="field"><label>YouTube</label><input data-param="youtube" value="@CAIPORAH"></div><div class="field"><label>TikTok</label><input data-param="tiktok" value="@CAIPORAH"></div><div class="field"><label>Twitch</label><input data-param="twitch" value="@CAIPORAH"></div>
+<div class="field"><label class="check"><input type="checkbox" data-param="instagram_on" value="1" checked> Mostrar Instagram</label><label class="check"><input type="checkbox" data-param="youtube_on" value="1" checked> Mostrar YouTube</label></div><div class="field"><label class="check"><input type="checkbox" data-param="tiktok_on" value="1" checked> Mostrar TikTok</label><label class="check"><input type="checkbox" data-param="twitch_on" value="1" checked> Mostrar Twitch</label></div>
+<div class="field"><label>Tempo de exibição (seg.)</label><input data-param="duracao" type="number" min="2" max="30" value="7"></div><div class="field"><label>Intervalo entre redes (seg.)</label><input data-param="intervalo" type="number" min="0" max="30" value="2"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="glass">Vidro</option><option value="esports">E-sports</option></select></div>
+</div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK DAS REDES</button></div></article>
+<article class="card" style="--delay:.23s" data-type="break"><div class="card-head"><span class="num">05</span><div><h3>TELA DE INTERVALO</h3><p>Tela de pausa / já voltamos.</p></div></div><iframe class="preview" title="Prévia tela de intervalo" src="overlay.html?tipo=break&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Título</label><input data-param="titulo" value="JÁ VOLTAMOS"></div><div class="field"><label>Nome / marca</label><input data-param="marca" value="CAIPORAH"></div><div class="field full"><label>Mensagem</label><input data-param="texto" value="AGUARDE UM INSTANTE"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+<article class="card" style="--delay:.28s" data-type="camera"><div class="card-head"><span class="num">06</span><div><h3>MOLDURA DA CÂMERA</h3><p>Moldura quadrada com cantos suaves.</p></div></div><iframe class="preview" title="Prévia moldura câmera" src="overlay.html?tipo=camera&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Cor personalizada</label><input data-param="cor" placeholder="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="esports">E-sports</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+<article class="card" style="--delay:.33s" data-type="pix"><div class="card-head"><span class="num">07</span><div><h3>ALERTA PIX</h3><p>Agradecimento visual para apoiadores.</p></div></div><iframe class="preview short" title="Prévia alerta Pix" src="overlay.html?tipo=pix&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Nome do apoiador</label><input data-param="nome" value="APOIADOR"></div><div class="field"><label>Mensagem</label><input data-param="texto" value="MUITO OBRIGADO!"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
+</div><div class="copy-status" id="copyStatus" role="status"></div></section>
+<div class="note">Cada elemento possui um link separado. Adicione cada URL como uma fonte de navegador independente no LiveX/OBS. Os overlays mantêm o fundo transparente.</div>
+<a class="back" href="../">← VOLTAR AO SITE CAIPORAH</a></div>
 <script>
 const PASSWORD_HASH='c7f6f8b13fd7af3539c062e9882f07180f5716e36494e14c7a2b5d139e497ca9';
-const form=document.getElementById('access-form');
-const input=document.getElementById('password');
-const error=document.getElementById('error');
-const unlocked=document.getElementById('unlocked');
-function showAccess(){
-  form.style.display='none';
-  unlocked.style.display='block';
-  document.querySelector('.notice').textContent='Acesso liberado nesta aba. Feche a aba para encerrar a sessão.';
-  document.querySelectorAll('.item').forEach(card=>{
-    const preview=card.querySelector('.live-preview');
-    const updatePreview=()=>{
-      if(!preview)return;
-      const url=new URL(preview.getAttribute('src'),location.href);
-      card.querySelectorAll('[data-param]').forEach(field=>{
-        const value=field.type==='checkbox'?(field.checked?'1':'0'):field.value.trim();
-        if(value!=='')url.searchParams.set(field.dataset.param,value);
-        else url.searchParams.delete(field.dataset.param);
-      });
-      url.searchParams.set('v','8200');
-      preview.src=url.href;
-    };
-    card.querySelectorAll('[data-param]').forEach(field=>{
-      field.addEventListener('input',updatePreview);
-      field.addEventListener('change',updatePreview);
-    });
-    updatePreview();
-  });
-  document.querySelectorAll('[data-link]').forEach(button=>button.addEventListener('click',()=>copyOverlay(button.dataset.link,button.closest('.item'))));
-}
-const overlayBase=new URL('overlay.html',location.href);
-async function copyOverlay(type,card){
-  const url=new URL(overlayBase);
-  url.searchParams.set('tipo',type);
-  url.searchParams.set('v','7200');
-  if(card)card.querySelectorAll('[data-param]').forEach(field=>{const value=field.type==='checkbox'?(field.checked?'1':'0'):field.value.trim();if(value!=='')url.searchParams.set(field.dataset.param,value);});
-  const value=url.href;
-  try{await navigator.clipboard.writeText(value);document.getElementById('copyStatus').textContent='Link copiado: '+value;}
-  catch(e){document.getElementById('copyStatus').textContent=value;}
-}
-if(sessionStorage.getItem('caiporahOverlayAccess')==='ok') showAccess();
-form.addEventListener('submit',async event=>{
-  event.preventDefault();
-  error.textContent='';
-  if(!window.crypto?.subtle){error.textContent='Seu navegador não permite validar a senha com segurança. Atualize o navegador e tente novamente.';return;}
-  const bytes=new TextEncoder().encode(input.value);
-  const digest=await crypto.subtle.digest('SHA-256',bytes);
-  const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
-  if(hash===PASSWORD_HASH){
-    sessionStorage.setItem('caiporahOverlayAccess','ok');
-    input.value='';
-    showAccess();
-  }else{
-    error.textContent='Senha incorreta. Confira e tente novamente.';
-    input.value='';
-    input.focus();
-  }
-});
-</script>
-</body>
-</html>
+const form=document.getElementById('access-form'),input=document.getElementById('password'),error=document.getElementById('error'),unlocked=document.getElementById('unlocked');
+const base=new URL('overlay.html',location.href);
+function cardUrl(card){const u=new URL(base);u.searchParams.set('tipo',card.dataset.type);u.searchParams.set('v','20261127');card.querySelectorAll('[data-param]').forEach(f=>{const v=f.type==='checkbox'?(f.checked?'1':'0'):f.value.trim();if(v)u.searchParams.set(f.dataset.param,v);else u.searchParams.delete(f.dataset.param)});return u}
+function refresh(card){const frame=card.querySelector('iframe');if(frame)frame.src=cardUrl(card).href}
+function unlock(){form.style.display='none';unlocked.style.display='block';document.querySelectorAll('.card').forEach(card=>{card.querySelectorAll('[data-param]').forEach(f=>{f.addEventListener('input',()=>refresh(card));f.addEventListener('change',()=>refresh(card))});refresh(card)});document.querySelectorAll('[data-link]').forEach(btn=>btn.addEventListener('click',async()=>{const url=cardUrl(btn.closest('.card')).href;const status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(url);status.textContent='✓ Link copiado: '+url}catch(e){status.textContent='Copie este link: '+url}}))}
+if(sessionStorage.getItem('caiporahOverlayAccess')==='ok')unlock();
+form.addEventListener('submit',async e=>{e.preventDefault();error.textContent='';if(!crypto?.subtle){error.textContent='Atualize o navegador para validar o acesso com segurança.';return}const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input.value));const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');if(hash===PASSWORD_HASH){sessionStorage.setItem('caiporahOverlayAccess','ok');input.value='';unlock()}else{error.textContent='Senha incorreta. Tente novamente.';input.value='';input.focus()}});
+// Partículas discretas em roxo/prata no fundo da central.
+(()=>{const c=document.getElementById('particles'),ctx=c.getContext('2d');let w,h,dots=[];const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){w=c.width=innerWidth*devicePixelRatio;h=c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';dots=Array.from({length:Math.min(65,Math.floor(innerWidth/18))},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.5+.5)*devicePixelRatio,v:(Math.random()*.22+.08)*devicePixelRatio,a:Math.random()*.48+.12}))}function draw(){ctx.clearRect(0,0,w,h);for(const p of dots){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(190,160,235,'+p.a+')';ctx.fill();if(!reduced){p.y-=p.v;if(p.y<-5){p.y=h+5;p.x=Math.random()*w}}}if(!reduced)requestAnimationFrame(draw)}addEventListener('resize',()=>{resize();if(reduced)draw()});resize();draw()})();
+</script></body></html>
