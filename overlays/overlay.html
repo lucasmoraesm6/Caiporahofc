@@ -188,8 +188,13 @@ if(socialItems.length){
   socialIcon.textContent='✦';
   socialCard.classList.add('visible');
 }
-const cameraColor=p.get('cor');
-if(cameraColor&&/^#[0-9a-fA-F]{6}$/.test(cameraColor)){document.getElementById('camera').style.borderColor=cameraColor;stage.style.setProperty('--accent',cameraColor);}
+const customColor=p.get('cor');
+if(customColor&&/^#[0-9a-fA-F]{6}$/.test(customColor)){
+  stage.style.setProperty('--accent',customColor);
+  stage.style.setProperty('--accent2',`color-mix(in srgb, ${customColor} 38%, white)`);
+  stage.style.setProperty('--accentDark',`color-mix(in srgb, ${customColor} 68%, black)`);
+  stage.style.setProperty('--accentGlow',customColor+'88');
+}
 const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
 document.getElementById('tickerText').textContent=tickerText+'　✦　'+tickerText+'　✦　';
 </script></body></html>
