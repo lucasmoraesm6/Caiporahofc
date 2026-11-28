@@ -511,10 +511,12 @@ if(cfgs){ // modo fonte de navegador
   <label>Volume: <b data-o="vl"></b>%<input type="range" min="0" max="100" data-k="vl"></label></div></div>
   <div class="pane"><div class="ag">
   <label>Fonte<select data-k="f">${op(FONTS.map((f,i)=>[i,f[0]]))}</select></label>
-  <label>Tamanho: <b data-o="s"></b>%<input type="range" min="40" max="200" data-k="s"></label>
+  <label>Tamanho: <b data-o="s"></b>%<input type="range" min="20" max="300" step="1" data-k="s"></label>
+  <label>Posição horizontal: <b data-o="x"></b> px<input type="range" min="-1920" max="1920" step="1" data-k="x"></label>
+  <label>Posição vertical: <b data-o="y"></b> px<input type="range" min="-1080" max="1080" step="1" data-k="y"></label>
   <label>Opacidade: <b data-o="o"></b>%<input type="range" min="10" max="100" data-k="o"></label></div>
-  <div><button class="btn g" data-reset>RESETAR POSIÇÃO</button></div><p class="mt">Dica: arraste o overlay na prévia para mover. Os sons tocam sozinhos no OBS; aqui use TESTAR.</p></div>`;
-  const draw=force=>{const k=get(cur),ei=EL.findIndex(x=>x[0]===cur),N=NS*EL[ei][5].length;pbox._s&&pbox._s();pbox.innerHTML=stageHTML([k]);fit(pbox);pbox._s=run(pbox,[k],force);$('mn').textContent=`Modelo ${k.m+1} de ${N} · ${modelName(ei,k.m)}`};
+  <div><button class="btn g" data-reset>RESETAR POSIÇÃO</button></div><p class="mt">Arraste o overlay para mover. Use a alça no canto inferior direito para redimensionar ou ajuste tamanho e posição nos controles. O fundo externo permanece transparente na fonte de navegador.</p></div>`;
+  const draw=force=>{const k=get(cur),ei=EL.findIndex(x=>x[0]===cur),N=NS*EL[ei][5].length;pbox._s&&pbox._s();pbox.innerHTML=stageHTML([k]);fit(pbox);pbox._s=run(pbox,[k],force);$('mn').textContent=`Modelo ${k.m+1} de ${N} · ${modelName(ei,k.m)}`;if(tabs.querySelector('.pane.on'))tabs.querySelectorAll('[data-k]').forEach(el=>{const q=el.dataset.k;if(q&&q!=='k'){el.value=k[q]??0;const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=k[q]??0}});placeResizeHandle()};
   function sync(){
     const k=get(cur),e=EL.find(x=>x[0]===cur),t=TH.find(x=>x.id===k.c);
     $('ttl').textContent=e[1];$('dsc').textContent=e[2];
@@ -545,8 +547,13 @@ if(cfgs){ // modo fonte de navegador
     else return;
     draw()});
   let dg=null;
-  pbox.addEventListener('pointerdown',ev=>{const k=get(cur),lay=pbox.querySelector('.lay'),r=lay?.querySelector('.br .bx')||lay?.firstElementChild;if(!r)return;dg={r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
-  pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`});
+  const resizeHandle=document.createElement('div');resizeHandle.className='overlay-resize-handle';resizeHandle.setAttribute('aria-label','Redimensionar overlay');resizeHandle.title='Arraste para redimensionar';pbox.appendChild(resizeHandle);
+  const activeTarget=()=>{const lay=pbox.querySelector('.lay');return lay?.querySelector('.br .bx')||lay?.firstElementChild};
+  function placeResizeHandle(){const r=activeTarget();if(!r)return;const a=r.getBoundingClientRect(),b=pbox.getBoundingClientRect();resizeHandle.style.left=(a.right-b.left-11)+'px';resizeHandle.style.top=(a.bottom-b.top-11)+'px';resizeHandle.style.display='block'}
+  resizeHandle.style.cssText='position:absolute;z-index:30;width:22px;height:22px;border:2px solid #fff;border-radius:6px;background:#8b5cf6;box-shadow:0 2px 10px #0009;touch-action:none;cursor:nwse-resize;display:none';
+  resizeHandle.addEventListener('pointerdown',ev=>{ev.preventDefault();ev.stopPropagation();const r=activeTarget();if(!r)return;dg={mode:'size',r,k:get(cur),x:ev.clientX,y:ev.clientY,base:get(cur).s};resizeHandle.setPointerCapture(ev.pointerId)});
+  pbox.addEventListener('pointerdown',ev=>{if(ev.target===resizeHandle)return;const k=get(cur),r=activeTarget();if(!r)return;dg={mode:'move',r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
+  pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;if(dg.mode==='size'){const delta=Math.max(ev.clientX-dg.x,ev.clientY-dg.y);dg.k.s=Math.max(20,Math.min(300,Math.round(dg.base+delta*sc/10)));dg.r.style.scale=String(dg.k.s/100);const b=tabs.querySelector('[data-k="s"]');if(b)b.value=dg.k.s;const o=tabs.querySelector('[data-o="s"]');if(o)o.textContent=dg.k.s}else{dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`;for(const q of ['x','y']){const b=tabs.querySelector(`[data-k="${q}"]`);if(b)b.value=dg.k[q];const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=dg.k[q]}}placeResizeHandle()});
   const end=()=>{dg=null;pbox.style.cursor=''};pbox.addEventListener('pointerup',end);pbox.addEventListener('pointercancel',end);
   new ResizeObserver(()=>fit(pbox)).observe(pbox);
   renderList();sync();drawScene();
