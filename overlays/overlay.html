@@ -1,200 +1,31 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
-<title>CAIPORAH Overlay Source</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Unbounded:wght@600;800;900&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>CAIPORAH — Redirecionando fonte</title>
 <style>
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;background:transparent!important;overflow:hidden}
-body{font-family:Outfit,Arial,sans-serif;color:#fff}
-:root{--gold:#9b72d6;--gold2:#ded8e8;--black:#090909}
-#stage{position:relative;width:100vw;height:100vh;overflow:hidden}
-/* Isolamento rígido: somente o elemento escolhido pela URL pode aparecer. */
-.overlay-source{display:none!important}
-.overlay-source.is-active{display:flex!important}
-#lower.is-active,#pix.is-active,#camera.is-active,#frame.is-active{display:block!important}
-#ticker{position:absolute;left:0;right:0;bottom:0;height:62px;padding:0;overflow:hidden;background:linear-gradient(90deg,#090909f5,#20180bf2 50%,#090909f5);border-top:2px solid var(--gold);box-shadow:0 -5px 22px #0007;align-items:center}
-#ticker .brand{height:100%;min-width:150px;padding:0 22px;display:flex;align-items:center;justify-content:center;background:linear-gradient(110deg,#654b91,#f1d48a);color:#110d07;font:900 17px Unbounded;white-space:nowrap}
-#ticker .track{overflow:hidden;white-space:nowrap;flex:1}
-#ticker .moving{display:inline-block;padding-left:100%;font-size:22px;font-weight:700;letter-spacing:.04em;color:#fff;animation:marquee 22s linear infinite}
-#camera{position:absolute;right:4%;bottom:5%;width:28%;height:auto;aspect-ratio:1/1;box-sizing:border-box;border:4px solid var(--accent,var(--gold));border-radius:12px!important;box-shadow:0 0 0 2px #090909,0 8px 28px #0008}
-
-@media(max-width:600px){#camera{width:38%;height:auto;aspect-ratio:1/1;right:3%;bottom:4%;border-radius:10px!important}}
-@keyframes marquee{to{transform:translateX(-100%)}}
-#lower{position:absolute;left:4%;bottom:9%;min-width:420px;max-width:75%;padding:15px 25px 15px 22px;border-left:7px solid var(--gold);border-radius:4px 13px 13px 4px;background:linear-gradient(100deg,#090909ed,#21190ee8);box-shadow:0 8px 28px #0007}
-#lower .brand{font-size:13px;font-weight:900;letter-spacing:.22em;color:var(--gold2)}
-#lower .name{font:800 34px Unbounded,Outfit,sans-serif;line-height:1.25;margin:3px 0}
-#lower .tag{font-size:16px;letter-spacing:.12em;color:#e9d8b1;font-weight:700}
-#social{position:absolute;right:4%;top:7%;align-items:center;gap:13px;padding:13px 20px;border:1px solid #9b72d6;border-radius:13px;background:linear-gradient(110deg,#090909ed,#34250feF);box-shadow:0 7px 26px #0008}
-#social .play{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#a7772b,#f4d98e);color:#100c06;font-size:19px}
-#social b{display:block;font-size:19px;letter-spacing:.05em}
-#social small{display:block;color:var(--gold2);font-size:11px;letter-spacing:.16em;font-weight:800}
-/* Redes sociais: cartão gamer minimalista, transparente e com troca temporizada */
-#social{position:absolute;right:4%;top:7%;width:min(360px,92vw);display:flex;flex-direction:column;gap:8px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
-#social .social-heading{align-self:flex-end;padding:5px 10px;border-right:3px solid var(--accent);background:#080808d9;color:var(--accent2);font-size:10px;font-weight:900;letter-spacing:.2em}
-#social .social-card{display:flex;align-items:center;gap:13px;min-height:64px;padding:10px 13px;border:1px solid var(--accent);border-left:4px solid var(--accent);border-radius:8px;background:linear-gradient(105deg,#080808ed,#17130def);box-shadow:0 6px 22px #0008;opacity:0;transform:translateY(5px);transition:opacity .35s ease,transform .35s ease}
-#social .social-card.visible{opacity:1;transform:translateY(0)}
-#social .social-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:8px;background:#9b72d618;color:var(--accent2)}
-#social .social-icon svg{width:25px;height:25px;display:block;fill:currentColor}
-#social .social-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
-#social .social-copy span{color:var(--accent2);font-size:10px;font-weight:900;letter-spacing:.17em}
-#social .social-copy b{color:#fff;font-size:18px;line-height:1.15;font-weight:800;overflow-wrap:anywhere}
-#social .social-brand{margin-left:auto;align-self:flex-end;color:#c9c4d1;font:800 9px Unbounded,Outfit,sans-serif;letter-spacing:.12em;white-space:nowrap}
-#social .social-progress{height:2px;width:100%;overflow:hidden;background:#ffffff20}
-#social .social-progress span{display:block;width:0;height:100%;background:var(--accent2);box-shadow:0 0 8px var(--accent)}
-#social .social-progress span.run{animation:socialTimer linear forwards}
-@keyframes socialTimer{from{width:0}to{width:100%}}
-@media(max-width:600px){#social{right:2%;top:3%;width:min(340px,96vw);gap:6px}#social .social-card{min-height:62px;padding:9px 11px;gap:10px}#social .social-icon{width:35px;height:35px;flex-basis:35px}#social .social-copy b{font-size:16px}#social .social-brand{font-size:8px}}
-@media(prefers-reduced-motion:reduce){#social .social-card{transition:none}#social .social-progress span.run{animation:none;width:100%}}
-#live{position:absolute;right:4%;top:5%;align-items:center;gap:10px;padding:10px 16px;border-radius:9px;background:#090909eF;border:1px solid #9b72d6;box-shadow:0 5px 20px #0007;font-weight:900;letter-spacing:.12em}
-#live .dot{width:11px;height:11px;border-radius:50%;background:#ff4545;box-shadow:0 0 12px #ff4545;animation:pulse 1.3s infinite}
-#live .gold{color:var(--gold2)}
-@keyframes pulse{50%{opacity:.35}}
-#break{position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:radial-gradient(ellipse at center,#21190bc9,transparent 65%)}
-#break .eyebrow{font-size:22px;letter-spacing:.35em;color:var(--gold2);font-weight:800}
-#break .logo{margin:14px 0;font:900 clamp(45px,8vw,100px) Unbounded;color:#fff;text-shadow:0 6px 28px #000}
-#break .sub{font-size:20px;letter-spacing:.2em;color:#eee;font-weight:700}
-#pix{position:absolute;left:50%;top:12%;transform:translateX(-50%);min-width:370px;padding:19px 28px;text-align:center;border:1px solid var(--gold);border-radius:17px;background:linear-gradient(130deg,#080808f5,#39290ff2);box-shadow:0 10px 40px #0009}
-#pix .star{font-size:24px;color:var(--gold2)}
-#pix b{display:block;margin:3px 0;font:800 23px Unbounded;color:var(--gold2)}
-#pix .who{font-size:19px;font-weight:800}
-#pix .amount{font-size:25px;font-weight:900;color:#fff}
-@media(max-width:600px){#ticker{height:48px;left:0;right:0;bottom:0}#ticker .brand{min-width:100px;font-size:12px;padding:0 10px}#ticker .moving{font-size:16px}#lower{left:2%;bottom:5%;min-width:0;max-width:94%;padding:10px 14px}#lower .name{font-size:23px}#lower .tag{font-size:12px}#social{right:2%;top:3%;padding:9px 12px}#social b{font-size:15px}#pix{min-width:0;width:90%;top:8%}}
-
-/* Paletas e modelos selecionáveis pelo editor */
-#stage{--accent:#9b72d6;--accent2:#ded8e8;--accentDark:#654b91;--accentGlow:#9b72d666}
-#ticker{border-top-color:var(--accent)}
-#ticker .brand{background:linear-gradient(110deg,var(--accentDark),var(--accent2))}
-#lower{border-left-color:var(--accent)}
-#lower .brand,#social small,#live .gold,#break .eyebrow,#pix .star,#pix b{color:var(--accent2)}
-#social{border-color:var(--accent)}
-#social .play{background:linear-gradient(135deg,var(--accentDark),var(--accent2))}
-#live{border-color:var(--accent)}
-#camera{border-color:var(--accent)}
-#pix{border-color:var(--accent)}
-#stage[data-model="neon"] #ticker,#stage[data-model="neon"] #lower,#stage[data-model="neon"] #social,#stage[data-model="neon"] #live,#stage[data-model="neon"] #pix{box-shadow:0 0 18px var(--accentGlow),0 0 38px #0009}
-#stage[data-model="minimal"] #ticker{background:#080808eF;box-shadow:none;border-top-width:1px}
-#stage[data-model="minimal"] #lower,#stage[data-model="minimal"] #social,#stage[data-model="minimal"] #live,#stage[data-model="minimal"] #pix{background:#090909eF;box-shadow:none;border-radius:3px}
-#stage[data-model="glass"] #ticker,#stage[data-model="glass"] #lower,#stage[data-model="glass"] #social,#stage[data-model="glass"] #live,#stage[data-model="glass"] #pix{background:#17171799;backdrop-filter:blur(14px);border-radius:16px}
-#stage[data-model="esports"] #ticker,#stage[data-model="esports"] #lower,#stage[data-model="esports"] #social,#stage[data-model="esports"] #live,#stage[data-model="esports"] #pix{border-radius:3px;border-width:2px}
-#stage[data-model="luxury"] #ticker,#stage[data-model="luxury"] #lower,#stage[data-model="luxury"] #social,#stage[data-model="luxury"] #live,#stage[data-model="luxury"] #pix{background:linear-gradient(120deg,#080808f5,#292015f0);box-shadow:0 10px 35px #000b,0 0 0 1px var(--accentGlow)}
-#stage[data-model="retro"] #ticker,#stage[data-model="retro"] #lower,#stage[data-model="retro"] #social,#stage[data-model="retro"] #live,#stage[data-model="retro"] #pix{border-radius:0;border-style:double}
-#stage[data-model="tech"] #ticker,#stage[data-model="tech"] #lower,#stage[data-model="tech"] #social,#stage[data-model="tech"] #live,#stage[data-model="tech"] #pix{border-radius:7px;background:linear-gradient(110deg,#07111bF2,#101a25F2);box-shadow:0 0 16px var(--accentGlow)}
-#stage[data-model="neon"] #camera{box-shadow:0 0 18px var(--accentGlow)}
-#stage[data-model="glass"] #camera{backdrop-filter:blur(8px);border-radius:24px}
-#stage[data-model="esports"] #camera{border-radius:2px}
-#stage[data-model="retro"] #camera{border-style:double;border-radius:0}
-#stage[data-model="tech"] #camera{border-radius:6px;box-shadow:0 0 18px var(--accentGlow)}
-</style></head>
-<body><main id="stage">
-<div id="ticker" class="overlay-source"><div class="brand">CAIPORAH</div><div class="track"><div class="moving" id="tickerText">SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE</div></div></div>
-<div id="camera" class="overlay-source" aria-label="Moldura independente para câmera"></div>
-<div id="lower" class="overlay-source"><div class="brand" id="lowerBrand">CAIPORAH · TRANSMISSÃO</div><div class="name" id="lowerName">SEU NOME AQUI</div><div class="tag" id="lowerTag">AO VIVO AGORA</div></div>
-<div id="social" class="overlay-source" aria-live="polite">
-  <div class="social-heading">SIGA O CAIPORAH</div>
-  <div class="social-card" id="socialCard">
-    <div class="social-icon" id="socialIcon" aria-hidden="true"></div>
-    <div class="social-copy"><span id="socialPlatform">INSTAGRAM</span><b id="socialName">@CAIPORAH</b></div>
-    <div class="social-brand">CAIPORAH</div>
-  </div>
-  <div class="social-progress"><span id="socialProgress"></span></div>
-</div>
-<div id="live" class="overlay-source"><span class="dot"></span> <span class="gold" id="liveBrand">CAIPORAH</span> <span id="liveText">AO VIVO</span></div>
-<div id="break" class="overlay-source"><div class="eyebrow" id="breakTitle">JÁ VOLTAMOS</div><div class="logo" id="breakBrand">CAIPORAH</div><div class="sub" id="breakSub">AGUARDE UM INSTANTE</div></div>
-<div id="pix" class="overlay-source"><div class="star">✦ ✦ ✦</div><b>PIX RECEBIDO!</b><div class="who" id="pixName">APOIADOR</div><div class="amount" id="pixAmount">MUITO OBRIGADO!</div></div>
-</main>
+html,body{width:100%;height:100%;margin:0;background:transparent;color:#fff;font:14px Arial,sans-serif}
+body{display:grid;place-items:center}
+p{padding:12px 18px;border-radius:10px;background:#111b}
+a{color:#c4b5fd}
+</style>
+</head>
+<body>
+<p>Atualizando a fonte do overlay… <a id="fallback" href="./index.html">Abrir fonte</a></p>
 <script>
-const p=new URLSearchParams(location.search);
-const type=(p.get('tipo')||'ticker').toLowerCase();
-const show={ticker:'ticker',lower:'lower',social:'social',live:'live',break:'break',pix:'pix',camera:'camera'}[type]||'ticker';
-document.querySelectorAll('.overlay-source').forEach(node=>node.classList.remove('is-active'));
-const el=document.getElementById(show);
-if(el)el.classList.add('is-active');
-
-const palettes={
-gold:['#9b72d6','#ded8e8','#654b91'],red:['#ff4242','#ffaaaa','#a81424'],
-blue:['#398bff','#a9d0ff','#174caa'],cyan:['#00d9e8','#a6f8ff','#087f91'],
-purple:['#9b72d6','#ded8e8','#654b91'],pink:['#ff65b4','#ffc1df','#a82d70'],
-green:['#22df83','#a6ffd0','#087b49'],lime:['#b7ed32','#e8ff9b','#668c12'],
-orange:['#ff8a26','#ffd0a0','#b94d0a'],ice:['#c2c0ca','#f2f1f5','#777480'],
-white:['#eeeeee','#ffffff','#777777'],bronze:['#b87945','#edc29c','#75401f'],
-rainbow:['#ff5b9b','#7deaff','#6d42b5']
-};
-const palette=palettes[p.get('paleta')]||palettes.purple;
-const stage=document.getElementById('stage');
-stage.style.setProperty('--accent',palette[0]);
-stage.style.setProperty('--accent2',palette[1]);
-stage.style.setProperty('--accentDark',palette[2]);
-stage.style.setProperty('--accentGlow',palette[0]+'88');
-stage.dataset.model=['classic','neon','minimal','glass','esports','luxury','retro','tech'].includes(p.get('modelo'))?p.get('modelo'):'minimal';
-
-const safe=(v,fallback)=>v&&v.trim()?v.trim():fallback;
-document.getElementById('lowerName').textContent=safe(p.get('nome'),'SEU NOME AQUI');
-document.getElementById('lowerBrand').textContent=safe(p.get('marca'),'CAIPORAH · TRANSMISSÃO');
-document.getElementById('lowerTag').textContent=safe(p.get('texto'),'AO VIVO AGORA');
-document.getElementById('socialName').textContent=safe(p.get('nome'),'@CAIPORAH');
-
-document.getElementById('pixName').textContent=safe(p.get('nome'),'APOIADOR');
-document.getElementById('pixAmount').textContent=safe(p.get('texto'),'MUITO OBRIGADO!');
-document.getElementById('liveBrand').textContent=safe(p.get('marca'),'CAIPORAH');
-document.getElementById('liveText').textContent=safe(p.get('texto'),'AO VIVO');
-document.getElementById('breakTitle').textContent=safe(p.get('titulo'),'JÁ VOLTAMOS');
-document.getElementById('breakBrand').textContent=safe(p.get('marca'),'CAIPORAH');
-document.getElementById('breakSub').textContent=safe(p.get('texto'),'AGUARDE UM INSTANTE');
-// Rotação automática das redes: cada perfil aparece pelo tempo configurado.
-const socialDefinitions=[
-  {key:'instagram',label:'INSTAGRAM',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7zm5 2.1a5.7 5.7 0 1 1 0 11.4 5.7 5.7 0 0 1 0-11.4zm0 2.2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.9-3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>'},
-  {key:'youtube',label:'YOUTUBE',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>'},
-  {key:'tiktok',label:'TIKTOK',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.8 5.8 0 0 1-3.5-1.2V15a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.4a2.8 2.8 0 1 0 2 2.7V0h3.1c.3 2.5 1.8 4.1 4.3 4.4v3.2a8.6 8.6 0 0 1-.9-.1z"/></svg>'},
-  {key:'twitch',label:'TWITCH',icon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4zm16 12-3.5 3.5h-5L8 21v-3H4V4h16v10zM9 7h2v6H9V7zm5 0h2v6h-2V7z"/></svg>'}
-];
-const socialItems=socialDefinitions.map(item=>({...item,handle:safe(p.get(item.key),''),enabled:p.get(item.key+'_on')!=='0'})).filter(item=>item.enabled&&item.handle);
-const socialDuration=Math.max(2,Math.min(30,Number.parseInt(p.get('duracao')||'5',10)||5))*1000;
-const socialInterval=Math.max(0,Math.min(30,Number.parseInt(p.get('intervalo')||'2',10)||0))*1000;
-const socialCard=document.getElementById('socialCard');
-const socialIcon=document.getElementById('socialIcon');
-const socialPlatform=document.getElementById('socialPlatform');
-const socialName=document.getElementById('socialName');
-const socialProgress=document.getElementById('socialProgress');
-if(socialItems.length){
-  let socialIndex=0;
-  const showSocial=()=>{
-    const item=socialItems[socialIndex%socialItems.length];
-    socialCard.classList.remove('visible');
-    socialProgress.classList.remove('run');
-    socialProgress.style.animationDuration=socialDuration+'ms';
-    window.setTimeout(()=>{
-      socialIcon.innerHTML=item.icon;
-      socialPlatform.textContent=item.label;
-      socialName.textContent=item.handle;
-      socialCard.classList.add('visible');
-      socialProgress.classList.remove('run');
-      void socialProgress.offsetWidth;
-      socialProgress.classList.add('run');
-    },180);
-    window.setTimeout(()=>{
-      socialCard.classList.remove('visible');
-      socialProgress.classList.remove('run');
-      socialIndex=(socialIndex+1)%socialItems.length;
-      window.setTimeout(showSocial,socialInterval);
-    },socialDuration+180);
-  };
-  showSocial();
-}else{
-  socialPlatform.textContent='CONFIGURE SUAS REDES';
-  socialName.textContent='@CAIPORAH';
-  socialIcon.textContent='✦';
-  socialCard.classList.add('visible');
-}
-const customColor=p.get('cor');
-if(customColor&&/^#[0-9a-fA-F]{6}$/.test(customColor)){
-  stage.style.setProperty('--accent',customColor);
-  stage.style.setProperty('--accent2',`color-mix(in srgb, ${customColor} 38%, white)`);
-  stage.style.setProperty('--accentDark',`color-mix(in srgb, ${customColor} 68%, black)`);
-  stage.style.setProperty('--accentGlow',customColor+'88');
-}
-const tickerText=safe(p.get('texto'),'SEJA BEM-VINDO À TRANSMISSÃO　✦　INSCREVA-SE NO CANAL　✦　COMPARTILHE A LIVE');
-document.getElementById('tickerText').textContent=tickerText+'　✦　'+tickerText+'　✦　';
-</script></body></html>
+(function(){
+  // Mantém todos os parâmetros antigos (?tipo=, nome, texto, cor, etc.)
+  // e entrega a renderização ao mesmo motor usado pelo editor (?s=).
+  const target=new URL('./index.html',location.href);
+  target.search=location.search;
+  target.hash=location.hash;
+  document.getElementById('fallback').href=target.href;
+  location.replace(target.href);
+})();
+</script>
+<noscript><p>Ative JavaScript para abrir a fonte do overlay.</p></noscript>
+</body>
+</html>
