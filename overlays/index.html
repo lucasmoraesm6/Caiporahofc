@@ -425,7 +425,10 @@ function layer(k){
     const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';
     p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`;
   }else{
-    const fitStyle=`transform:scale(${k.s/100});transform-origin:center;translate:${k.x}px ${k.y}px;`;
+    // Telas com alinhamento flexível (intervalo/início) usam a mesma transformação
+    // independente do restante dos overlays. A propriedade individual "scale"
+    // evita somar duas escalas quando o editor atualiza o tamanho pelo arraste.
+    const fitStyle=`scale:${k.s/100};transform-origin:center;translate:${k.x}px ${k.y}px;`;
     html=html.replace('class="bx pn"','class="bx pn" style="'+fitStyle+'"');
   }
   return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${html}</div>`;
@@ -578,7 +581,7 @@ if(cfgs){ // modo fonte de navegador
   resizeHandle.style.cssText='position:absolute;z-index:30;width:22px;height:22px;border:2px solid #fff;border-radius:6px;background:#8b5cf6;box-shadow:0 2px 10px #0009;touch-action:none;cursor:nwse-resize;display:none';
   resizeHandle.addEventListener('pointerdown',ev=>{ev.preventDefault();ev.stopPropagation();const r=activeTarget();if(!r)return;dg={mode:'size',r,k:get(cur),x:ev.clientX,y:ev.clientY,base:get(cur).s};resizeHandle.setPointerCapture(ev.pointerId)});
   pbox.addEventListener('pointerdown',ev=>{if(ev.target===resizeHandle)return;const k=get(cur),r=activeTarget();if(!r)return;dg={mode:'move',r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
-  pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;if(dg.mode==='size'){const delta=Math.max(ev.clientX-dg.x,ev.clientY-dg.y);dg.k.s=Math.max(20,Math.min(300,Math.round(dg.base+delta*sc/10)));dg.r.style.scale=String(dg.k.s/100);const b=tabs.querySelector('[data-k="s"]');if(b)b.value=dg.k.s;const o=tabs.querySelector('[data-o="s"]');if(o)o.textContent=dg.k.s}else{dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`;for(const q of ['x','y']){const b=tabs.querySelector(`[data-k="${q}"]`);if(b)b.value=dg.k[q];const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=dg.k[q]}}placeResizeHandle()});
+  pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;if(dg.mode==='size'){const delta=((ev.clientX-dg.x)+(ev.clientY-dg.y))/2;dg.k.s=Math.max(20,Math.min(300,Math.round(dg.base+delta*sc/10)));dg.r.style.scale=String(dg.k.s/100);const b=tabs.querySelector('[data-k="s"]');if(b)b.value=dg.k.s;const o=tabs.querySelector('[data-o="s"]');if(o)o.textContent=dg.k.s}else{dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`;for(const q of ['x','y']){const b=tabs.querySelector(`[data-k="${q}"]`);if(b)b.value=dg.k[q];const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=dg.k[q]}}placeResizeHandle()});
   const end=()=>{dg=null;pbox.style.cursor=''};pbox.addEventListener('pointerup',end);pbox.addEventListener('pointercancel',end);
   new ResizeObserver(()=>fit(pbox)).observe(pbox);
   renderList();sync();drawScene();
