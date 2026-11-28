@@ -305,9 +305,9 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const BR='align-items:center;justify-content:';
 // elementos: id, título, descrição, campos, padrões, 5 posições [nome,css], html
 const EL=[
-['ticker','Faixa inferior','Faixa horizontal com mensagem rolando.',['Mensagem'],['Obrigado por assistir! Siga o canal e ative o sininho 🔔'],
+['ticker','Faixa inferior','Faixa horizontal com identificação personalizada e mensagem rolando.',['Nome da faixa','Mensagem'],['Geral','Obrigado por assistir! Siga o canal e ative o sininho 🔔'],
  [['Base total','left:0;bottom:40px;width:1920px'],['Base flutuante','left:80px;bottom:40px;width:1760px'],['Topo total','left:0;top:40px;width:1920px'],['Topo flutuante','left:80px;top:40px;width:1760px'],['Base central','left:310px;bottom:40px;width:1300px']],
- (v,t,p)=>`<div class="tk pn" style="${p}"><b>${t.e} ${esc(t.n)}</b><div class="mq"><span>${(esc(v[0])+' &nbsp;•&nbsp; ').repeat(8)}</span></div></div>`],
+ (v,t,p)=>`<div class="tk pn" style="${p}"><b>${t.e} ${esc(v[0]||t.n)}</b><div class="mq"><span>${(esc(v[1]||'')+' &nbsp;•&nbsp; ').repeat(8)}</span></div></div>`],
 ['lower','Nome do streamer','Identificação e nome do canal.',['Nome','Identificação'],['CAIPORAH','Streamer oficial'],
  [['Inferior esquerdo','left:80px;bottom:160px'],['Inferior direito','right:80px;bottom:160px'],['Inferior centro','left:50%;bottom:160px;transform:translateX(-50%)'],['Topo esquerdo','left:80px;top:60px'],['Vertical','left:80px;bottom:160px;flex-direction:column;text-align:center;padding:30px 60px']],
  (v,t,p)=>`<div class="lw pn" style="${p}"><div class="ic">${t.e}</div><div><h1>${esc(v[0])}</h1><p>${esc(v[1])}</p></div></div>`],
@@ -412,16 +412,16 @@ function sound(n,vol,force){if(!n||!(SND.on||force))return;try{AC=AC||new(window
 const ALERT=['follow','sub','donate','raid','superchat','giveaway','winner','goalhit','pix'];
 const dflt=id=>{const e=EL.find(x=>x[0]===id)||EL[0],al=ALERT.includes(e[0]);return{e:e[0],c:'geral',m:0,v:[0,1,2].map(i=>e[4][i]??''),k:null,f:0,s:100,o:100,x:0,y:0,sh:al?8:0,g:al?20:0,i:al?'bounce':'fade',u:'fade',d:.6,si:'',so:'',vl:70}};
 const pack=k=>{const d=dflt(k.e),o={e:k.e};for(const q in k)if(q!=='e'&&JSON.stringify(k[q])!==JSON.stringify(d[q]))o[q]=k[q];return o};
-const unpack=o=>Object.assign(dflt(o.e),o);
+const unpack=o=>{const k=Object.assign(dflt(o.e),o);if(k.e==='ticker'&&Array.isArray(o.v)&&o.v.length<2)k.v=['Geral',o.v[0]||''];return k;};
 const enc=a=>{const b=new TextEncoder().encode(JSON.stringify(a.map(pack)));return btoa(String.fromCharCode(...b)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
 const dec=s=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)))).map(unpack);
 function layer(k){
-  const e=EL.find(x=>x[0]===k.e)||EL[0],t=TH.find(x=>x.id===k.c)||TH[0],N=NS*e[5].length,m=((k.m%N)+N)%N;
+  const e=EL.find(x=>x[0]===k.e)||EL[0],t=TH.find(x=>x.id===k.c)||TH[0],N=NS*e[5].length,m=((k.m%N)+N)%N;const v=e[0]==='ticker'&&(!Array.isArray(k.v)||k.v.length<2)?['Geral',k.v?.[0]||'']:[0,1,2].map(i=>k.v?.[i]??'');
   const s=Object.assign({},DF,ST[m%NS][1]),fnt=(FONTS[k.f]&&FONTS[k.f][1])||t.f;
   const vars=`--a:${k.k||t.a};--b:${t.b};--bg:${t.bg};--tx:${t.tx};--f:${fnt};--r:${t.r}px;--sbg:${s.bg};--sbd:${s.bd};--ssh:${s.sh};--srd:${s.rd};--scp:${s.cp};--sbf:${s.bf};--stc:${s.tx};--sb:${s.b};--sic:${s.ic};--sa:${s.a};--sts:${s.ts};--cbd:${s.cbd}`;
   let p=e[5][Math.floor(m/NS)][1];
   if(!p.startsWith('align-items')){const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`}
-  return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${e[6]([0,1,2].map(i=>k.v[i]??''),t,p)}</div>`;
+  return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${e[6](v,t,p)}</div>`;
 }
 const stageHTML=a=>`<div class="stage">${a.map(layer).join('')}</div>`;
 const fit=b=>{const s=b.querySelector('.stage');if(s)s.style.transform=`scale(${b.clientWidth/1920})`};
