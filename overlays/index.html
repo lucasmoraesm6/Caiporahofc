@@ -64,6 +64,14 @@ select,input[type=text],input[type=number]{background:#0b0818;border:1px solid #
 /* palco 1920x1080 */
 .stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;font-family:var(--f);overflow:hidden}
 body.ov .stage{position:fixed}
+  /* Fontes livres: cada overlay nasce na origem, sem coordenadas nem escala
+     gravadas. A posição e o tamanho são controlados pelo app/OBS. */
+  body.ov .stage.free{left:0;top:0;width:100vw;height:100vh;transform:none!important;transform-origin:0 0;overflow:visible}
+  body.ov .stage.free .lay{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;width:max-content;height:auto;transform:none!important;translate:none!important;scale:none!important}
+  body.ov .stage.free .lay>*{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;transform:none!important;translate:none!important;scale:none!important;max-width:100vw;max-height:100vh}
+  body.ov .stage.free .br{display:block;width:auto;height:auto}
+  body.ov .stage.free .cm{width:100vw;height:100vh;max-width:100vw;max-height:100vh;aspect-ratio:1}
+  body.ov .stage.free .tk,body.ov .stage.free .lw,body.ov .stage.free .lv,body.ov .stage.free .so,body.ov .stage.free .px,body.ov .stage.free .gl,body.ov .stage.free .ch,body.ov .stage.free .bk{width:max-content;height:auto}
 .pn{background:var(--sbg);border:var(--sbd);box-shadow:var(--ssh);border-radius:var(--srd);clip-path:var(--scp);backdrop-filter:var(--sbf);color:var(--stc);text-shadow:var(--sts)}
 .stage h1{margin:0;font-size:58px;text-transform:uppercase;line-height:1.1}
 .stage p{margin:0;color:var(--sb)}
@@ -415,25 +423,27 @@ const pack=k=>{const d=dflt(k.e),o={e:k.e};for(const q in k)if(q!=='e'&&JSON.str
 const unpack=o=>{const k=Object.assign(dflt(o.e),o);if(k.e==='ticker'&&Array.isArray(o.v)&&o.v.length<2)k.v=['Geral',o.v[0]||''];return k;};
 const enc=a=>{const b=new TextEncoder().encode(JSON.stringify(a.map(pack)));return btoa(String.fromCharCode(...b)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
 const dec=s=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)))).map(unpack);
-function layer(k){
+function layer(k,free=false){
   const e=EL.find(x=>x[0]===k.e)||EL[0],t=TH.find(x=>x.id===k.c)||TH[0],N=NS*e[5].length,m=((k.m%N)+N)%N;const v=e[0]==='ticker'&&(!Array.isArray(k.v)||k.v.length<2)?['Geral',k.v?.[0]||'']:[0,1,2].map(i=>k.v?.[i]??'');
   const s=Object.assign({},DF,ST[m%NS][1]),fnt=(FONTS[k.f]&&FONTS[k.f][1])||t.f;
   const vars=`--a:${k.k||t.a};--b:${t.b};--bg:${t.bg};--tx:${t.tx};--f:${fnt};--r:${t.r}px;--sbg:${s.bg};--sbd:${s.bd};--ssh:${s.sh};--srd:${s.rd};--scp:${s.cp};--sbf:${s.bf};--stc:${s.tx};--sb:${s.b};--sic:${s.ic};--sa:${s.a};--sts:${s.ts};--cbd:${s.cbd}`;
   let p=e[5][Math.floor(m/NS)][1];
   let html=e[6](v,t,p);
-  if(!p.startsWith('align-items')){
+  if(free){
+    // Fonte livre: ignora posição e escala do editor. O app hospedeiro decide
+    // onde posicionar e qual tamanho aplicar à fonte inteira.
+    p=p.replace(/(?:^|;)\s*(?:left|right|top|bottom|width|height|min-width|min-height|max-width|max-height|transform|transform-origin|translate|scale)\s*:[^;]*/gi,'');
+    html=html.replace(/style="[^"]*"/g,style=>style);
+  }else if(!p.startsWith('align-items')){
     const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';
     p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`;
   }else{
-    // Telas com alinhamento flexível (intervalo/início) usam a mesma transformação
-    // independente do restante dos overlays. A propriedade individual "scale"
-    // evita somar duas escalas quando o editor atualiza o tamanho pelo arraste.
     const fitStyle=`scale:${k.s/100};transform-origin:center;translate:${k.x}px ${k.y}px;`;
     html=html.replace('class="bx pn"','class="bx pn" style="'+fitStyle+'"');
   }
   return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${html}</div>`;
 }
-const stageHTML=a=>`<div class="stage">${a.map(layer).join('')}</div>`;
+const stageHTML=(a,free=false)=>`<div class="stage${free?' free':''}">${a.map(k=>layer(k,free)).join('')}</div>`;
 const fit=b=>{const s=b.querySelector('.stage');if(s)s.style.transform=`scale(${b.clientWidth/1920})`};
 // ciclo: entrada, tempo na tela, saída, intervalo
 function cycle(el,k,force){
@@ -486,7 +496,7 @@ if(cfgs){ // modo fonte de navegador
   document.documentElement.style.setProperty('background-color','transparent','important');
   document.body.style.setProperty('background','transparent','important');
   document.body.style.setProperty('background-color','transparent','important');
-  document.getElementById('app').className='';document.getElementById('app').innerHTML=stageHTML(cfgs);
+  document.getElementById('app').className='';document.getElementById('app').innerHTML=stageHTML(cfgs,true);
   const f=()=>{const stage=document.querySelector('.stage');if(!stage)return;const scale=Math.min(innerWidth/1920,innerHeight/1080);stage.style.left='50%';stage.style.top='50%';stage.style.transformOrigin='center';stage.style.transform=`translate(-50%,-50%) scale(${scale})`};f();addEventListener('resize',f);run(document,cfgs);
 }else{
   const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
@@ -516,7 +526,7 @@ if(cfgs){ // modo fonte de navegador
     if(d.x!==undefined)scene.splice(+d.x,1);
     else{const i=+(d.u??d.w),j=d.u!==undefined?i-1:i+1;if(j<0||j>=scene.length)return;[scene[i],scene[j]]=[scene[j],scene[i]]}
     save();drawScene()};
-  $('scn-copy').onclick=function(){if(!scene.length)return toast('Adicione overlays à cena primeiro');copy(base+'?s='+enc(scene),this,'COPIAR LINK DA CENA')};
+  $('scn-copy').onclick=function(){if(!scene.length)return toast('Adicione overlays à cena primeiro');copy(base+'?s='+enc(scene.map(k=>{const q={...k};delete q.x;delete q.y;delete q.s;return q})),this,'COPIAR LINK DA CENA')};
   $('scn-fs').onclick=()=>scene.length&&full(()=>scene);
   $('scn-clr').onclick=()=>{scene=[];save();drawScene()};
   new ResizeObserver(()=>fit(sb)).observe(sb);
@@ -563,7 +573,7 @@ if(cfgs){ // modo fonte de navegador
     else if(q.c!==undefined){k.c=q.c;k.k=null;sync()}
     else if(q.r)(k.m=Math.floor(Math.random()*N),draw());
     else if(q.d)(k.m=(k.m+ +q.d+N)%N,draw());
-    else if(q.copy!==undefined)copy(base+'?s='+enc([k]),b,'COPIAR LINK');
+    else if(q.copy!==undefined)const source={...k};delete source.x;delete source.y;delete source.s;copy(base+'?s='+enc([source]),b,'COPIAR LINK');
     else if(q.add!==undefined){scene.push(JSON.parse(JSON.stringify(k)));save();drawScene();toast('Adicionado à cena ('+scene.length+')')}
     else if(q.t!==undefined)draw(true);
     else if(q.reset!==undefined){k.x=0;k.y=0;draw()}
