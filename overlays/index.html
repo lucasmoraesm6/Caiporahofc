@@ -434,7 +434,7 @@ function layer(k,free=false){
     // onde posicionar e qual tamanho aplicar à fonte inteira.
     const original=p;
     p=p.replace(/(?:^|;)\s*(?:left|right|top|bottom|width|height|min-width|min-height|max-width|max-height|transform|transform-origin|translate|scale)\s*:[^;]*/gi,'');
-    html=html.replace('style="'+original+'"','style="'+p+'"');
+    html=html.replace('style="'+original,'style="'+p);
   }else if(!p.startsWith('align-items')){
     const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';
     p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`;
