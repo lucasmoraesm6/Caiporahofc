@@ -1,56 +1,490 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090711"><meta name="robots" content="noindex,nofollow">
-<title>CAIPORAH OVERLAYS — Central Gamer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#090711">
+<title>CAIPORAH OVERLAYS – Central Gamer</title>
 <style>
-:root{--bg:#090711;--panel:#14111e;--panel2:#1b1727;--purple:#8954cf;--purple2:#b58aff;--silver:#d1cfda;--muted:#9691a4;--line:#ffffff17}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#38205266,transparent 36%),radial-gradient(ellipse at 90% 45%,#25203b55,transparent 40%),var(--bg);color:#f7f5fb;font:400 15px/1.5 Outfit,Arial,sans-serif;overflow-x:hidden}
-#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}.wrap{position:relative;z-index:1;width:min(1180px,94%);margin:auto;padding:30px 0 55px}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0 25px;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:13px}.brand img{width:52px;height:52px;border-radius:14px;object-fit:cover;border:1px solid #b58aff55;box-shadow:0 0 24px #8954cf33}.brand small{display:block;color:var(--purple2);font-weight:800;letter-spacing:.2em;font-size:10px}.brand b{font:800 16px Unbounded,sans-serif;letter-spacing:.02em}.status{border:1px solid #b58aff44;background:#8954cf18;color:#d9c8f4;border-radius:30px;padding:8px 13px;font-size:11px;font-weight:700;letter-spacing:.08em}
-.hero{text-align:center;padding:45px 12px 30px}.eyebrow{color:var(--purple2);font-weight:800;letter-spacing:.25em;font-size:11px}.hero h1{font:800 clamp(25px,5vw,42px)/1.2 Unbounded,sans-serif;margin:12px 0;background:linear-gradient(100deg,#fff 20%,#c6b5e5 55%,#8f62d0);background-clip:text;color:transparent}.hero p{max-width:620px;margin:0 auto;color:var(--muted);font-size:15px}.hero-line{height:2px;width:90px;margin:22px auto 0;background:linear-gradient(90deg,transparent,var(--purple2),transparent);box-shadow:0 0 18px #a879ee}
-.access{width:min(420px,100%);margin:10px auto 28px;padding:22px;border:1px solid #a77be044;border-radius:18px;background:#15111feF;box-shadow:0 18px 55px #0008;text-align:left}.access label{display:block;color:#d8d2e4;font-size:13px;margin-bottom:7px}.access input{width:100%;padding:13px 14px;border:1px solid #ffffff22;border-radius:10px;background:#090711;color:white;font:inherit;outline:none}.access input:focus,.field input:focus,.field select:focus{border-color:var(--purple2);box-shadow:0 0 0 3px #8954cf22}.btn{border:0;border-radius:10px;padding:12px 16px;background:linear-gradient(110deg,#7442b5,#a77be0);color:#fff;font:800 12px Outfit;letter-spacing:.06em;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.12);box-shadow:0 8px 25px #8954cf44}.access .btn{width:100%;margin-top:11px}.error{min-height:20px;color:#ff9eae;font-size:12px;margin-top:8px}
-#unlocked{display:none}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 18px}.toolbar h2{font:700 16px Unbounded;margin:0}.toolbar span{color:var(--muted);font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#1a1626f5,#100e18f5);box-shadow:0 12px 35px #0005;transition:transform .25s,border-color .25s,box-shadow .25s;animation:rise .65s both;animation-delay:var(--delay,0s)}.card:hover{transform:translateY(-4px);border-color:#a77be066;box-shadow:0 18px 45px #0008,0 0 22px #8954cf13}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.card-head{display:flex;align-items:center;gap:12px;padding:15px 16px 12px}.num{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;border-radius:10px;background:#8954cf24;border:1px solid #b58aff44;color:#d8c5f5;font-weight:800}.card-head h3{font:700 13px Unbounded;margin:0 0 4px}.card-head p{margin:0;color:var(--muted);font-size:11px}.preview{display:block;width:calc(100% - 28px);height:145px;margin:0 14px;border:1px solid #ffffff18;border-radius:10px;background:radial-gradient(ellipse at center,#2b203c,#090711 75%);pointer-events:none}.preview.short{height:105px}.config{padding:13px 15px 15px}.config summary{cursor:pointer;list-style:none;color:#cdb8ed;font-size:11px;font-weight:800;letter-spacing:.1em;padding:9px 0;border-bottom:1px solid var(--line)}.config summary::-webkit-details-marker{display:none}.config summary:after{content:'＋';float:right;color:var(--purple2)}.config[open] summary:after{content:'−'}.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;color:#aaa4b8;font-size:10px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;min-width:0;padding:9px 10px;border:1px solid #ffffff20;border-radius:8px;background:#0c0a12;color:#f6f2fb;font:12px Outfit;outline:none}.field input[type=checkbox]{width:16px;height:16px;accent-color:#9b68dd;vertical-align:middle}.check{display:flex!important;align-items:center;gap:7px;padding-top:8px;color:#d9d3e3!important}.card-actions{display:flex;gap:9px;padding:0 15px 15px}.card-actions .btn{flex:1}.copy-status{min-height:18px;text-align:center;color:#cdb8ed;font-size:11px;margin:15px 0}
-.note{margin-top:25px;padding:14px 16px;border:1px solid #ffffff12;border-radius:12px;background:#ffffff06;color:var(--muted);font-size:12px;text-align:center}
-.back{display:block;width:max-content;margin:22px auto 0;color:#cbb7e9;text-decoration:none;font-size:12px}.back:hover{color:#fff}
-@media(max-width:700px){.wrap{width:min(100% - 24px,560px);padding-top:16px}.grid{grid-template-columns:1fr;gap:12px}.hero{padding:35px 5px 22px}.hero p{font-size:13px}.status{font-size:9px;padding:7px 9px}.brand img{width:44px;height:44px}.brand b{font-size:13px}.preview{height:132px}.toolbar{align-items:flex-start;flex-direction:column;gap:4px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style></head>
-<body><canvas id="particles"></canvas><div class="wrap">
-<header><div class="brand"><img src="../assets/caiporah-logo.webp" alt="CAIPORAH"><div><small>UNIVERSO GAMER</small><b>CAIPORAH</b></div></div><div class="status">● OVERLAYS PREMIUM</div></header>
-<section class="hero"><div class="eyebrow">CENTRAL DE TRANSMISSÃO</div><h1>CAIPORAH OVERLAYS</h1><p>Monte sua identidade visual, personalize cada elemento e copie o link individual para usar como fonte de navegador no LiveX ou OBS.</p><div class="hero-line"></div></section>
-<form class="access" id="access-form"><label for="password">Senha de acesso premium</label><input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required><button class="btn" type="submit">ENTRAR NA CENTRAL　↗</button><div class="error" id="error" role="alert"></div></form>
-<section id="unlocked"><div class="toolbar"><h2>SEUS ELEMENTOS</h2><span>Prévia ao vivo · ajustes individuais · links independentes</span></div>
-<div class="grid" id="catalog">
-<article class="card" style="--delay:.03s" data-type="ticker"><div class="card-head"><span class="num">01</span><div><h3>FAIXA INFERIOR</h3><p>Faixa horizontal com mensagem rolando.</p></div></div><iframe class="preview" title="Prévia faixa inferior" src="overlay.html?tipo=ticker&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field full"><label>Texto da faixa</label><input data-param="texto" value="SEJA BEM-VINDO À TRANSMISSÃO ✦ INSCREVA-SE NO CANAL ✦ COMPARTILHE A LIVE"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option><option value="blue">Azul</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="tech">Tech</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-<article class="card" style="--delay:.08s" data-type="lower"><div class="card-head"><span class="num">02</span><div><h3>NOME DO STREAMER</h3><p>Identificação e nome do canal.</p></div></div><iframe class="preview" title="Prévia nome streamer" src="overlay.html?tipo=lower&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field full"><label>Nome do streamer</label><input data-param="nome" placeholder="Seu nome"></div><div class="field"><label>Identificação</label><input data-param="texto" value="AO VIVO AGORA"></div><div class="field"><label>Nome do canal</label><input data-param="marca" value="CAIPORAH · TRANSMISSÃO"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option><option value="blue">Azul</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option><option value="esports">E-sports</option><option value="tech">Tech</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-<article class="card" style="--delay:.13s" data-type="live"><div class="card-head"><span class="num">03</span><div><h3>SELO AO VIVO</h3><p>Indicador compacto de transmissão.</p></div></div><iframe class="preview short" title="Prévia selo ao vivo" src="overlay.html?tipo=live&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Nome do canal</label><input data-param="marca" value="CAIPORAH"></div><div class="field"><label>Texto</label><input data-param="texto" value="AO VIVO"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option><option value="red">Vermelho</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-<article class="card" style="--delay:.18s" data-type="social"><div class="card-head"><span class="num">04</span><div><h3>REDES SOCIAIS</h3><p>Ícones oficiais, animação e rotação automática.</p></div></div><iframe class="preview" title="Prévia redes sociais" src="overlay.html?tipo=social&preview=1"></iframe><details class="config"><summary>CONFIGURAR REDES E TEMPO</summary><div class="fields">
-<div class="field"><label>Instagram</label><input data-param="instagram" value="@CAIPORAH"></div><div class="field"><label>YouTube</label><input data-param="youtube" value="@CAIPORAH"></div><div class="field"><label>TikTok</label><input data-param="tiktok" value="@CAIPORAH"></div><div class="field"><label>Twitch</label><input data-param="twitch" value="@CAIPORAH"></div>
-<div class="field"><label class="check"><input type="checkbox" data-param="instagram_on" value="1" checked> Mostrar Instagram</label><label class="check"><input type="checkbox" data-param="youtube_on" value="1" checked> Mostrar YouTube</label></div><div class="field"><label class="check"><input type="checkbox" data-param="tiktok_on" value="1" checked> Mostrar TikTok</label><label class="check"><input type="checkbox" data-param="twitch_on" value="1" checked> Mostrar Twitch</label></div>
-<div class="field"><label>Tempo de exibição (seg.)</label><input data-param="duracao" type="number" min="2" max="30" value="7"></div><div class="field"><label>Intervalo entre redes (seg.)</label><input data-param="intervalo" type="number" min="0" max="30" value="2"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="glass">Vidro</option><option value="esports">E-sports</option></select></div>
-</div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK DAS REDES</button></div></article>
-<article class="card" style="--delay:.23s" data-type="break"><div class="card-head"><span class="num">05</span><div><h3>TELA DE INTERVALO</h3><p>Tela de pausa / já voltamos.</p></div></div><iframe class="preview" title="Prévia tela de intervalo" src="overlay.html?tipo=break&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Título</label><input data-param="titulo" value="JÁ VOLTAMOS"></div><div class="field"><label>Nome / marca</label><input data-param="marca" value="CAIPORAH"></div><div class="field full"><label>Mensagem</label><input data-param="texto" value="AGUARDE UM INSTANTE"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="glass">Vidro</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-<article class="card" style="--delay:.28s" data-type="camera"><div class="card-head"><span class="num">06</span><div><h3>MOLDURA DA CÂMERA</h3><p>Moldura quadrada com cantos suaves.</p></div></div><iframe class="preview" title="Prévia moldura câmera" src="overlay.html?tipo=camera&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option><option value="esports">E-sports</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-<article class="card" style="--delay:.33s" data-type="pix"><div class="card-head"><span class="num">07</span><div><h3>ALERTA PIX</h3><p>Agradecimento visual para apoiadores.</p></div></div><iframe class="preview short" title="Prévia alerta Pix" src="overlay.html?tipo=pix&preview=1"></iframe><details class="config"><summary>PERSONALIZAR ELEMENTO</summary><div class="fields"><div class="field"><label>Nome do apoiador</label><input data-param="nome" value="APOIADOR"></div><div class="field"><label>Mensagem</label><input data-param="texto" value="MUITO OBRIGADO!"></div><div class="field"><label>Cor personalizada</label><input data-param="cor" type="color" value="#8954CF"></div><div class="field"><label>Paleta</label><select data-param="paleta"><option value="purple">Roxo CAIPORAH</option><option value="ice">Prata</option></select></div><div class="field"><label>Estilo</label><select data-param="modelo"><option value="minimal">Minimalista</option><option value="classic">Clássico</option><option value="neon">Neon</option></select></div></div></details><div class="card-actions"><button class="btn" data-link type="button">COPIAR LINK</button></div></article>
-</div><div class="copy-status" id="copyStatus" role="status"></div></section>
-<div class="note">Cada elemento possui um link separado. Adicione cada URL como uma fonte de navegador independente no LiveX/OBS. Os overlays mantêm o fundo transparente.</div>
-<a class="back" href="../">← VOLTAR AO SITE CAIPORAH</a></div>
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:#090711;color:#f1ecff;font:14px/1.4 'Trebuchet MS',Arial,sans-serif}
+body.ov{background:transparent;overflow:hidden}
+.g{height:100vh;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid #2a2245;background:linear-gradient(90deg,#1c1240,#090711 60%)}
+.top img{width:32px;height:32px;object-fit:contain;border-radius:50%;background:#14102a;border:1px solid #8b5cf6}
+.top h1{font-family:Impact,'Arial Black',sans-serif;font-weight:400;font-size:21px;letter-spacing:2px;margin:0;white-space:nowrap}
+.tag{font-size:11px;letter-spacing:1.5px;color:#c4b5fd;border:1px solid #4a3a85;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.tag::before{content:"● ";color:#34d399}
+.sp{flex:1}
+.top label{font-size:12px;color:#a99bde;display:flex;gap:6px;align-items:center;white-space:nowrap}
+select,input[type=text],input[type=number]{background:#0b0818;border:1px solid #3a2f63;color:#fff;border-radius:8px;padding:6px 8px;font:inherit;font-size:13px;max-width:100%}
+:focus-visible{outline:2px solid #c4b5fd;outline-offset:2px}
+.main{flex:1;min-height:0;display:grid;grid-template-columns:200px minmax(0,1fr) 290px}
+.side{border-right:1px solid #2a2245;padding:8px;overflow:auto;display:flex;flex-direction:column;gap:6px}
+.gchips{display:flex;flex-wrap:wrap;gap:4px}
+.gh{font-size:11px;letter-spacing:1.5px;color:#8a7dbb;margin:8px 4px 2px}
+.oi{display:block;width:100%;text-align:left;background:none;border:0;color:#d9cffc;padding:6px 10px;border-radius:8px;font:inherit;cursor:pointer}
+.oi:hover{background:#1a1338}.oi.on{background:#8b5cf6;color:#fff;font-weight:700}
+.ed{padding:12px 14px;overflow:auto;display:flex;flex-direction:column;gap:10px;min-width:0}
+.pw{width:min(100%,max(300px,calc((100vh - 330px)*1.7778)));margin:0 auto}
+.box{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px;border:1px solid #2a2245;background-color:#0a0716;background-image:var(--pv);background-size:var(--pvs);touch-action:none;cursor:grab}
+.bar2{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bar2 .t{flex:1;min-width:150px}
+.bar2 h3{margin:0;font-size:16px}.bar2 p{margin:0;color:#a99bde;font-size:12px}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:700;letter-spacing:.5px;font-size:12px;padding:8px 12px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#c026d3);color:#fff;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid #2a2245;margin-bottom:8px}
+.tb{background:none;border:0;color:#a99bde;padding:8px 12px;cursor:pointer;font:inherit;border-bottom:2px solid transparent}
+.tb.on{color:#fff;border-color:#8b5cf6;font-weight:700}
+.pane{display:none;flex-direction:column;gap:10px}.pane.on{display:flex}
+.fl,.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.ed label,.rt label{display:block;font-size:12px;color:#a99bde}
+.fl input[type=text],.ag select,.ag input[type=number]{width:100%;margin-top:2px}
+.ag input[type=range]{width:100%;margin-top:6px;accent-color:#8b5cf6}
+.ed input[type=color]{width:46px;height:32px;border:1px solid #3a2f63;background:#0b0818;border-radius:8px;padding:2px;cursor:pointer}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{border:1px solid #3a2f63;background:#150f2b;color:#cfc4f7;padding:4px 10px;border-radius:99px;cursor:pointer;font:inherit;font-size:12px}
+.chip:hover{border-color:#8b5cf6}.chip.on{background:#8b5cf6;border-color:#8b5cf6;color:#fff;font-weight:700}
+.mod{display:flex;align-items:center;gap:6px;background:#0b0818;border:1px solid #2a2245;border-radius:10px;padding:4px}
+.mod span{flex:1;text-align:center;font-size:12px;color:#d9cffc}
+.arr{width:34px;height:32px;border:0;border-radius:8px;background:#241b45;color:#fff;font-size:14px;cursor:pointer}
+.arr:hover{background:#8b5cf6}
+.rt{border-left:1px solid #2a2245;padding:10px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.rt h2{font-family:Impact,sans-serif;font-weight:400;letter-spacing:2px;font-size:18px;margin:0}
+.rt .box{cursor:default}
+#scn-list{max-height:170px;overflow:auto}
+.rt a{color:#c4b5fd;font-size:12px}
+.fs .box{border:0;border-radius:0}
+@media(max-width:900px){
+.g{height:auto;min-height:100vh}.main{display:flex;flex-direction:column}
+.side{flex-direction:column;border-right:0;border-bottom:1px solid #2a2245}
+.gchips{flex-wrap:nowrap;overflow-x:auto}#ol{display:flex;gap:4px;overflow-x:auto}.oi{width:auto;white-space:nowrap}.gh{display:none}
+.rt{border-left:0;border-top:1px solid #2a2245}.pw{width:100%}.top h1{font-size:17px}.tag{display:none}}
+/* palco 1920x1080 */
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;font-family:var(--f);overflow:hidden}
+body.ov .stage{position:fixed}
+.pn{background:var(--sbg);border:var(--sbd);box-shadow:var(--ssh);border-radius:var(--srd);clip-path:var(--scp);backdrop-filter:var(--sbf);color:var(--stc);text-shadow:var(--sts)}
+.stage h1{margin:0;font-size:58px;text-transform:uppercase;line-height:1.1}
+.stage p{margin:0;color:var(--sb)}
+.ic{width:110px;height:110px;border-radius:var(--r);background:var(--sic);display:flex;align-items:center;justify-content:center;font-size:64px;flex:none}
+.tk{position:absolute;height:96px;display:flex;overflow:hidden}
+.tk b{background:var(--sic);color:#fff;padding:0 44px;font-size:42px;line-height:86px;white-space:nowrap}
+.mq{flex:1;overflow:hidden}
+.mq span{display:inline-block;white-space:nowrap;font-size:42px;line-height:86px;animation:mq 26s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.lw{position:absolute;padding:20px 50px 20px 20px;display:flex;gap:26px;align-items:center}
+.lw p{font-size:34px;margin-top:4px}
+.lv{position:absolute;padding:16px 40px;display:flex;gap:20px;align-items:center;font-size:46px;font-weight:900;text-transform:uppercase}
+.lv i{width:28px;height:28px;border-radius:50%;background:var(--sa);animation:bl 1.2s infinite}
+@keyframes bl{50%{opacity:.2}}
+.so{position:absolute;padding:16px 36px;display:flex;gap:22px;align-items:center;font-size:42px;font-weight:700}
+.so b{background:var(--sic);color:#fff;padding:4px 18px;border-radius:var(--r);font-size:34px}
+.br{position:absolute;inset:0;display:flex;background:linear-gradient(135deg,var(--bg),var(--a))}
+.bx{padding:60px 110px;text-align:center}
+.bx h1{font-size:130px}
+.bx p{font-size:46px;margin-top:14px}
+.cd{font-size:210px;font-weight:900;line-height:1.1;color:var(--sa)}
+.cm{position:absolute;border:var(--cbd);border-radius:var(--srd);box-shadow:var(--ssh)}
+.cm span{position:absolute;left:24px;bottom:-34px;background:var(--a);color:#fff;padding:6px 26px;font-size:30px;font-weight:700;border-radius:var(--r);text-shadow:0 2px 4px rgba(0,0,0,.5)}
+.px{position:absolute;width:960px;padding:26px 50px;display:flex;gap:30px;align-items:center;animation:pop 3s ease-in-out infinite}
+.px p{font-size:34px}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.gl{position:absolute;width:720px;padding:26px 34px}
+.gh{display:flex;justify-content:space-between;font-size:38px;font-weight:900;text-transform:uppercase}
+.gb{height:30px;background:rgba(128,128,128,.35);border-radius:var(--r);margin-top:16px;overflow:hidden}
+.gb u{display:block;height:100%;width:var(--p);background:linear-gradient(90deg,var(--a),var(--b))}
+.ch{position:absolute;width:540px;overflow:hidden}
+.ch .h{background:var(--sic);color:#fff;padding:16px 28px;font-size:36px;font-weight:900}
+.ch .m{padding:12px 28px;font-size:30px}
+.ch .m b{color:var(--sb)}
+.stage{color:var(--tx)}
+.bk{position:absolute;display:flex;align-items:center;gap:26px;padding:20px 44px;white-space:nowrap}
+.bk.col{flex-direction:column;align-items:flex-start;gap:10px;white-space:normal}
+.bk.cn{align-items:center}
+.bk.tw{justify-content:center;text-align:center;white-space:normal}
+.bk h1{font-size:52px}.bk p{font-size:32px}
+.stage .nt{text-transform:none;font-size:46px}
+.lbl{font-size:28px;letter-spacing:4px;text-transform:uppercase;color:var(--sb);font-weight:700}
+.big{font-size:120px;font-weight:900;line-height:1;color:var(--sa)}.big.sm{font-size:80px}
+.li{font-size:38px;font-weight:700}
+.chp{display:inline-block;background:var(--sic);color:#fff;padding:6px 26px;border-radius:99px;font-size:38px;font-weight:700;text-shadow:none}
+.pb{width:100%;height:50px;background:rgba(128,128,128,.3);border-radius:var(--r);overflow:hidden}
+.pb u{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b));font-size:30px;line-height:50px;padding:0 16px;color:#fff;text-decoration:none;text-shadow:none}
+.pp{animation:pop 1.6s ease-in-out infinite}
+.eq{display:flex;align-items:flex-end;gap:8px;height:80px}.eq i{width:14px;background:var(--sa);animation:eq .9s ease-in-out infinite}.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}.eq i:nth-child(4){animation-delay:.6s}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+.vt{writing-mode:vertical-rl;font-size:48px;font-weight:900;letter-spacing:6px;text-transform:uppercase}
+.bell{animation:rg 1.4s infinite}@keyframes rg{0%,60%,100%{transform:rotate(0)}10%,30%,50%{transform:rotate(-16deg)}20%,40%{transform:rotate(16deg)}}
+.crw{height:480px;overflow:hidden;margin-top:20px}.cri{animation:cr 14s linear infinite}.cri p{font-size:44px;margin:14px 0}@keyframes cr{from{transform:translateY(480px)}to{transform:translateY(-100%)}}
+:root{--pv:repeating-conic-gradient(#171230 0 25%,#0f0b20 0 50%);--pvs:24px 24px}
+.lay{position:absolute;inset:0;font-family:var(--f);color:var(--tx);animation-duration:var(--d,.6s);animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@keyframes i-fade{from{opacity:0}}@keyframes o-fade{to{opacity:0}}
+@keyframes i-left{from{transform:translateX(-700px);opacity:0}}@keyframes o-left{to{transform:translateX(-700px);opacity:0}}
+@keyframes i-right{from{transform:translateX(700px);opacity:0}}@keyframes o-right{to{transform:translateX(700px);opacity:0}}
+@keyframes i-up{from{transform:translateY(400px);opacity:0}}@keyframes o-up{to{transform:translateY(400px);opacity:0}}
+@keyframes i-down{from{transform:translateY(-400px);opacity:0}}@keyframes o-down{to{transform:translateY(-400px);opacity:0}}
+@keyframes i-zoom{from{transform:scale(.3);opacity:0}}@keyframes o-zoom{to{transform:scale(.3);opacity:0}}
+@keyframes i-flip{from{transform:perspective(900px) rotateY(90deg);opacity:0}}@keyframes o-flip{to{transform:perspective(900px) rotateY(-90deg);opacity:0}}
+@keyframes i-bounce{0%{transform:translateY(-600px);opacity:0}55%{transform:translateY(40px);opacity:1}75%{transform:translateY(-16px)}90%{transform:translateY(6px)}100%{transform:none}}
+@keyframes o-bounce{0%{transform:none}30%{transform:translateY(30px);opacity:1}100%{transform:translateY(-600px);opacity:0}}
+.btn.g{background:#241b45;color:#e6deff}
+.btn.g:hover{background:#34285f}
+.act .btn{flex:1 1 0}
+.adv{border:1px solid #2a2245;border-radius:12px;background:#0b0818}
+.adv summary{cursor:pointer;padding:10px 14px;font-size:14px;color:#d9cffc;font-weight:700}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:4px 14px 12px}
+.ag select,.ag input[type=number]{width:100%;margin-top:3px;background:#120d24;border:1px solid #3a2f63;color:#fff;border-radius:8px;padding:7px 8px;font:inherit;font-size:14px}
+.ag input[type=range]{width:100%;margin-top:6px;accent-color:#8b5cf6}
+.act2{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 10px}
+.hint{display:block;padding:0 14px 12px;color:#8a7dbb}
+.box{cursor:grab}
+.pvb{max-width:1240px;margin:8px auto 0;padding:0 18px}
+.pvb .chips{align-items:center}
+.pvb label{color:#a99bde;font-size:13px;white-space:nowrap}
+.scn{max-width:1240px;margin:14px auto 0;padding:0 18px}
+.scn>div{background:linear-gradient(180deg,#151030,#0f0b21);border:1px solid #4a3a85;border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px}
+.scn h2{font-family:Impact,sans-serif;font-weight:400;letter-spacing:2px;font-size:22px;margin:0 0 8px}
+.scn .box{border:1px solid #2a2245;border-radius:12px;cursor:default}
+.sr{display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid #241b45;font-size:14px}
+.sr span{flex:1}.sr small{color:#a99bde}
+.arr.s{width:32px;height:32px;font-size:13px}
+.mt{color:#a99bde;font-size:14px;margin:0}
+.scn .act{margin-top:10px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#8b5cf6;color:#fff;padding:10px 20px;border-radius:99px;font-weight:700;z-index:60;box-shadow:0 8px 24px #0008}
+.fs{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.fs .box{width:min(100vw,177.78vh);cursor:pointer}
+.fs small{position:absolute;bottom:10px;color:#777}
+@media(max-width:760px){.scn>div{grid-template-columns:1fr}}
+.card[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.mq span,.px,.lv i,.pp,.eq i,.bell,.cri{animation:none}}
+
+.access-gate{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at 50% 0%,#382052aa,transparent 55%),#090711}
+.access-card{width:min(420px,100%);padding:26px;border:1px solid #a77be066;border-radius:18px;background:#15111ff5;box-shadow:0 18px 55px #000b}
+.access-card .eyebrow{color:#c4b5fd;font-size:11px;letter-spacing:3px;font-weight:800}
+.access-card h2{font-family:Impact,'Arial Black',sans-serif;font-size:26px;letter-spacing:2px;margin:8px 0}
+.access-card p{color:#a99bde;font-size:13px}
+.access-card input{width:100%;padding:12px;border:1px solid #4a3a85;border-radius:9px;background:#0b0818;color:#fff;font:inherit}
+.access-card button{width:100%;margin-top:12px}
+.access-error{min-height:20px;color:#ff9eae;font-size:12px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="access-gate" id="access-gate">
+  <form class="access-card" id="access-form">
+    <div class="eyebrow">UNIVERSO GAMER · CAIPORAH</div>
+    <h2>OVERLAYS PREMIUM</h2>
+    <p>Digite sua senha para abrir a central de personalização.</p>
+    <input id="access-password" type="password" autocomplete="current-password" placeholder="Senha de acesso" required>
+    <button class="btn" type="submit">ENTRAR NA CENTRAL ↗</button>
+    <div class="access-error" id="access-error" role="alert"></div>
+  </form>
+</div>
+<div id="app" class="g">
+<header class="top"><img src="../assets/caiporah-logo.webp" alt="Logo CAIPORAH" onerror="this.style.display='none'"><h1>CAIPORAH OVERLAYS</h1><span class="tag">PREMIUM</span><span class="sp"></span>
+<label>Fundo <select id="bg"></select></label><label><input type="checkbox" id="snd"> Sons</label><input type="file" id="pvf" accept="image/*" hidden></header>
+<div class="main">
+<nav class="side" aria-label="Overlays"><div class="gchips" id="gr"></div><div id="ol"></div></nav>
+<section class="ed" id="ed">
+<div class="pw"><div class="box" id="pbox" title="Arraste para mover"></div></div>
+<div class="bar2"><div class="t"><h3 id="ttl"></h3><p id="dsc"></p></div><button class="btn g" data-t>▶ TESTAR</button><button class="btn g" data-fs>TELA CHEIA</button><button class="btn g" data-add>+ CENA</button><button class="btn" data-copy>COPIAR LINK</button></div>
+<div id="tabs"></div>
+</section>
+<aside class="rt"><h2>CENA COMBINADA <small id="scn-n"></small></h2><div class="box" id="scn-box"></div><div id="scn-list"></div>
+<div class="bar2"><button class="btn" id="scn-copy">COPIAR LINK DA CENA</button><button class="btn g" id="scn-fs">TELA CHEIA</button><button class="btn g" id="scn-clr">LIMPAR</button></div>
+<p class="mt">Cada link vira uma fonte de navegador 1920×1080 com fundo transparente. Os sons tocam no OBS.</p>
+<a href="../">← Voltar ao site CAIPORAH</a></aside>
+</div>
+</div>
 <script>
-const PASSWORD_HASH='c7f6f8b13fd7af3539c062e9882f07180f5716e36494e14c7a2b5d139e497ca9';
-const form=document.getElementById('access-form'),input=document.getElementById('password'),error=document.getElementById('error'),unlocked=document.getElementById('unlocked');
-const base=new URL('overlay.html',location.href);
-function cardUrl(card){const u=new URL(base);u.searchParams.set('tipo',card.dataset.type);u.searchParams.set('v','20261127');card.querySelectorAll('[data-param]').forEach(f=>{const v=f.type==='checkbox'?(f.checked?'1':'0'):f.value.trim();if(v)u.searchParams.set(f.dataset.param,v);else u.searchParams.delete(f.dataset.param)});return u}
-function refresh(card){const frame=card.querySelector('iframe');if(frame)frame.src=cardUrl(card).href}
-function unlock(){form.style.display='none';unlocked.style.display='block';document.querySelectorAll('.card').forEach(card=>{card.querySelectorAll('[data-param]').forEach(f=>{f.addEventListener('input',()=>refresh(card));f.addEventListener('change',()=>refresh(card))});refresh(card)});document.querySelectorAll('[data-link]').forEach(btn=>btn.addEventListener('click',async()=>{const url=cardUrl(btn.closest('.card')).href;const status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(url);status.textContent='✓ Link copiado: '+url}catch(e){status.textContent='Copie este link: '+url}}))}
-if(sessionStorage.getItem('caiporahOverlayAccess')==='ok')unlock();
-form.addEventListener('submit',async e=>{e.preventDefault();error.textContent='';if(!crypto?.subtle){error.textContent='Atualize o navegador para validar o acesso com segurança.';return}const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input.value));const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');if(hash===PASSWORD_HASH){sessionStorage.setItem('caiporahOverlayAccess','ok');input.value='';unlock()}else{error.textContent='Senha incorreta. Tente novamente.';input.value='';input.focus()}});
-// Partículas discretas em roxo/prata no fundo da central.
-(()=>{const c=document.getElementById('particles'),ctx=c.getContext('2d');let w,h,dots=[];const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){w=c.width=innerWidth*devicePixelRatio;h=c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';dots=Array.from({length:Math.min(65,Math.floor(innerWidth/18))},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.5+.5)*devicePixelRatio,v:(Math.random()*.22+.08)*devicePixelRatio,a:Math.random()*.48+.12}))}function draw(){ctx.clearRect(0,0,w,h);for(const p of dots){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(190,160,235,'+p.a+')';ctx.fill();if(!reduced){p.y-=p.v;if(p.y<-5){p.y=h+5;p.x=Math.random()*w}}}if(!reduced)requestAnimationFrame(draw)}addEventListener('resize',()=>{resize();if(reduced)draw()});resize();draw()})();
-</script></body></html>
+const I="Impact,Haettenschweiler,sans-serif",G="Georgia,serif",M="'Courier New',monospace",A="'Arial Black',Arial,sans-serif",T="'Trebuchet MS',sans-serif";
+// categorias: id, nome, emoji, cor1, cor2, fundo, texto, fonte, raio
+const TH=[
+['geral','Geral','⭐','#8b5cf6','#c4b5fd','rgba(9,7,17,.93)','#fff',T,18],
+['fps','FPS','🎯','#ff3b3b','#ffb199','rgba(15,15,18,.93)','#fff',I,4],
+['rpg','RPG','🛡️','#d4a017','#f3d98b','rgba(40,26,14,.93)','#fdf1d0',G,14],
+['terror','Terror','💀','#b3001b','#8a8a8a','rgba(5,5,5,.95)','#e8e8e8',G,0],
+['retro','Retrô','👾','#ff2fd6','#00f0ff','rgba(10,0,30,.93)','#fff',M,0],
+['race','Corrida','🏎️','#ff7a00','#ffd400','rgba(20,20,24,.93)','#fff',A,6],
+['vlog','Vlog','🌸','#ff7eb6','#e0663a','rgba(255,244,248,.96)','#5a2a45',T,34],
+['music','Música','🎵','#a855f7','#ec4899','rgba(20,10,35,.93)','#fff',G,20],
+['tech','Tech','💻','#00d4ff','#3b82f6','rgba(5,15,30,.93)','#d8f3ff',M,6],
+['cook','Culinária','🍳','#ff8a3d','#3f8f1f','rgba(255,248,235,.96)','#4a2a10',T,28],
+['fut','Futebol','⚽','#1db954','#b7f5cd','rgba(8,40,20,.93)','#fff',I,6],
+['prata','Prata','💎','#c0c7d1','#8d97a5','rgba(14,16,20,.93)','#fff',T,14]
+].map(a=>({id:a[0],n:a[1],e:a[2],a:a[3],b:a[4],bg:a[5],tx:a[6],f:a[7],r:a[8]}));
+// 8 estilos visuais (alteram fundo, borda, sombra, forma e efeitos)
+const DF={bg:'var(--bg)',bd:'0 solid transparent',sh:'none',rd:'var(--r)',cp:'none',bf:'none',tx:'var(--tx)',b:'var(--b)',ic:'var(--a)',a:'var(--a)',ts:'none',cbd:'8px solid var(--a)'};
+const ST=[
+['Minimalista',{sh:'inset 10px 0 0 var(--a),0 10px 30px rgba(0,0,0,.45)',rd:'calc(var(--r)/2)',cbd:'4px solid var(--a)'}],
+['Clássico',{bd:'5px solid var(--a)',sh:'0 10px 30px rgba(0,0,0,.5)'}],
+['Neon',{bd:'4px solid var(--a)',sh:'0 0 24px var(--a),inset 0 0 24px var(--a)',ts:'0 0 14px var(--a)',cbd:'5px solid var(--a)'}],
+['Vidro',{bg:'rgba(255,255,255,.16)',bd:'3px solid rgba(255,255,255,.55)',sh:'0 12px 40px rgba(0,0,0,.35)',bf:'blur(18px)',tx:'#fff',b:'#fff',ic:'rgba(255,255,255,.28)',a:'#fff',ts:'0 2px 8px rgba(0,0,0,.6)',cbd:'4px solid rgba(255,255,255,.7)'}],
+['E-sports',{bg:'linear-gradient(100deg,var(--a),var(--b))',rd:'0',cp:'polygon(3% 0,100% 0,97% 100%,0 100%)',tx:'#fff',b:'#fff',ic:'rgba(0,0,0,.35)',a:'#fff',ts:'0 2px 6px rgba(0,0,0,.6)',cbd:'8px double var(--a)'}],
+['Tech',{bg:'repeating-linear-gradient(0deg,transparent 0 11px,rgba(255,255,255,.06) 11px 12px),var(--bg)',bd:'2px solid var(--a)',sh:'0 0 0 6px rgba(0,0,0,.4)',rd:'0',cp:'polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,28px 100%,0 calc(100% - 28px))',cbd:'4px dashed var(--a)'}],
+['Retrô',{bd:'5px solid var(--tx)',sh:'12px 12px 0 var(--a)',rd:'0',cbd:'6px solid var(--tx)'}],
+['Suave',{bg:'linear-gradient(135deg,var(--bg),color-mix(in srgb,var(--a) 35%,var(--bg)))',sh:'0 18px 50px rgba(0,0,0,.4)',rd:'60px'}],
+['Duplo',{bd:'6px double var(--a)',sh:'0 8px 24px rgba(0,0,0,.5)',cbd:'10px double var(--a)'}],
+['Pontilhado',{bd:'4px dashed var(--a)',sh:'0 8px 24px rgba(0,0,0,.4)',rd:'calc(var(--r)*1.5)',cbd:'6px dotted var(--a)'}],
+['Holográfico',{bg:'linear-gradient(120deg,var(--a),var(--b),var(--a))',bd:'2px solid rgba(255,255,255,.7)',sh:'0 10px 30px rgba(0,0,0,.4)',tx:'#fff',b:'#fff',ic:'rgba(0,0,0,.3)',a:'#fff',ts:'0 2px 6px rgba(0,0,0,.55)',cbd:'6px solid var(--b)'}],
+['Aço',{bg:'linear-gradient(180deg,#3a3f4a,#15181f)',bd:'3px solid #aab2bf',sh:'inset 0 2px 0 rgba(255,255,255,.35),0 10px 30px rgba(0,0,0,.5)',tx:'#fff',cbd:'6px solid #aab2bf'}],
+['Quadrinho',{bg:'#fff',bd:'5px solid #111',sh:'10px 10px 0 var(--a)',rd:'0',tx:'#111',b:'#444',cbd:'6px solid #111'}],
+['Aba',{sh:'inset 14px 0 0 var(--a),0 10px 30px rgba(0,0,0,.45)',rd:'0 60px 60px 0',cbd:'6px solid var(--a)'}],
+['Contorno duplo',{bd:'3px solid var(--b)',sh:'0 0 0 6px var(--a),0 14px 34px rgba(0,0,0,.5)',cbd:'6px solid var(--b)'}],
+['Hexágono',{bg:'linear-gradient(260deg,var(--b),var(--a))',rd:'0',cp:'polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%)',tx:'#fff',b:'#fff',ic:'rgba(0,0,0,.35)',a:'#fff',ts:'0 2px 6px rgba(0,0,0,.6)',cbd:'8px solid var(--b)'}]
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const BR='align-items:center;justify-content:';
+// elementos: id, título, descrição, campos, padrões, 5 posições [nome,css], html
+const EL=[
+['ticker','Faixa inferior','Faixa horizontal com mensagem rolando.',['Mensagem'],['Obrigado por assistir! Siga o canal e ative o sininho 🔔'],
+ [['Base total','left:0;bottom:40px;width:1920px'],['Base flutuante','left:80px;bottom:40px;width:1760px'],['Topo total','left:0;top:40px;width:1920px'],['Topo flutuante','left:80px;top:40px;width:1760px'],['Base central','left:310px;bottom:40px;width:1300px']],
+ (v,t,p)=>`<div class="tk pn" style="${p}"><b>${t.e} ${esc(t.n)}</b><div class="mq"><span>${(esc(v[0])+' &nbsp;•&nbsp; ').repeat(8)}</span></div></div>`],
+['lower','Nome do streamer','Identificação e nome do canal.',['Nome','Identificação'],['CAIPORAH','Streamer oficial'],
+ [['Inferior esquerdo','left:80px;bottom:160px'],['Inferior direito','right:80px;bottom:160px'],['Inferior centro','left:50%;bottom:160px;transform:translateX(-50%)'],['Topo esquerdo','left:80px;top:60px'],['Vertical','left:80px;bottom:160px;flex-direction:column;text-align:center;padding:30px 60px']],
+ (v,t,p)=>`<div class="lw pn" style="${p}"><div class="ic">${t.e}</div><div><h1>${esc(v[0])}</h1><p>${esc(v[1])}</p></div></div>`],
+['live','Selo ao vivo','Indicador compacto de transmissão.',['Texto'],['AO VIVO'],
+ [['Topo esquerdo','left:80px;top:60px'],['Topo direito','right:80px;top:60px'],['Base esquerda','left:80px;bottom:60px'],['Base direita','right:80px;bottom:60px'],['Topo centro','left:50%;top:60px;transform:translateX(-50%)']],
+ (v,t,p)=>`<div class="lv pn" style="${p}"><i></i>${esc(v[0])}</div>`],
+['social','Redes sociais','Nome da rede e usuário, com rotação automática.',['Usuário'],['@caiporah'],
+ [['Topo direito','right:80px;top:60px'],['Topo esquerdo','left:80px;top:60px'],['Base direita','right:80px;bottom:60px'],['Base esquerda','left:80px;bottom:60px'],['Base centro','left:50%;bottom:60px;transform:translateX(-50%)']],
+ (v,t,p)=>`<div class="so pn" style="${p}"><b>INSTAGRAM</b><span>${esc(v[0])}</span></div>`],
+['break','Tela de intervalo','Tela de pausa / já voltamos.',['Título','Mensagem'],['JÁ VOLTAMOS','Pegue uma água e não saia daí'],
+ [['Centro',BR+'center'],['Esquerda',BR+'flex-start;padding-left:120px'],['Direita',BR+'flex-end;padding-right:120px'],['Topo','align-items:flex-start;justify-content:center;padding-top:120px'],['Base','align-items:flex-end;justify-content:center;padding-bottom:120px']],
+ (v,t,p)=>`<div class="br" style="${p}"><div class="bx pn"><h1>${t.e} ${esc(v[0])}</h1><p>${esc(v[1])}</p></div></div>`],
+['camera','Moldura da câmera','Moldura transparente com etiqueta.',['Nome na etiqueta'],['CAIPORAH'],
+ [['Quadrada arredondada','left:80px;bottom:80px;width:520px;height:520px'],['Inferior direito','right:80px;bottom:80px;width:640px;height:360px'],['Topo esquerdo','left:80px;top:60px;width:640px;height:360px'],['Topo direito','right:80px;top:60px;width:640px;height:360px'],['Grande 4:3','left:80px;bottom:80px;width:720px;height:540px']],
+ (v,t,p)=>`<div class="cm" style="${p}"><span>${esc(v[0])}</span></div>`],
+['pix','Alerta de apoio','Agradecimento visual para apoiadores.',['Apoiador','Mensagem'],['Fulano','Valeu pelo apoio, você é demais!'],
+ [['Topo centro','left:480px;top:120px'],['Base centro','left:480px;bottom:200px'],['Esquerda','left:60px;top:440px'],['Direita','right:60px;top:440px'],['Centro','left:480px;top:440px']],
+ (v,t,p)=>`<div class="px pn" style="${p}"><div class="ic">${t.e}</div><div><h1>${esc(v[0])} apoiou!</h1><p>${esc(v[1])}</p></div></div>`],
+['goal','Meta da live','Barra de progresso da meta.',['Título','Progresso (ex: 750/1000)'],['Meta de seguidores','750/1000'],
+ [['Inferior esquerdo','left:80px;bottom:80px'],['Inferior direito','right:80px;bottom:80px'],['Topo esquerdo','left:80px;top:60px'],['Topo direito','right:80px;top:60px'],['Topo centro','left:600px;top:60px']],
+ (v,t,p)=>{const m=String(v[1]).match(/(\d+)\s*\/\s*(\d+)/),q=m&&+m[2]?Math.min(100,Math.round(m[1]/m[2]*100)):50;return`<div class="gl pn" style="${p}"><div class="gh"><span>${esc(v[0])}</span><span>${esc(v[1])}</span></div><div class="gb"><u style="--p:${q}%"></u></div></div>`}],
+['chatbox','Caixa de chat','Moldura para o chat da live.',['Título'],['CHAT'],
+ [['Direita alta','right:60px;top:170px;height:700px'],['Esquerda alta','left:60px;top:170px;height:700px'],['Direita baixa','right:60px;bottom:60px;height:420px'],['Esquerda baixa','left:60px;bottom:60px;height:420px'],['Direita total','right:60px;top:60px;height:960px']],
+ (v,t,p)=>`<div class="ch pn" style="${p}"><div class="h">${t.e} ${esc(v[0])}</div><div class="m"><b>Ana:</b> bora!!</div><div class="m"><b>Leo:</b> que jogada incrível</div><div class="m"><b>Duda:</b> salve galera 👋</div><div class="m"><b>Caio:</b> manda o próximo</div></div>`],
+['start','Começando em breve','Contagem regressiva de abertura.',['Título','Mensagem'],['COMEÇANDO EM','Já já a live começa'],
+ [['Centro',BR+'center'],['Esquerda',BR+'flex-start;padding-left:120px'],['Direita',BR+'flex-end;padding-right:120px'],['Topo','align-items:flex-start;justify-content:center;padding-top:60px'],['Base','align-items:flex-end;justify-content:center;padding-bottom:60px']],
+ (v,t,p)=>`<div class="br" style="${p}"><div class="bx pn"><h1>${t.e} ${esc(v[0])}</h1><div class="cd">05:00</div><p>${esc(v[1])}</p></div></div>`]
+];
+const BC='align-items:',EX={
+ticker:[['Base estreita esq','left:0;bottom:40px;width:1200px'],['Base estreita dir','right:0;bottom:40px;width:1200px'],['Topo estreita esq','left:0;top:40px;width:1200px'],['Topo estreita dir','right:0;top:40px;width:1200px'],['Meio da tela','left:0;top:492px;width:1920px']],
+lower:[['Superior direito','right:80px;top:60px'],['Topo centro','left:50%;top:60px;transform:translateX(-50%)'],['Vertical direita','right:80px;bottom:160px;flex-direction:column;text-align:center;padding:30px 60px'],['Rente à base esq','left:0;bottom:40px'],['Rente à base dir','right:0;bottom:40px']],
+live:[['Esquerda meio','left:80px;top:500px'],['Direita meio','right:80px;top:500px'],['Base centro','left:50%;bottom:60px;transform:translateX(-50%)'],['Topo esq recuado','left:240px;top:120px'],['Topo dir recuado','right:240px;top:120px']],
+social:[['Topo centro','left:50%;top:60px;transform:translateX(-50%)'],['Esquerda meio','left:80px;top:500px'],['Direita meio','right:80px;top:500px'],['Topo dir recuado','right:240px;top:150px'],['Base recuada','left:50%;bottom:180px;transform:translateX(-50%)']],
+break:[['Canto sup esq',BC+'flex-start;justify-content:flex-start;padding:80px'],['Canto sup dir',BC+'flex-start;justify-content:flex-end;padding:80px'],['Canto inf esq',BC+'flex-end;justify-content:flex-start;padding:80px'],['Canto inf dir',BC+'flex-end;justify-content:flex-end;padding:80px'],['Terço superior',BC+'flex-start;justify-content:center;padding-top:240px']],
+camera:[['Centro esq','left:80px;top:360px;width:640px;height:360px'],['Centro dir','right:80px;top:360px;width:640px;height:360px'],['Grande dir 4:3','right:80px;bottom:80px;width:720px;height:540px'],['Quadrada','left:80px;bottom:80px;width:520px;height:520px'],['Pequena topo dir','right:60px;top:60px;width:480px;height:270px']],
+pix:[['Topo esquerda','left:60px;top:120px'],['Topo direita','right:60px;top:120px'],['Base esquerda','left:60px;bottom:200px'],['Base direita','right:60px;bottom:200px'],['Terço superior','left:480px;top:280px']],
+goal:[['Base centro','left:600px;bottom:80px'],['Esquerda meio','left:80px;top:500px'],['Direita meio','right:80px;top:500px'],['Topo esq recuado','left:240px;top:150px'],['Base recuada','left:80px;bottom:200px']],
+chatbox:[['Centro esq alto','left:60px;top:300px;height:500px'],['Centro dir alto','right:60px;top:300px;height:500px'],['Esquerda total','left:60px;top:60px;height:960px'],['Direita média','right:60px;top:370px;height:560px'],['Esquerda média','left:60px;top:370px;height:560px']]};
+EX.start=EX.break;EL.forEach(e=>e[5].push(...EX[e[0]]));
+const E=esc,B=(p,i,c='')=>`<div class="bk pn ${c}" style="${p}">${i}</div>`,IC=x=>`<div class="ic">${x}</div>`,L=s=>`<div class="lbl">${esc(s)}</div>`,TC=(l,h,s)=>`<div>${l?L(l):''}<h1>${E(h)}</h1>${s?`<p>${E(s)}</p>`:''}</div>`,LI=a=>a.map(x=>`<div class="li">${x}</div>`).join('');
+const C4=[['Topo esquerdo','left:80px;top:60px'],['Topo direito','right:80px;top:60px'],['Base esquerda','left:80px;bottom:60px'],['Base direita','right:80px;bottom:60px']],CC=y=>`left:0;right:0;margin:0 auto;width:fit-content;${y}`;
+const PA=[...C4,['Topo centro',CC('top:60px')],['Base centro',CC('bottom:60px')]],WN=[['Centro',CC('top:380px')],['Topo centro',CC('top:120px')],['Base centro',CC('bottom:160px')]],SD=[['Esquerda meio','left:80px;top:380px'],['Direita meio','right:80px;top:380px'],...C4],TB=[['Topo centro',CC('top:60px')],['Base centro',CC('bottom:60px')],...C4],QT=[['Base centro',CC('bottom:120px')],['Topo centro',CC('top:120px')],['Esquerda baixo','left:80px;bottom:120px'],['Direita baixo','right:80px;bottom:120px']],PL=[['Esquerda meio','left:80px;top:300px;width:760px'],['Direita meio','right:80px;top:300px;width:760px'],['Base esquerda','left:80px;bottom:60px;width:760px'],['Base direita','right:80px;bottom:60px;width:760px']],RC=y=>['Inferior esquerdo','Inferior direito','Topo esquerdo','Topo direito'].map((n,i)=>[n,`${i%2?'right':'left'}:80px;${i<2?'bottom:80px':'top:60px'};width:480px;height:480px`]);
+EL.push(
+['follow','Novo seguidor','Alerta de novo seguidor.',['Nome'],['Fulano'],PA,(v,t,p)=>B(p,IC('➕')+TC('Novo seguidor',v[0]))],
+['sub','Nova inscrição','Alerta com número de meses.',['Nome','Meses'],['Fulano','3'],PA,(v,t,p)=>B(p,`<div class="big">${E(v[1])}</div>`+TC('Meses de inscrição',v[0]))],
+['donate','Doação','Valor em destaque e mensagem.',['Nome','Valor','Mensagem'],['Fulano','R$ 20','Continue assim!'],PA,(v,t,p)=>B(p,`<div class="big">${E(v[1])}</div>`+TC('Doação de '+v[0],v[2]))],
+['raid','Raid','Aviso de raid chegando.',['Canal','Espectadores'],['CanalAmigo','120'],PA,(v,t,p)=>B(p,TC('Raid chegando!',v[0],v[1]+' espectadores')+IC('🚀'),'pp')],
+['superchat','Mensagem destacada','Balão de mensagem com valor.',['Nome','Valor','Mensagem'],['Fulano','R$ 10','Que live incrível!'],QT,(v,t,p)=>B(p,L(v[0]+' · '+v[1])+`<h1 class="nt">${E(v[2])}</h1>`,'col')],
+['giveaway','Sorteio','Prêmio e palavra-chave.',['Prêmio','Palavra-chave'],['Camiseta exclusiva','!sorteio'],PA,(v,t,p)=>B(p,IC('🎁')+TC('Sorteio: '+v[0],'Digite '+v[1]))],
+['winner','Vencedor do sorteio','Anúncio do ganhador.',['Nome','Prêmio'],['Fulano','Camiseta exclusiva'],WN,(v,t,p)=>B(p,`<div class="big">🏆</div>`+TC('Vencedor',v[0],v[1]),'pp')],
+['goalhit','Meta batida','Comemoração de meta alcançada.',['Meta'],['1.000 seguidores'],WN,(v,t,p)=>B(p,`<div class="big">🎉</div>`+TC('Meta batida!',v[0]),'pp')],
+['title','Título da live','Título e jogo em destaque.',['Título','Jogo'],['Live de hoje','Nome do jogo'],[['Topo total','left:0;top:0;width:1920px'],['Topo flutuante',CC('top:40px')],['Base flutuante',CC('bottom:40px')]],(v,t,p)=>B(p,`<div><h1 class="nt">${E(v[0])}</h1><p>🎮 ${E(v[1])}</p></div>`,'tw')],
+['nowplaying','Tocando agora','Música com equalizador animado.',['Música','Artista'],['Nome da música','Artista'],PA,(v,t,p)=>B(p,`<div class="eq"><i></i><i></i><i></i><i></i></div>`+TC('Tocando agora',v[0],v[1]))],
+['clock','Relógio','Hora atual.',[],[],PA,(v,t,p)=>B(p,`<div class="big clk">00:00</div>`)],
+['agenda','Agenda','Próximo dia e horário de live.',['Dia','Horário','Evento'],['Amanhã','20:00','Próxima live'],PA,(v,t,p)=>B(p,`<div class="big">${E(v[1])}</div>`+TC(v[0],v[2]))],
+['commands','Comandos do chat','Lista de comandos em chips.',['Comando 1','Comando 2','Comando 3'],['!pix','!discord','!loja'],SD,(v,t,p)=>B(p,L('Comandos')+v.map(x=>`<div class="chp">${E(x)}</div>`).join(''),'col')],
+['rules','Regras do chat','Três regras numeradas.',['Regra 1','Regra 2','Regra 3'],['Respeito sempre','Sem spoilers','Sem links'],SD,(v,t,p)=>B(p,L('Regras do chat')+LI(v.map((x,i)=>`${i+1} · ${E(x)}`)),'col')],
+['sponsor','Patrocinador','Marca parceira em destaque.',['Nome','Texto'],['Marca Parceira','Parceira oficial'],PA,(v,t,p)=>B(p,IC('🤝')+TC('Patrocinador',v[0],v[1]))],
+['lastsupporter','Último apoiador','Nome do último apoiador.',['Nome','Valor'],['Fulano','R$ 20'],PA,(v,t,p)=>B(p,TC('Último apoiador',v[0],v[1])+IC('💜'))],
+['topdonor','Top apoiadores','Pódio com 3 nomes.',['1º lugar','2º lugar','3º lugar'],['Ana','Leo','Duda'],SD,(v,t,p)=>B(p,L('Top apoiadores')+LI(['🥇 ','🥈 ','🥉 '].map((m,i)=>m+E(v[i]))),'col')],
+['followers','Contador de seguidores','Número de seguidores.',['Número'],['12.480'],PA,(v,t,p)=>B(p,IC('👥')+`<div>${L('Seguidores')}<div class="big sm">${E(v[0])}</div></div>`)],
+['location','Localização IRL','Cidade onde você está.',['Cidade','Detalhe'],['São Paulo','Ao vivo da rua'],PA,(v,t,p)=>B(p,IC('📍')+TC('Agora em',v[0],v[1]))],
+['caption','Legenda','Legenda de fala centralizada.',['Texto'],['Texto da legenda'],[['Base centro',CC('bottom:60px')],['Base larga','left:160px;bottom:60px;width:1600px'],['Topo centro',CC('top:60px')]],(v,t,p)=>B(p,`<h1 class="nt">${E(v[0])}</h1>`,'tw')],
+['quote','Frase do dia','Citação com autor.',['Frase','Autor'],['Persistência vence o talento','CAIPORAH'],QT,(v,t,p)=>B(p,`<div class="big">“</div><div><h1 class="nt">${E(v[0])}</h1><p>— ${E(v[1])}</p></div>`)],
+['counter','Contador','Mortes, vitórias, tentativas…',['Nome','Número'],['Mortes','0'],PA,(v,t,p)=>B(p,L(v[0])+`<div class="big">${E(v[1])}</div>`,'col cn')],
+['scoreboard','Placar','Dois times e o resultado.',['Time A','Placar','Time B'],['Time A','2 x 1','Time B'],TB,(v,t,p)=>B(p,`<h1>${E(v[0])}</h1><div class="big">${E(v[1])}</div><h1>${E(v[2])}</h1>`)],
+['versus','Confronto X1','Dois nomes frente a frente.',['Jogador 1','Jogador 2'],['Jogador 1','Jogador 2'],[['Topo centro',CC('top:60px')],['Base centro',CC('bottom:60px')],['Meio da tela',CC('top:440px')]],(v,t,p)=>B(p,`<h1>${E(v[0])}</h1><div class="big">VS</div><h1>${E(v[1])}</h1>`,'pp')],
+['stopwatch','Cronômetro','Tempo de live crescendo.',['Título'],['Tempo de live'],PA,(v,t,p)=>B(p,L(v[0])+`<div class="big sw">00:00:00</div>`,'col cn')],
+['poll','Enquete','Pergunta com duas opções.',['Pergunta','Opção A','Opção B'],['Qual jogo hoje?','Jogo A','Jogo B'],PL,(v,t,p)=>B(p,L('Enquete')+`<h1 class="nt">${E(v[0])}</h1><div class="pb"><u style="width:62%">${E(v[1])} 62%</u></div><div class="pb"><u style="width:38%">${E(v[2])} 38%</u></div>`,'col')],
+['checklist','Checklist da live','Metas do dia com marcação.',['Título','Item feito','Item pendente'],['Hoje na live','Zerar a fase 1','Chegar a 1.000 seguidores'],SD,(v,t,p)=>B(p,L(v[0])+LI(['✅ '+E(v[1]),'⬜ '+E(v[2])]),'col')],
+['combo','Combo de reações','Contador de combo pulsando.',['Número','Texto'],['5','Combo de reações'],PA,(v,t,p)=>B(p,`<div class="big">x${E(v[0])}</div>`+TC('',v[1]),'pp')],
+['credits','Créditos finais','Nomes subindo no fim da live.',['Título','Nomes (separe por vírgula)'],['Obrigado por assistir','Ana, Leo, Duda, Caio, Bia'],[['Centro',BR+'center'],['Esquerda',BR+'flex-start;padding-left:120px'],['Direita',BR+'flex-end;padding-right:120px']],(v,t,p)=>`<div class="br" style="${p}"><div class="bx pn"><h1>${E(v[0])}</h1><div class="crw"><div class="cri">${String(v[1]).split(',').map(x=>`<p>${E(x.trim())}</p>`).join('')}</div></div></div></div>`],
+['roundcam','Câmera redonda','Moldura circular transparente.',['Etiqueta'],['CAIPORAH'],RC(),(v,t,p)=>`<div class="cm" style="${p};border-radius:50%"><span style="left:50%;transform:translateX(-50%);white-space:nowrap">${E(v[0])}</span></div>`],
+['screenframe','Borda da tela','Moldura em volta de toda a tela.',['Etiqueta'],['AO VIVO'],[['Borda fina','left:20px;top:20px;width:1880px;height:1040px'],['Borda larga','left:60px;top:60px;width:1800px;height:960px']],(v,t,p)=>`<div class="cm" style="${p}"><span style="left:50%;transform:translateX(-50%);top:-34px;bottom:auto">${E(v[0])}</span></div>`],
+['sidebar','Barra lateral','Faixa vertical com nome e usuário.',['Nome','Usuário'],['CAIPORAH','@caiporah'],[['Esquerda','left:0;top:0;height:1080px;width:120px'],['Direita','right:0;top:0;height:1080px;width:120px']],(v,t,p)=>B(p,`<div class="vt">${E(v[0])} · ${E(v[1])}</div>`,'tw')],
+['bell','Lembrete do sininho','Chamada para ativar notificações.',['Título','Texto'],['Ative o sininho','Não perca a próxima live'],PA,(v,t,p)=>B(p,`<div class="ic bell">🔔</div>`+TC('',v[0],v[1]))],
+['mark','Marca d’água','Nome discreto no canto.',['Nome'],['CAIPORAH'],C4,(v,t,p)=>`<div class="bk" style="${p};opacity:.7;padding:10px 20px"><h1 style="font-size:44px;text-shadow:0 2px 8px rgba(0,0,0,.7)">${t.e} ${E(v[0])}</h1></div>`]
+);
+const GR={'Alertas':['follow','sub','donate','raid','superchat','giveaway','winner','goalhit','pix'],'Informação':['title','nowplaying','clock','agenda','commands','rules','sponsor','lastsupporter','topdonor','followers','location','caption','quote'],'Jogo e interação':['counter','scoreboard','versus','stopwatch','poll','checklist','combo','goal','chatbox'],'Telas e molduras':['break','start','credits','camera','roundcam','screenframe'],'Barras e marca':['ticker','lower','live','social','sidebar','bell','mark']};
+
+const NS=ST.length;
+// modelo m: posição = floor(m/NS), estilo = m%NS
+const modelName=(ei,m)=>`${ST[m%NS][0]} · ${EL[ei][5][Math.floor(m/NS)][0]}`;
+const FONTS=[['Da categoria',null],['Impact',I],['Arial Black',A],['Georgia',G],['Courier',M],['Trebuchet',T],['Verdana','Verdana,sans-serif'],['Palatino','Palatino,Georgia,serif'],['Comic Sans',"'Comic Sans MS',cursive"]];
+const ANI=[['fade','Aparecer'],['left','Deslizar da esquerda'],['right','Deslizar da direita'],['up','Subir'],['down','Descer'],['zoom','Zoom'],['bounce','Quicar'],['flip','Girar'],['none','Sem animação']];
+const SNDS=[['','Sem som'],['ping','Ping'],['moeda','Moeda'],['sino','Sino'],['alerta','Alerta'],['fanfarra','Fanfarra'],['whoosh','Whoosh'],['pop','Pop'],['desce','Descida']];
+const TONES={ping:[[880,.25,'sine',0]],moeda:[[988,.09,'square',0],[1319,.3,'square',.09]],sino:[[1568,.7,'sine',0],[2349,.5,'sine',0]],alerta:[[660,.15,'sawtooth',0],[880,.15,'sawtooth',.18],[660,.15,'sawtooth',.36]],fanfarra:[[523,.15,'triangle',0],[659,.15,'triangle',.15],[784,.15,'triangle',.3],[1047,.5,'triangle',.45]],whoosh:[[1400,.4,'sawtooth',0,200]],pop:[[300,.12,'sine',0,800]],desce:[[700,.3,'sine',0,250]]};
+const SND={on:false};let AC;
+function sound(n,vol,force){if(!n||!(SND.on||force))return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume();const t0=AC.currentTime;(TONES[n]||[]).forEach(([f,d,ty,dl,f1])=>{const o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.setValueAtTime(f,t0+dl);if(f1)o.frequency.exponentialRampToValueAtTime(f1,t0+dl+d);g.gain.setValueAtTime(vol/100*.25+.0002,t0+dl);g.gain.exponentialRampToValueAtTime(.0001,t0+dl+d);o.connect(g);g.connect(AC.destination);o.start(t0+dl);o.stop(t0+dl+d+.05)})}catch(e){}}
+// configuração de cada overlay
+const ALERT=['follow','sub','donate','raid','superchat','giveaway','winner','goalhit','pix'];
+const dflt=id=>{const e=EL.find(x=>x[0]===id)||EL[0],al=ALERT.includes(e[0]);return{e:e[0],c:'geral',m:0,v:[0,1,2].map(i=>e[4][i]??''),k:null,f:0,s:100,o:100,x:0,y:0,sh:al?8:0,g:al?20:0,i:al?'bounce':'fade',u:'fade',d:.6,si:'',so:'',vl:70}};
+const pack=k=>{const d=dflt(k.e),o={e:k.e};for(const q in k)if(q!=='e'&&JSON.stringify(k[q])!==JSON.stringify(d[q]))o[q]=k[q];return o};
+const unpack=o=>Object.assign(dflt(o.e),o);
+const enc=a=>{const b=new TextEncoder().encode(JSON.stringify(a.map(pack)));return btoa(String.fromCharCode(...b)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
+const dec=s=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)))).map(unpack);
+function layer(k){
+  const e=EL.find(x=>x[0]===k.e)||EL[0],t=TH.find(x=>x.id===k.c)||TH[0],N=NS*e[5].length,m=((k.m%N)+N)%N;
+  const s=Object.assign({},DF,ST[m%NS][1]),fnt=(FONTS[k.f]&&FONTS[k.f][1])||t.f;
+  const vars=`--a:${k.k||t.a};--b:${t.b};--bg:${t.bg};--tx:${t.tx};--f:${fnt};--r:${t.r}px;--sbg:${s.bg};--sbd:${s.bd};--ssh:${s.sh};--srd:${s.rd};--scp:${s.cp};--sbf:${s.bf};--stc:${s.tx};--sb:${s.b};--sic:${s.ic};--sa:${s.a};--sts:${s.ts};--cbd:${s.cbd}`;
+  let p=e[5][Math.floor(m/NS)][1];
+  if(!p.startsWith('align-items')){const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`}
+  return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${e[6]([0,1,2].map(i=>k.v[i]??''),t,p)}</div>`;
+}
+const stageHTML=a=>`<div class="stage">${a.map(layer).join('')}</div>`;
+const fit=b=>{const s=b.querySelector('.stage');if(s)s.style.transform=`scale(${b.clientWidth/1920})`};
+// ciclo: entrada, tempo na tela, saída, intervalo
+function cycle(el,k,force){
+  const tm=[];let dead=false;const T=(f,ms)=>tm.push(setTimeout(f,ms));
+  const anim=n=>{el.style.animationName='none';void el.offsetWidth;el.style.animationName=n};
+  const enter=()=>{el.style.visibility='visible';anim(k.i==='none'?'none':'i-'+k.i);sound(k.si,k.vl,force)};
+  const leave=()=>{anim(k.u==='none'?'none':'o-'+k.u);sound(k.so,k.vl,force);T(()=>{el.style.visibility='hidden'},k.u==='none'?0:k.d*1000)};
+  const loop=()=>{if(dead)return;enter();if(!(k.sh>0))return;T(()=>{leave();T(loop,k.d*1000+Math.max(0,k.g)*1000)},k.sh*1000)};
+  loop();return()=>{dead=true;tm.forEach(clearTimeout)};
+}
+const run=(root,a,force)=>{const st=[...root.querySelectorAll('.lay')].map((el,i)=>cycle(el,a[i],force));return()=>st.forEach(f=>f())};
+const base=location.origin+location.pathname,P=new URLSearchParams(location.search);
+const NET=['INSTAGRAM','YOUTUBE','TIKTOK','TWITCH'];let ni=0,sec=300,swc=0;
+setInterval(()=>{ni++;document.querySelectorAll('.so b').forEach(b=>b.textContent=NET[ni%4])},2500);
+setInterval(()=>{sec=sec>0?sec-1:300;const t=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');document.querySelectorAll('.cd').forEach(e=>e.textContent=t);
+  const d=new Date();document.querySelectorAll('.clk').forEach(e=>e.textContent=d.toTimeString().slice(0,5));swc++;const w=[swc/3600|0,(swc/60|0)%60,swc%60].map(n=>String(n).padStart(2,'0')).join(':');document.querySelectorAll('.sw').forEach(e=>e.textContent=w)},1000);
+
+let cfgs=null;
+try{if(P.get('s'))cfgs=dec(P.get('s'));else if(P.get('t')){const k=dflt(P.get('t'));k.c=P.get('cat')||'geral';k.m=parseInt(P.get('m'))||0;k.v=[0,1,2].map(i=>P.get('xyz'[i])||k.v[i]);if(/^[0-9a-f]{6}$/i.test(P.get('c')||''))k.k='#'+P.get('c');cfgs=[k]}}catch(e){cfgs=null}
+
+if(cfgs){ // modo fonte de navegador
+  SND.on=true;document.body.className='ov';
+  document.getElementById('app').className='';document.getElementById('app').innerHTML=stageHTML(cfgs);
+  const f=()=>{document.querySelector('.stage').style.transform=`scale(${innerWidth/1920})`};f();addEventListener('resize',f);run(document,cfgs);
+}else{
+  const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
+  const copy=(u,b,txt)=>{const ok=()=>{if(b){b.textContent='LINK COPIADO!';setTimeout(()=>b.textContent=txt,1600)}else toast('Link copiado!')};navigator.clipboard?navigator.clipboard.writeText(u).then(ok,()=>prompt('Copie o link:',u)):(prompt('Copie o link:',u),ok())};
+  function full(get){
+    const f=document.createElement('div');f.className='fs';f.innerHTML='<div class="box"></div><small>Clique ou pressione Esc para fechar</small>';document.body.appendChild(f);
+    const b=f.firstChild,cf=get();b.innerHTML=stageHTML(cf);fit(b);const stop=run(b,cf);new ResizeObserver(()=>fit(b)).observe(b);
+    const close=()=>{stop();f.remove();document.removeEventListener('keydown',kd);document.removeEventListener('fullscreenchange',fc);if(document.fullscreenElement)document.exitFullscreen()},kd=e=>{if(e.key==='Escape')close()},fc=()=>{if(!document.fullscreenElement)close()};
+    document.addEventListener('keydown',kd);document.addEventListener('fullscreenchange',fc);f.onclick=close;if(f.requestFullscreen)f.requestFullscreen().catch(()=>{});
+  }
+  // fundo da prévia
+  const BG=[['Xadrez','repeating-conic-gradient(#171230 0 25%,#0f0b20 0 50%)','24px 24px'],['Jogo','radial-gradient(circle at 70% 30%,rgba(255,138,61,.45),transparent 45%),linear-gradient(160deg,#0b1f3a,#1c3d2e 60%,#2a1a0f)','cover'],['Vlog','linear-gradient(180deg,#e9d8c4,#b89b7d)','cover'],['Claro','linear-gradient(#f3f3f3,#f3f3f3)','cover'],['Escuro','linear-gradient(#000,#000)','cover']];
+  const $=i=>document.getElementById(i),rs=document.documentElement.style,bgs=$('bg'),fi=$('pvf');
+  bgs.innerHTML=BG.map((b,i)=>`<option value="${i}">${b[0]}</option>`).join('')+'<option value="img">Imagem…</option>';
+  bgs.onchange=()=>{if(bgs.value==='img')fi.click();else{rs.setProperty('--pv',BG[bgs.value][1]);rs.setProperty('--pvs',BG[bgs.value][2])}};
+  fi.onchange=()=>{if(fi.files[0]){rs.setProperty('--pv',`url(${URL.createObjectURL(fi.files[0])})`);rs.setProperty('--pvs','cover')}else bgs.value=0};
+  $('snd').onchange=e=>{SND.on=e.target.checked};
+  // cena combinada
+  let scene=[];try{scene=JSON.parse(localStorage.getItem('cai_scene')||'[]')}catch(e){}
+  const sb=$('scn-box'),sl=$('scn-list'),save=()=>{try{localStorage.setItem('cai_scene',JSON.stringify(scene))}catch(e){}};
+  function drawScene(){
+    sb._s&&sb._s();sb.innerHTML=stageHTML(scene);fit(sb);sb._s=run(sb,scene);
+    $('scn-n').textContent='('+scene.length+')';
+    sl.innerHTML=scene.length?scene.map((k,i)=>{const e=EL.find(x=>x[0]===k.e),t=TH.find(x=>x.id===k.c);return`<div class="sr"><span>${i+1}. ${e[1]} <small>${t.e} ${t.n}</small></span><button class="arr s" data-u="${i}">▲</button><button class="arr s" data-w="${i}">▼</button><button class="arr s" data-x="${i}">✕</button></div>`}).join(''):'<p class="mt">Vazia. Use + CENA para adicionar overlays.</p>';
+  }
+  sl.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const d=b.dataset;
+    if(d.x!==undefined)scene.splice(+d.x,1);
+    else{const i=+(d.u??d.w),j=d.u!==undefined?i-1:i+1;if(j<0||j>=scene.length)return;[scene[i],scene[j]]=[scene[j],scene[i]]}
+    save();drawScene()};
+  $('scn-copy').onclick=function(){if(!scene.length)return toast('Adicione overlays à cena primeiro');copy(base+'?s='+enc(scene),this,'COPIAR LINK DA CENA')};
+  $('scn-fs').onclick=()=>scene.length&&full(()=>scene);
+  $('scn-clr').onclick=()=>{scene=[];save();drawScene()};
+  new ResizeObserver(()=>fit(sb)).observe(sb);
+  // editor único
+  const C={},get=id=>C[id]||(C[id]=dflt(id));let cur=EL[0][0],grp=null;
+  const op=(a,sel)=>a.map(([v,l])=>`<option value="${v}"${String(v)===String(sel)?' selected':''}>${l}</option>`).join('');
+  const d0=dflt(cur),pbox=$('pbox'),ed=$('ed'),tabs=$('tabs');
+  tabs.innerHTML=`<div class="tabs"><button class="tb on" data-tab="0">Conteúdo</button><button class="tb" data-tab="1">Tempo e animação</button><button class="tb" data-tab="2">Aparência</button></div>
+  <div class="pane on"><div class="chips" id="cats">${TH.map(t=>`<button class="chip" data-c="${t.id}">${t.e} ${t.n}</button>`).join('')}</div>
+  <div class="mod"><button class="arr" data-d="-1" aria-label="Modelo anterior">◀</button><span id="mn"></span><button class="arr" data-d="1" aria-label="Próximo modelo">▶</button><button class="arr" data-r="1" aria-label="Modelo aleatório" title="Aleatório">🎲</button></div>
+  <div class="fl" id="fl"></div><label>Cor principal<br><input type="color" data-k="k" id="col"></label></div>
+  <div class="pane"><div class="ag">
+  <label>Tempo na tela (s) · 0 = sempre<input type="number" min="0" step="1" data-k="sh"></label>
+  <label>Intervalo entre aparições (s)<input type="number" min="0" step="1" data-k="g"></label>
+  <label>Animação de entrada<select data-k="i">${op(ANI)}</select></label>
+  <label>Animação de saída<select data-k="u">${op(ANI)}</select></label>
+  <label>Duração da animação (s)<input type="number" min=".1" max="3" step=".1" data-k="d"></label>
+  <label>Som de entrada<select data-k="si">${op(SNDS)}</select></label>
+  <label>Som de saída<select data-k="so">${op(SNDS)}</select></label>
+  <label>Volume: <b data-o="vl"></b>%<input type="range" min="0" max="100" data-k="vl"></label></div></div>
+  <div class="pane"><div class="ag">
+  <label>Fonte<select data-k="f">${op(FONTS.map((f,i)=>[i,f[0]]))}</select></label>
+  <label>Tamanho: <b data-o="s"></b>%<input type="range" min="40" max="200" data-k="s"></label>
+  <label>Opacidade: <b data-o="o"></b>%<input type="range" min="10" max="100" data-k="o"></label></div>
+  <div><button class="btn g" data-reset>RESETAR POSIÇÃO</button></div><p class="mt">Dica: arraste o overlay na prévia para mover. Os sons tocam sozinhos no OBS; aqui use TESTAR.</p></div>`;
+  const draw=force=>{const k=get(cur),ei=EL.findIndex(x=>x[0]===cur),N=NS*EL[ei][5].length;pbox._s&&pbox._s();pbox.innerHTML=stageHTML([k]);fit(pbox);pbox._s=run(pbox,[k],force);$('mn').textContent=`Modelo ${k.m+1} de ${N} · ${modelName(ei,k.m)}`};
+  function sync(){
+    const k=get(cur),e=EL.find(x=>x[0]===cur),t=TH.find(x=>x.id===k.c);
+    $('ttl').textContent=e[1];$('dsc').textContent=e[2];
+    $('fl').innerHTML=e[3].length?e[3].map((l,i)=>`<label>${l}<input type="text" data-i="${i}" value="${esc(k.v[i])}"></label>`).join(''):'<p class="mt">Este overlay não tem texto para editar.</p>';
+    tabs.querySelectorAll('#cats .chip').forEach(x=>x.classList.toggle('on',x.dataset.c===k.c));
+    $('col').value=k.k||t.a;
+    tabs.querySelectorAll('[data-k]').forEach(el=>{const q=el.dataset.k;if(q==='k')return;el.value=k[q];const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=k[q]});
+    draw();
+  }
+  function renderList(){$('ol').innerHTML=Object.entries(GR).filter(([n])=>!grp||grp===n).map(([n,ids])=>`<div class="gh">${n}</div>`+ids.map(id=>`<button class="oi${id===cur?' on':''}" data-id="${id}">${EL.find(x=>x[0]===id)[1]}</button>`).join('')).join('')}
+  [['Todos',null],...Object.keys(GR).map(n=>[n,n])].forEach(([n,g])=>{const b=document.createElement('button');b.className='chip'+(g?'':' on');b.textContent=n;b.onclick=()=>{grp=g;[...$('gr').children].forEach(x=>x.classList.toggle('on',x===b));renderList()};$('gr').appendChild(b)});
+  $('ol').onclick=ev=>{const b=ev.target.closest('.oi');if(!b)return;cur=b.dataset.id;$('ol').querySelectorAll('.oi').forEach(x=>x.classList.toggle('on',x===b));sync()};
+  ed.addEventListener('click',ev=>{
+    const b=ev.target.closest('button');if(!b)return;const q=b.dataset,k=get(cur),N=NS*EL.find(x=>x[0]===cur)[5].length;
+    if(q.tab!==undefined){tabs.querySelectorAll('.tb').forEach((x,i)=>x.classList.toggle('on',i==q.tab));tabs.querySelectorAll('.pane').forEach((x,i)=>x.classList.toggle('on',i==q.tab))}
+    else if(q.c!==undefined){k.c=q.c;k.k=null;sync()}
+    else if(q.r)(k.m=Math.floor(Math.random()*N),draw());
+    else if(q.d)(k.m=(k.m+ +q.d+N)%N,draw());
+    else if(q.copy!==undefined)copy(base+'?s='+enc([k]),b,'COPIAR LINK');
+    else if(q.add!==undefined){scene.push(JSON.parse(JSON.stringify(k)));save();drawScene();toast('Adicionado à cena ('+scene.length+')')}
+    else if(q.t!==undefined)draw(true);
+    else if(q.reset!==undefined){k.x=0;k.y=0;draw()}
+    else if(q.fs!==undefined)full(()=>[k]);
+  });
+  ed.addEventListener('input',ev=>{const el=ev.target,q=el.dataset.k,k=get(cur);
+    if(el.dataset.i!==undefined)k.v[el.dataset.i]=el.value;
+    else if(q){let x=el.value;if(el.type==='number'||el.type==='range')x=parseFloat(x)||0;else if(q==='f')x=+x;if(q==='d')x=Math.max(.1,x||.6);k[q]=x;const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=x}
+    else return;
+    draw()});
+  let dg=null;
+  pbox.addEventListener('pointerdown',ev=>{const k=get(cur),r=pbox.querySelector('.lay')?.firstElementChild;if(!r||r.classList.contains('br'))return;dg={r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
+  pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`});
+  const end=()=>{dg=null;pbox.style.cursor=''};pbox.addEventListener('pointerup',end);pbox.addEventListener('pointercancel',end);
+  new ResizeObserver(()=>fit(pbox)).observe(pbox);
+  renderList();sync();drawScene();
+}
+
+// A central de edição mantém a proteção premium existente no site.
+// Fontes de navegador do OBS/LiveX (?s= ou ?t=) continuam abrindo sem a tela de login.
+if(!P.has('s')&&!P.has('t')){
+  const gate=document.getElementById('access-gate');
+  const form=document.getElementById('access-form');
+  const pass=document.getElementById('access-password');
+  const error=document.getElementById('access-error');
+  const hashExpected='c7f6f8b13fd7af3539c062e9882f07180f5716e36494e14c7a2b5d139e497ca9';
+  const showEditor=()=>{gate.style.display='none';document.getElementById('app').style.display='flex'};
+  if(sessionStorage.getItem('caiporahOverlayAccess')==='ok')showEditor();
+  else{gate.style.display='flex';document.getElementById('app').style.display='none'}
+  form.addEventListener('submit',async ev=>{
+    ev.preventDefault();error.textContent='';
+    if(!window.crypto||!crypto.subtle){error.textContent='Seu navegador não oferece validação segura. Atualize-o e tente novamente.';return}
+    try{
+      const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pass.value));
+      const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+      if(hash===hashExpected){sessionStorage.setItem('caiporahOverlayAccess','ok');pass.value='';showEditor()}
+      else{error.textContent='Senha incorreta. Tente novamente.';pass.value='';pass.focus()}
+    }catch(e){error.textContent='Não foi possível validar o acesso neste navegador.'}
+  });
+}
+
+</script>
+</body>
+</html>
