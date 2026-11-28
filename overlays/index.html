@@ -442,7 +442,7 @@ function cycle(el,k,force){
   loop();return()=>{dead=true;tm.forEach(clearTimeout)};
 }
 const run=(root,a,force)=>{const st=[...root.querySelectorAll('.lay')].map((el,i)=>cycle(el,a[i],force));return()=>st.forEach(f=>f())};
-const base=location.origin+location.pathname,P=new URLSearchParams(location.search);
+const editorBase=new URL(location.href);editorBase.search='';editorBase.hash='';editorBase.pathname=editorBase.pathname.replace(/index\.html$/i,'');if(!editorBase.pathname.endsWith('/'))editorBase.pathname+='/';const base=editorBase.origin+editorBase.pathname,P=new URLSearchParams(location.search);
 const NET=['INSTAGRAM','YOUTUBE','TIKTOK','TWITCH'];let ni=0,sec=300,swc=0;
 setInterval(()=>{ni++;document.querySelectorAll('.so b').forEach(b=>b.textContent=NET[ni%4])},2500);
 setInterval(()=>{sec=sec>0?sec-1:300;const t=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');document.querySelectorAll('.cd').forEach(e=>e.textContent=t);
