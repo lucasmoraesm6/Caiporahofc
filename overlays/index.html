@@ -453,6 +453,11 @@ try{if(P.get('s'))cfgs=dec(P.get('s'));else if(P.get('t')){const k=dflt(P.get('t
 
 if(cfgs){ // modo fonte de navegador
   SND.on=true;document.body.className='ov';
+  // Transparência real da fonte de navegador: o tema do editor não pode pintar o canvas de preto.
+  document.documentElement.style.setProperty('background','transparent','important');
+  document.documentElement.style.setProperty('background-color','transparent','important');
+  document.body.style.setProperty('background','transparent','important');
+  document.body.style.setProperty('background-color','transparent','important');
   document.getElementById('app').className='';document.getElementById('app').innerHTML=stageHTML(cfgs);
   const f=()=>{document.querySelector('.stage').style.transform=`scale(${innerWidth/1920})`};f();addEventListener('resize',f);run(document,cfgs);
 }else{
@@ -540,7 +545,7 @@ if(cfgs){ // modo fonte de navegador
     else return;
     draw()});
   let dg=null;
-  pbox.addEventListener('pointerdown',ev=>{const k=get(cur),r=pbox.querySelector('.lay')?.firstElementChild;if(!r||r.classList.contains('br'))return;dg={r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
+  pbox.addEventListener('pointerdown',ev=>{const k=get(cur),lay=pbox.querySelector('.lay'),r=lay?.querySelector('.br .bx')||lay?.firstElementChild;if(!r)return;dg={r,k,x:ev.clientX,y:ev.clientY,ox:k.x,oy:k.y};pbox.setPointerCapture(ev.pointerId);pbox.style.cursor='grabbing'});
   pbox.addEventListener('pointermove',ev=>{if(!dg)return;const sc=1920/pbox.clientWidth;dg.k.x=Math.round(dg.ox+(ev.clientX-dg.x)*sc);dg.k.y=Math.round(dg.oy+(ev.clientY-dg.y)*sc);dg.r.style.translate=`${dg.k.x}px ${dg.k.y}px`});
   const end=()=>{dg=null;pbox.style.cursor=''};pbox.addEventListener('pointerup',end);pbox.addEventListener('pointercancel',end);
   new ResizeObserver(()=>fit(pbox)).observe(pbox);
