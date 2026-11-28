@@ -516,7 +516,7 @@ if(cfgs){ // modo fonte de navegador
   <label>Posição vertical: <b data-o="y"></b> px<input type="range" min="-1080" max="1080" step="1" data-k="y"></label>
   <label>Opacidade: <b data-o="o"></b>%<input type="range" min="10" max="100" data-k="o"></label></div>
   <div><button class="btn g" data-reset>RESETAR POSIÇÃO</button></div><p class="mt">Arraste o overlay para mover. Use a alça no canto inferior direito para redimensionar ou ajuste tamanho e posição nos controles. O fundo externo permanece transparente na fonte de navegador.</p></div>`;
-  const draw=force=>{const k=get(cur),ei=EL.findIndex(x=>x[0]===cur),N=NS*EL[ei][5].length;pbox._s&&pbox._s();pbox.innerHTML=stageHTML([k]);fit(pbox);pbox._s=run(pbox,[k],force);$('mn').textContent=`Modelo ${k.m+1} de ${N} · ${modelName(ei,k.m)}`;if(tabs.querySelector('.pane.on'))tabs.querySelectorAll('[data-k]').forEach(el=>{const q=el.dataset.k;if(q&&q!=='k'){el.value=k[q]??0;const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=k[q]??0}});placeResizeHandle()};
+  const draw=force=>{const k=get(cur),ei=EL.findIndex(x=>x[0]===cur),N=NS*EL[ei][5].length;pbox._s&&pbox._s();pbox.innerHTML=stageHTML([k]);if(typeof resizeHandle!=='undefined')pbox.appendChild(resizeHandle);fit(pbox);pbox._s=run(pbox,[k],force);$('mn').textContent=`Modelo ${k.m+1} de ${N} · ${modelName(ei,k.m)}`;if(tabs.querySelector('.pane.on'))tabs.querySelectorAll('[data-k]').forEach(el=>{const q=el.dataset.k;if(q&&q!=='k'){el.value=k[q]??0;const o=tabs.querySelector(`[data-o="${q}"]`);if(o)o.textContent=k[q]??0}});placeResizeHandle()};
   function sync(){
     const k=get(cur),e=EL.find(x=>x[0]===cur),t=TH.find(x=>x.id===k.c);
     $('ttl').textContent=e[1];$('dsc').textContent=e[2];
