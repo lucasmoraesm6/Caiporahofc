@@ -586,7 +586,7 @@ if(cfgs){ // modo fonte de navegador
 
 // A central de edição mantém a proteção premium existente no site.
 // Fontes de navegador do OBS/LiveX (?s= ou ?t=) continuam abrindo sem a tela de login.
-if(!P.has('s')&&!P.has('t')){
+if(!P.has('s')&&!P.has('t')&&!P.has('tipo')){
   const gate=document.getElementById('access-gate');
   const form=document.getElementById('access-form');
   const pass=document.getElementById('access-password');
