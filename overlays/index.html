@@ -432,8 +432,9 @@ function layer(k,free=false){
   if(free){
     // Fonte livre: ignora posição e escala do editor. O app hospedeiro decide
     // onde posicionar e qual tamanho aplicar à fonte inteira.
+    const original=p;
     p=p.replace(/(?:^|;)\s*(?:left|right|top|bottom|width|height|min-width|min-height|max-width|max-height|transform|transform-origin|translate|scale)\s*:[^;]*/gi,'');
-    html=html.replace(/style="[^"]*"/g,style=>style);
+    html=html.replace('style="'+original+'"','style="'+p+'"');
   }else if(!p.startsWith('align-items')){
     const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';
     p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`;
@@ -573,7 +574,7 @@ if(cfgs){ // modo fonte de navegador
     else if(q.c!==undefined){k.c=q.c;k.k=null;sync()}
     else if(q.r)(k.m=Math.floor(Math.random()*N),draw());
     else if(q.d)(k.m=(k.m+ +q.d+N)%N,draw());
-    else if(q.copy!==undefined)const source={...k};delete source.x;delete source.y;delete source.s;copy(base+'?s='+enc([source]),b,'COPIAR LINK');
+    else if(q.copy!==undefined){const source={...k};delete source.x;delete source.y;delete source.s;copy(base+'?s='+enc([source]),b,'COPIAR LINK');}
     else if(q.add!==undefined){scene.push(JSON.parse(JSON.stringify(k)));save();drawScene();toast('Adicionado à cena ('+scene.length+')')}
     else if(q.t!==undefined)draw(true);
     else if(q.reset!==undefined){k.x=0;k.y=0;draw()}
