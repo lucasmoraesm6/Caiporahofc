@@ -80,7 +80,7 @@ body.ov .stage{position:fixed}
 @keyframes bl{50%{opacity:.2}}
 .so{position:absolute;padding:16px 36px;display:flex;gap:22px;align-items:center;font-size:42px;font-weight:700}
 .so b{background:var(--sic);color:#fff;padding:4px 18px;border-radius:var(--r);font-size:34px}
-.br{position:absolute;inset:0;display:flex;background:linear-gradient(135deg,var(--bg),var(--a))}
+.br{position:absolute;inset:0;display:flex;background:transparent;pointer-events:none}.br .bx{pointer-events:auto}
 .bx{padding:60px 110px;text-align:center}
 .bx h1{font-size:130px}
 .bx p{font-size:46px;margin-top:14px}
@@ -152,7 +152,7 @@ body.ov .stage{position:fixed}
 .mt{color:#a99bde;font-size:14px;margin:0}
 .scn .act{margin-top:10px;flex-wrap:wrap}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#8b5cf6;color:#fff;padding:10px 20px;border-radius:99px;font-weight:700;z-index:60;box-shadow:0 8px 24px #0008}
-.fs{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.fs{position:fixed;inset:0;z-index:50;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .fs .box{width:min(100vw,177.78vh);cursor:pointer}
 .fs small{position:absolute;bottom:10px;color:#777}
 @media(max-width:760px){.scn>div{grid-template-columns:1fr}}
@@ -420,8 +420,15 @@ function layer(k){
   const s=Object.assign({},DF,ST[m%NS][1]),fnt=(FONTS[k.f]&&FONTS[k.f][1])||t.f;
   const vars=`--a:${k.k||t.a};--b:${t.b};--bg:${t.bg};--tx:${t.tx};--f:${fnt};--r:${t.r}px;--sbg:${s.bg};--sbd:${s.bd};--ssh:${s.sh};--srd:${s.rd};--scp:${s.cp};--sbf:${s.bf};--stc:${s.tx};--sb:${s.b};--sic:${s.ic};--sa:${s.a};--sts:${s.ts};--cbd:${s.cbd}`;
   let p=e[5][Math.floor(m/NS)][1];
-  if(!p.startsWith('align-items')){const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`}
-  return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${e[6](v,t,p)}</div>`;
+  let html=e[6](v,t,p);
+  if(!p.startsWith('align-items')){
+    const ox=/left:0;right:0|left:50%/.test(p)?'50%':/right:/.test(p)?'100%':'0%',oy=/bottom:/.test(p)?'100%':/top:/.test(p)?'0%':'50%';
+    p+=`;scale:${k.s/100};transform-origin:${ox} ${oy};translate:${k.x}px ${k.y}px`;
+  }else{
+    const fitStyle=`transform:scale(${k.s/100});transform-origin:center;translate:${k.x}px ${k.y}px;`;
+    html=html.replace('class="bx pn"','class="bx pn" style="'+fitStyle+'"');
+  }
+  return `<div class="lay" style="${vars};opacity:${k.o/100};--d:${k.d}s">${html}</div>`;
 }
 const stageHTML=a=>`<div class="stage">${a.map(layer).join('')}</div>`;
 const fit=b=>{const s=b.querySelector('.stage');if(s)s.style.transform=`scale(${b.clientWidth/1920})`};
