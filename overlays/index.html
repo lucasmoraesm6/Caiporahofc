@@ -449,7 +449,32 @@ setInterval(()=>{sec=sec>0?sec-1:300;const t=String(Math.floor(sec/60)).padStart
   const d=new Date();document.querySelectorAll('.clk').forEach(e=>e.textContent=d.toTimeString().slice(0,5));swc++;const w=[swc/3600|0,(swc/60|0)%60,swc%60].map(n=>String(n).padStart(2,'0')).join(':');document.querySelectorAll('.sw').forEach(e=>e.textContent=w)},1000);
 
 let cfgs=null;
-try{if(P.get('s'))cfgs=dec(P.get('s'));else if(P.get('t')){const k=dflt(P.get('t'));k.c=P.get('cat')||'geral';k.m=parseInt(P.get('m'))||0;k.v=[0,1,2].map(i=>P.get('xyz'[i])||k.v[i]);if(/^[0-9a-f]{6}$/i.test(P.get('c')||''))k.k='#'+P.get('c');cfgs=[k]}}catch(e){cfgs=null}
+try{
+  if(P.get('s'))cfgs=dec(P.get('s'));
+  else if(P.get('t')||P.get('tipo')){
+    const type=(P.get('t')||P.get('tipo')||'ticker').toLowerCase();
+    const k=dflt(type);
+    k.c=P.get('cat')||'geral';
+    k.m=parseInt(P.get('m'),10)||0;
+    k.v=[0,1,2].map(i=>P.get('xyz'[i])??k.v[i]);
+    // Compatibilidade com os links antigos de overlay.html.
+    if(type==='ticker'){k.v[0]=P.get('marca')||k.v[0];k.v[1]=P.get('texto')||k.v[1]}
+    if(type==='lower'){k.v[0]=P.get('nome')||k.v[0];k.v[1]=P.get('texto')||P.get('marca')||k.v[1]}
+    if(type==='social')k.v[0]=P.get('nome')||k.v[0];
+    if(type==='live')k.v[0]=P.get('texto')||k.v[0];
+    if(type==='break'){k.v[0]=P.get('titulo')||k.v[0];k.v[1]=P.get('texto')||k.v[1]}
+    if(type==='pix'){k.v[0]=P.get('nome')||k.v[0];k.v[1]=P.get('texto')||k.v[1]}
+    if(type==='camera')k.v[0]=P.get('nome')||k.v[0];
+    const modelMap={minimal:0,classic:1,neon:2,glass:3,esports:4,tech:5,retro:6,luxury:7};
+    if(P.has('modelo'))k.m=modelMap[P.get('modelo')]??k.m;
+    const color=P.get('cor')||P.get('c');
+    if(/^#?[0-9a-f]{6}$/i.test(color||''))k.k=color.startsWith('#')?color:'#'+color;
+    if(P.has('posx'))k.x=Number(P.get('posx'))||0;
+    if(P.has('posy'))k.y=Number(P.get('posy'))||0;
+    if(P.has('tamanho'))k.s=Math.max(20,Math.min(300,Number(P.get('tamanho'))||100));
+    cfgs=[k];
+  }
+}catch(e){cfgs=null}
 
 if(cfgs){ // modo fonte de navegador
   SND.on=true;document.body.className='ov';
@@ -459,7 +484,7 @@ if(cfgs){ // modo fonte de navegador
   document.body.style.setProperty('background','transparent','important');
   document.body.style.setProperty('background-color','transparent','important');
   document.getElementById('app').className='';document.getElementById('app').innerHTML=stageHTML(cfgs);
-  const f=()=>{document.querySelector('.stage').style.transform=`scale(${innerWidth/1920})`};f();addEventListener('resize',f);run(document,cfgs);
+  const f=()=>{const stage=document.querySelector('.stage');if(!stage)return;const scale=Math.min(innerWidth/1920,innerHeight/1080);stage.style.left='50%';stage.style.top='50%';stage.style.transformOrigin='center';stage.style.transform=`translate(-50%,-50%) scale(${scale})`};f();addEventListener('resize',f);run(document,cfgs);
 }else{
   const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
   const copy=(u,b,txt)=>{const ok=()=>{if(b){b.textContent='LINK COPIADO!';setTimeout(()=>b.textContent=txt,1600)}else toast('Link copiado!')};navigator.clipboard?navigator.clipboard.writeText(u).then(ok,()=>prompt('Copie o link:',u)):(prompt('Copie o link:',u),ok())};
